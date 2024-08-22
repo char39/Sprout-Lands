@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: GroundTile
+    uniqueID: 700967549
+    locked: 0
+  - name: BuildTile
+    uniqueID: 1389851065
+    locked: 0
+  - name: Object
+    uniqueID: 625662749
+    locked: 0
+  - name: Creature
+    uniqueID: 2221945927
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
