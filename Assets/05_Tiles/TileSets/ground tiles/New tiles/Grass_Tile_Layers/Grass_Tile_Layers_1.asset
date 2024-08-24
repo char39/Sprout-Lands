@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
-  m_Name: Grass_Hill_Tiles_v2_2 Rule Tile
+  m_Name: Grass_Tile_Layers_1
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 1952191784, guid: 27fe5c5937516426293d88f2b9aec31e, type: 3}
+  m_DefaultSprite: {fileID: -1547802848, guid: d9724e5599a444c519cc4e6e4c3d00f5, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 34
     m_Sprites:
-    - {fileID: 1952191784, guid: 27fe5c5937516426293d88f2b9aec31e, type: 3}
-    - {fileID: 241107913, guid: 27fe5c5937516426293d88f2b9aec31e, type: 3}
-    - {fileID: 757479008, guid: 27fe5c5937516426293d88f2b9aec31e, type: 3}
-    - {fileID: 1952191784, guid: 27fe5c5937516426293d88f2b9aec31e, type: 3}
-    - {fileID: 241107913, guid: 27fe5c5937516426293d88f2b9aec31e, type: 3}
-    - {fileID: 757479008, guid: 27fe5c5937516426293d88f2b9aec31e, type: 3}
+    - {fileID: -1547802848, guid: d9724e5599a444c519cc4e6e4c3d00f5, type: 3}
+    - {fileID: 387608754, guid: d9724e5599a444c519cc4e6e4c3d00f5, type: 3}
+    - {fileID: 1245969069, guid: d9724e5599a444c519cc4e6e4c3d00f5, type: 3}
+    - {fileID: 672904223, guid: d9724e5599a444c519cc4e6e4c3d00f5, type: 3}
+    - {fileID: -455587535, guid: d9724e5599a444c519cc4e6e4c3d00f5, type: 3}
+    - {fileID: -2123745821, guid: d9724e5599a444c519cc4e6e4c3d00f5, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
