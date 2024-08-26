@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dbb8dd8fa02ab4180b23a2e172551725
+guid: f5e02cf4d54d5455c9f6fbb2996ebd76
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,14 +43,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
-  spriteExtrude: 1
+  spriteMode: 2
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -86,7 +86,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 0
+    compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -99,7 +99,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 0
+    compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -112,7 +112,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 0
+    compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -162,7 +162,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bitmask references 2_0
+      name: Bitmask references 3_0
       rect:
         serializedVersion: 2
         x: 32
@@ -176,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b4e34b1c638d4c86ad213751ec3adbf
-      internalID: 1277940644
+      spriteID: b3e3699b2ef1a45969d4e0618c3cf50c
+      internalID: 849106283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_1
+      name: Bitmask references 3_1
       rect:
         serializedVersion: 2
         x: 70
@@ -197,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b3f41a33fdf2464297d7ea79e727f9c
-      internalID: -942039568
+      spriteID: 0f69c3fdc28074295a84fae8e0e45326
+      internalID: -1948244293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_2
+      name: Bitmask references 3_2
       rect:
         serializedVersion: 2
         x: 108
@@ -218,14 +218,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32d6f2c96505b40dbaebe28607769e16
-      internalID: -1471626482
+      spriteID: 09355bff02fda42eea203c2c6fb5929e
+      internalID: 926209392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_3
+      name: Bitmask references 3_3
       rect:
         serializedVersion: 2
         x: 146
@@ -239,14 +239,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bef317d6b3e5a43abba1cf767d06ed8b
-      internalID: 1398422692
+      spriteID: 245b8fc6b39284d378cb1a52793d402d
+      internalID: 550615413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_4
+      name: Bitmask references 3_4
       rect:
         serializedVersion: 2
         x: 184
@@ -260,14 +260,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4f70bcee9d034553877f52bb125c66d
-      internalID: 240494584
+      spriteID: 614e42cc43aa948839645b8b3b9cd342
+      internalID: -1619375922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_5
+      name: Bitmask references 3_5
       rect:
         serializedVersion: 2
         x: 222
@@ -281,14 +281,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e569f47901844eabb66082b18a29b37
-      internalID: -562832959
+      spriteID: e7cfbd3f3135c4cc092156afde8bf8d5
+      internalID: -408188160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_6
+      name: Bitmask references 3_6
       rect:
         serializedVersion: 2
         x: 260
@@ -302,14 +302,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18751c5d95a5141578d9ba20253fb50a
-      internalID: 2076902197
+      spriteID: dc26e6b68469044c19d200f679f94134
+      internalID: -624659557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_7
+      name: Bitmask references 3_7
       rect:
         serializedVersion: 2
         x: 298
@@ -323,14 +323,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49437ab0758254ff3b5aabe42c1f676f
-      internalID: -13002634
+      spriteID: 6a18e07a9c0664207a5a38ee9c7fa113
+      internalID: 994889829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_8
+      name: Bitmask references 3_8
       rect:
         serializedVersion: 2
         x: 336
@@ -344,14 +344,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4eb89fb0b163458b8d5bdb026085714
-      internalID: -94575916
+      spriteID: a7021df5e355349fea21629a83b97399
+      internalID: -253751630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_9
+      name: Bitmask references 3_9
       rect:
         serializedVersion: 2
         x: 374
@@ -365,14 +365,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb63cacc86058455b99e49ca5bb1a554
-      internalID: 2136042044
+      spriteID: f478080c3720246e7abf3edaa2c6dbc8
+      internalID: -1516514815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_11
+      name: Bitmask references 3_10
       rect:
         serializedVersion: 2
         x: 32
@@ -386,14 +386,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36986be798f0f41678e110c0fdba1aa0
-      internalID: -1887536094
+      spriteID: aaa9c908b15e94d019a7ac095613bf05
+      internalID: 1416491649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_12
+      name: Bitmask references 3_11
       rect:
         serializedVersion: 2
         x: 70
@@ -407,14 +407,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f8d5139625644801ba7047d550931f7
-      internalID: 643152715
+      spriteID: 06ab7d243933f4cde9d145c615eaddb4
+      internalID: -1664502812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_13
+      name: Bitmask references 3_12
       rect:
         serializedVersion: 2
         x: 108
@@ -428,14 +428,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f787754ffd4fd4b3e810cea1cbe91e1c
-      internalID: 616293302
+      spriteID: 298ccbd76896d46af89795de1089ff33
+      internalID: -1062223018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_14
+      name: Bitmask references 3_13
       rect:
         serializedVersion: 2
         x: 146
@@ -449,14 +449,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3805ad6b88e37446ab1db2b13c51080a
-      internalID: -1134024634
+      spriteID: 41b792ad369184acb896d41925f0bc07
+      internalID: 609029666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_15
+      name: Bitmask references 3_14
       rect:
         serializedVersion: 2
         x: 184
@@ -470,14 +470,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fdf5ec896f054b4385bcb9796bbd7a6
-      internalID: -1815245727
+      spriteID: dffb856f5329549e3b639269323b7aee
+      internalID: -1680969696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_16
+      name: Bitmask references 3_15
       rect:
         serializedVersion: 2
         x: 222
@@ -491,14 +491,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17f2d7ccbef5d4773aac1b680991a865
-      internalID: 709606985
+      spriteID: aa7650cbb3c12444fbc1ca88a24193a1
+      internalID: -1881181544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_17
+      name: Bitmask references 3_16
       rect:
         serializedVersion: 2
         x: 260
@@ -512,14 +512,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f016d0d90f3cf45c1b3c0a147ad495a8
-      internalID: 376790089
+      spriteID: 5c657a36e8cc64551a986ab6f85756a8
+      internalID: 208182517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_18
+      name: Bitmask references 3_17
       rect:
         serializedVersion: 2
         x: 298
@@ -533,14 +533,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a84cf30202234d62911278b350a0559
-      internalID: -1456038767
+      spriteID: a7f0cc2693d4549e09de6e90145d4982
+      internalID: 700576978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_19
+      name: Bitmask references 3_18
       rect:
         serializedVersion: 2
         x: 336
@@ -554,14 +554,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e74e267f064c4442eb3c2ecfac554c28
-      internalID: -1613656326
+      spriteID: 883353cd636314934a9d57790ff7c6de
+      internalID: 90036106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_20
+      name: Bitmask references 3_19
       rect:
         serializedVersion: 2
         x: 374
@@ -575,14 +575,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a70f803890f3461e93412d83994b96a
-      internalID: -2146220813
+      spriteID: ccc75c5ac0ee24414bebedf3f21f9ae9
+      internalID: 1774842747
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_22
+      name: Bitmask references 3_20
       rect:
         serializedVersion: 2
         x: 32
@@ -596,14 +596,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8212ed5c6614441c68170d4f9b4ea08d
-      internalID: -760359575
+      spriteID: f048ab5f7367f447a817da467d8a4606
+      internalID: -733189311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_23
+      name: Bitmask references 3_21
       rect:
         serializedVersion: 2
         x: 70
@@ -617,14 +617,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e44acb5839394a33a8f04fc590b8459
-      internalID: -1925676321
+      spriteID: 35d9e2c5a09db497d945eedd6cc70be1
+      internalID: 665572722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_24
+      name: Bitmask references 3_22
       rect:
         serializedVersion: 2
         x: 108
@@ -638,14 +638,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c43b50fc85fb4853a7ac2b792a3d5f1
-      internalID: 576665378
+      spriteID: 41d31a6109c014e04812fd8529143370
+      internalID: -1144239726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_25
+      name: Bitmask references 3_23
       rect:
         serializedVersion: 2
         x: 146
@@ -659,14 +659,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f96c0b0e14cc94b0b91f66ad68a6f3a5
-      internalID: 383737211
+      spriteID: 4114cd34d1b96416f925716c47196bfc
+      internalID: 2145059814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_26
+      name: Bitmask references 3_24
       rect:
         serializedVersion: 2
         x: 184
@@ -680,14 +680,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 534a88b0ca9a94049a99ddb35307975c
-      internalID: 151508389
+      spriteID: c2e01a119227c4aeb8161ec9a0625f3c
+      internalID: -1700799656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_27
+      name: Bitmask references 3_25
       rect:
         serializedVersion: 2
         x: 222
@@ -701,14 +701,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14a106890d547412285769e2fc0556bd
-      internalID: -243471248
+      spriteID: 6b2f5fbb3a75e47eca28db53b61e53ba
+      internalID: 652727098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_28
+      name: Bitmask references 3_26
       rect:
         serializedVersion: 2
         x: 260
@@ -722,14 +722,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c203004c81b94e219e07b2b622289a2
-      internalID: -1799667702
+      spriteID: bd7946b8b1fb04ed4b9676fbe5cbf361
+      internalID: -138802082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_29
+      name: Bitmask references 3_27
       rect:
         serializedVersion: 2
         x: 298
@@ -743,14 +743,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5cc34f32b83f40629f8d1899e00c557
-      internalID: -1023746973
+      spriteID: 41af5a2aa514345feae7843e6791a7b0
+      internalID: 664481086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_30
+      name: Bitmask references 3_28
       rect:
         serializedVersion: 2
         x: 336
@@ -764,14 +764,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a25c45e69636420c88ba8c9e57755d2
-      internalID: 2026750495
+      spriteID: 172f5f8665d4644569c397d28a773430
+      internalID: -1950098675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_31
+      name: Bitmask references 3_29
       rect:
         serializedVersion: 2
         x: 374
@@ -785,14 +785,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d15b3d0c754b5468f8ea9648d6f3aa35
-      internalID: 66607464
+      spriteID: ca393f6d2b1fa4d0380054ccd073814d
+      internalID: -1674681284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_32
+      name: Bitmask references 3_30
       rect:
         serializedVersion: 2
         x: 412
@@ -806,14 +806,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5044f87f398394cff80b732359028205
-      internalID: -1654981260
+      spriteID: 604625c31eb3749fd8628a06ce7ed74d
+      internalID: 1314125818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_33
+      name: Bitmask references 3_31
       rect:
         serializedVersion: 2
         x: 32
@@ -827,14 +827,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bad648fdbd9a448786295e514e94e76
-      internalID: 874051230
+      spriteID: 5c5516d6effa547ad872c23a78544e9d
+      internalID: -1136549663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_34
+      name: Bitmask references 3_32
       rect:
         serializedVersion: 2
         x: 70
@@ -848,14 +848,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ecd09bea8305474a8a6fd20b3b1c4ce
-      internalID: 1738217534
+      spriteID: d5710d502dffc4547857d81b83823934
+      internalID: 1275515120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_35
+      name: Bitmask references 3_33
       rect:
         serializedVersion: 2
         x: 108
@@ -869,14 +869,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 290442442a82343e58a437252b6c9dba
-      internalID: 937267451
+      spriteID: 464a44159e5824a11b270cf21b1aa6bb
+      internalID: -2125152647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_36
+      name: Bitmask references 3_34
       rect:
         serializedVersion: 2
         x: 146
@@ -890,14 +890,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 787215872a4f24e60875d576832bf7f5
-      internalID: -350938407
+      spriteID: 4c4dc77d1dbc94e09a55ae17482aa501
+      internalID: 426051756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_37
+      name: Bitmask references 3_35
       rect:
         serializedVersion: 2
         x: 184
@@ -911,14 +911,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65d79ba630f5d41a08d07fbfc3c86a29
-      internalID: 1211523801
+      spriteID: 579c782feccb844db817fcfed3913ca1
+      internalID: 885240165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_38
+      name: Bitmask references 3_36
       rect:
         serializedVersion: 2
         x: 222
@@ -932,14 +932,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b750e679e332f4ae78968e1d7cae21ea
-      internalID: -105699899
+      spriteID: d1aa15b14a9ee48d8ba76031d6941c9b
+      internalID: -474723232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_39
+      name: Bitmask references 3_37
       rect:
         serializedVersion: 2
         x: 260
@@ -953,14 +953,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bee645b04298840cb900269f303f9be1
-      internalID: -946463545
+      spriteID: da1aa3700b5c14b0aa1454ea5e0dc2e5
+      internalID: -1437765594
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_40
+      name: Bitmask references 3_38
       rect:
         serializedVersion: 2
         x: 298
@@ -974,14 +974,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccdc873b7cbbe41879426ad29c762495
-      internalID: -621770783
+      spriteID: 586476d20dd354b0481491444e57712c
+      internalID: -1678814239
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_41
+      name: Bitmask references 3_39
       rect:
         serializedVersion: 2
         x: 336
@@ -995,14 +995,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57b45a61750b04b15b9e82dc862d7ccb
-      internalID: 2144504439
+      spriteID: 9c9d221c945aa4756aff842b603b0b71
+      internalID: -276792476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_42
+      name: Bitmask references 3_40
       rect:
         serializedVersion: 2
         x: 374
@@ -1016,14 +1016,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79c3fc27966a04ee5b1dff0c7558eecc
-      internalID: -1796871948
+      spriteID: db28f5c3adc1a41b8a010652ef623313
+      internalID: 276776189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_43
+      name: Bitmask references 3_41
       rect:
         serializedVersion: 2
         x: 412
@@ -1037,14 +1037,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a5a8eea1a4204d91ba0c3b4b2b44e86
-      internalID: -1416283796
+      spriteID: 1cb35360edb8f42ff93ec8ba8b6ef180
+      internalID: -1626562832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_48
+      name: Bitmask references 3_42
       rect:
         serializedVersion: 2
         x: 184
@@ -1058,14 +1058,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e58bf0676895469e88c9f67961328ec
-      internalID: -449776276
+      spriteID: 11ed6fd38608740619e077410d835535
+      internalID: 1945287920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_49
+      name: Bitmask references 3_43
       rect:
         serializedVersion: 2
         x: 222
@@ -1079,14 +1079,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2b7ee6ab50ec413bbadae2a170c677f
-      internalID: 506825841
+      spriteID: c83b53f58d3884bcf94c995c380bf115
+      internalID: -1675702420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_50
+      name: Bitmask references 3_44
       rect:
         serializedVersion: 2
         x: 260
@@ -1100,14 +1100,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b9003e66932d417693575fbb9c04e0e
-      internalID: 240484344
+      spriteID: cf0aba35a011944b4a3a6abd0b920d9a
+      internalID: 698640658
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_51
+      name: Bitmask references 3_45
       rect:
         serializedVersion: 2
         x: 298
@@ -1121,14 +1121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af4e87ce7a8ca43c4a1671fee481e04e
-      internalID: 1335993471
+      spriteID: 7e0a18f51e2b24054bd74a3216b9c892
+      internalID: -322368753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 2_52
+      name: Bitmask references 3_46
       rect:
         serializedVersion: 2
         x: 336
@@ -1142,8 +1142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1683ea136bf5416fb2e12bb293e4608
-      internalID: -495982648
+      spriteID: 51afb5abe8438428da4e409b090a8ee1
+      internalID: -2023901130
       vertices: []
       indices: 
       edges: []
@@ -1159,61 +1159,53 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bitmask references 2_0: 1277940644
-      Bitmask references 2_1: -942039568
-      Bitmask references 2_10: -825458595
-      Bitmask references 2_11: -1887536094
-      Bitmask references 2_12: 643152715
-      Bitmask references 2_13: 616293302
-      Bitmask references 2_14: -1134024634
-      Bitmask references 2_15: -1815245727
-      Bitmask references 2_16: 709606985
-      Bitmask references 2_17: 376790089
-      Bitmask references 2_18: -1456038767
-      Bitmask references 2_19: -1613656326
-      Bitmask references 2_2: -1471626482
-      Bitmask references 2_20: -2146220813
-      Bitmask references 2_21: 492588017
-      Bitmask references 2_22: -760359575
-      Bitmask references 2_23: -1925676321
-      Bitmask references 2_24: 576665378
-      Bitmask references 2_25: 383737211
-      Bitmask references 2_26: 151508389
-      Bitmask references 2_27: -243471248
-      Bitmask references 2_28: -1799667702
-      Bitmask references 2_29: -1023746973
-      Bitmask references 2_3: 1398422692
-      Bitmask references 2_30: 2026750495
-      Bitmask references 2_31: 66607464
-      Bitmask references 2_32: -1654981260
-      Bitmask references 2_33: 874051230
-      Bitmask references 2_34: 1738217534
-      Bitmask references 2_35: 937267451
-      Bitmask references 2_36: -350938407
-      Bitmask references 2_37: 1211523801
-      Bitmask references 2_38: -105699899
-      Bitmask references 2_39: -946463545
-      Bitmask references 2_4: 240494584
-      Bitmask references 2_40: -621770783
-      Bitmask references 2_41: 2144504439
-      Bitmask references 2_42: -1796871948
-      Bitmask references 2_43: -1416283796
-      Bitmask references 2_44: -535994183
-      Bitmask references 2_45: 504733508
-      Bitmask references 2_46: 586077112
-      Bitmask references 2_47: 1881922649
-      Bitmask references 2_48: -449776276
-      Bitmask references 2_49: 506825841
-      Bitmask references 2_5: -562832959
-      Bitmask references 2_50: 240484344
-      Bitmask references 2_51: 1335993471
-      Bitmask references 2_52: -495982648
-      Bitmask references 2_53: 658778952
-      Bitmask references 2_54: -1877022079
-      Bitmask references 2_6: 2076902197
-      Bitmask references 2_7: -13002634
-      Bitmask references 2_8: -94575916
-      Bitmask references 2_9: 2136042044
+      Bitmask references 3_0: 849106283
+      Bitmask references 3_1: -1948244293
+      Bitmask references 3_10: 1416491649
+      Bitmask references 3_11: -1664502812
+      Bitmask references 3_12: -1062223018
+      Bitmask references 3_13: 609029666
+      Bitmask references 3_14: -1680969696
+      Bitmask references 3_15: -1881181544
+      Bitmask references 3_16: 208182517
+      Bitmask references 3_17: 700576978
+      Bitmask references 3_18: 90036106
+      Bitmask references 3_19: 1774842747
+      Bitmask references 3_2: 926209392
+      Bitmask references 3_20: -733189311
+      Bitmask references 3_21: 665572722
+      Bitmask references 3_22: -1144239726
+      Bitmask references 3_23: 2145059814
+      Bitmask references 3_24: -1700799656
+      Bitmask references 3_25: 652727098
+      Bitmask references 3_26: -138802082
+      Bitmask references 3_27: 664481086
+      Bitmask references 3_28: -1950098675
+      Bitmask references 3_29: -1674681284
+      Bitmask references 3_3: 550615413
+      Bitmask references 3_30: 1314125818
+      Bitmask references 3_31: -1136549663
+      Bitmask references 3_32: 1275515120
+      Bitmask references 3_33: -2125152647
+      Bitmask references 3_34: 426051756
+      Bitmask references 3_35: 885240165
+      Bitmask references 3_36: -474723232
+      Bitmask references 3_37: -1437765594
+      Bitmask references 3_38: -1678814239
+      Bitmask references 3_39: -276792476
+      Bitmask references 3_4: -1619375922
+      Bitmask references 3_40: 276776189
+      Bitmask references 3_41: -1626562832
+      Bitmask references 3_42: 1945287920
+      Bitmask references 3_43: -1675702420
+      Bitmask references 3_44: 698640658
+      Bitmask references 3_45: -322368753
+      Bitmask references 3_46: -2023901130
+      Bitmask references 3_5: -408188160
+      Bitmask references 3_6: -624659557
+      Bitmask references 3_7: 994889829
+      Bitmask references 3_8: -253751630
+      Bitmask references 3_9: -1516514815
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

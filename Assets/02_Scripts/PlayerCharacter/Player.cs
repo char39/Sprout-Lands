@@ -26,7 +26,6 @@ namespace PlayerCharacter
         void Update()
         {
             GetPlayerMoveKeyInput();
-            GetPlayerMoveState();
             SetPlayerAnimation();
         }
         //--------------------------------------------------------//
