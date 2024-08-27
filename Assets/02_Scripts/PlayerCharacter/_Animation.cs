@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace PlayerCharacter
 {
     public partial class Player
@@ -15,10 +11,10 @@ namespace PlayerCharacter
         /// <summary> 플레이어의 이동 상태를 반환함. </summary>
         private State GetPlayerMoveState()
         {
-            if (GetDirectionVector().y > 0) return State.UP;
-            else if (GetDirectionVector().y < 0) return State.DOWN;
-            else if (GetDirectionVector().x > 0) return State.RIGHT;
-            else if (GetDirectionVector().x < 0) return State.LEFT;
+            if (rb.velocity.y > 0) return State.UP;
+            else if (rb.velocity.y < 0) return State.DOWN;
+            else if (rb.velocity.x > 0) return State.RIGHT;
+            else if (rb.velocity.x < 0) return State.LEFT;
             else return state;
         }
         /// <summary> 플레이어의 이동 상태에 따라 애니메이션을 설정함. </summary>
