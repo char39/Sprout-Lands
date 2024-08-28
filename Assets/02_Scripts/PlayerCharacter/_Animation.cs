@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace PlayerCharacter
 {
     public partial class Player
@@ -15,7 +17,14 @@ namespace PlayerCharacter
             else if (rb.velocity.y < 0) return State.DOWN;
             else if (rb.velocity.x > 0) return State.RIGHT;
             else if (rb.velocity.x < 0) return State.LEFT;
-            else return state;
+            else
+            {
+                if (GetDirVector().y > 0) return State.UP;
+                else if (GetDirVector().y < 0) return State.DOWN;
+                else if (GetDirVector().x > 0) return State.RIGHT;
+                else if (GetDirVector().x < 0) return State.LEFT;
+                else return state;
+            }
         }
         /// <summary> 플레이어의 이동 상태에 따라 애니메이션을 설정함. </summary>
         private void SetPlayerAnimation()

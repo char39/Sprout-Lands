@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlayerCharacter
@@ -22,6 +20,7 @@ namespace PlayerCharacter
 
         internal float walkSpeed = 3.0f;
         internal float runSpeed = 4.5f;
+
 
         /// <summary> 플레이어의 이동 키를 설정함. </summary>
         public void UpdateKeySettings(KeyCode up, KeyCode down, KeyCode left, KeyCode right, KeyCode run)
@@ -83,7 +82,6 @@ namespace PlayerCharacter
         }
 
 
-
         /// <summary> 플레이어의 이동 방향을 정규 벡터로 반환함. </summary>
         private Vector2 GetDirNormalVector() => new Vector2(right + left, up + down).normalized;
         /// <summary> 플레이어의 이동 방향을 벡터로 반환함. </summary>
@@ -106,9 +104,8 @@ namespace PlayerCharacter
         }
         /// <summary> 플레이어의 BoxCast Size를 반환. </summary>
         private Vector2 GetBoxCastSize() => new(0.3f, 0.3f);
-        
 
-        
+
         /// <summary> 플레이어의 BoxCol부터 이동하는 방향의 BoxCast 충돌 여부를 반환. </summary>
         private bool GetGroundBoxCast()
         {
