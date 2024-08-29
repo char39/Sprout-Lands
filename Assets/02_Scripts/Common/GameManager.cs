@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager Instance;
-    public static GameManager instance { get { return Instance; } }
+    private static GameManager Instance_;
+    public static GameManager Instance { get { return Instance_; } }
     public Transform MainCam;
     public Transform FollowTarget;
+    public Transform FollowUI;
 
     private float MinX = 0;
     private float MaxX = 0;
@@ -20,9 +21,9 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else if (Instance != this)
+        if (Instance_ == null)
+            Instance_ = this;
+        else if (Instance_ != this)
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
 
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CameraFollow();
+        UI_Follow();
     }
 
     private void CameraFollow()
@@ -57,5 +59,12 @@ public class GameManager : MonoBehaviour
         MinY = MinPosY + AspectRatio;
         MaxY = MaxPosY - AspectRatio; 
     }
+
+    private void UI_Follow()
+    {
+        if (FollowUI == null || MainCam == null) return;
+        FollowUI.position = new Vector3(MainCam.position.x, MainCam.position.y, 0);
+    }
+    public void SetUIFollowTarget(Transform tr) => FollowUI = tr;
 
 }

@@ -6,8 +6,8 @@ public class PlayerCam : MonoBehaviour
 {
     void Start()
     {
-        GameManager.instance.SetCameraTarget(transform);
-        GameManager.instance.SetCameraPosLimit_X(-20, 20);
-        GameManager.instance.SetCameraPosLimit_Y(-20, 20);
+        GameManager.Instance.SetCameraTarget(transform);
+        GameManager.Instance.SetCameraPosLimit_X(-20, 20);
+        GameManager.Instance.SetCameraPosLimit_Y(-20, 20);
     }
 }
