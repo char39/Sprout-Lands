@@ -120,5 +120,22 @@ namespace PlayerCharacter
             RaycastHit2D hit = Physics2D.BoxCast(origin, GetBoxCastSize(), 0, Vector2.zero, 0, groundMask);
             return hit.collider == null;    // true면 움직일 수 있음.
         }
+    
+
+        /// <summary> 플레이어의 상하좌우 BoxCast를 그림. </summary>
+        private void DrawGroundBoxCast()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube((Vector2)pivotTr.position + Vector2.up * 0.1f, GetBoxCastSize());
+            Gizmos.DrawWireCube((Vector2)pivotTr.position + Vector2.down * 0.1f, GetBoxCastSize());
+            Gizmos.DrawWireCube((Vector2)pivotTr.position + Vector2.left * 0.1f, GetBoxCastSize());
+            Gizmos.DrawWireCube((Vector2)pivotTr.position + Vector2.right * 0.1f, GetBoxCastSize());
+        }
+        /// <summary> 플레이어의 현재 바라보는 방향의 BoxCast를 그림. </summary>
+        private void DrawGroundBoxCastLookAt()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(GetRayOriginPos(pivotTr.position), GetBoxCastSize());
+        }
     }
 }

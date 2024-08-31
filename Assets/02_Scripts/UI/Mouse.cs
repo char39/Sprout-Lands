@@ -2,19 +2,31 @@ using UnityEngine;
 
 public partial class Mouse : MonoBehaviour
 {
+    private GameObject mouse;
+    private SpriteRenderer sprite;
+
     public Vector2 hotSpotDefault = new(5, 2);
     public Vector2 hotSpotCat = new(9, 6);
     public Vector2 hotSpotTriangle = new(3, 13);
     public Vector2 hotSpotTriangleSmall = new(2, 14);
 
-    private GameObject mouse;
-    private SpriteRenderer sprite;
+    private float DisappearTime = 2.0f;
+    private float Timer = 0;
+    private float fadeTime = 0.5f;
+    private float alpha = 1;
+    private Vector3 lastMousePos = Vector3.zero;
 
-    private MouseType Type_ = MouseType.Default;
+    private MouseType Type_ = MouseType.Triangle;
     private MouseState State_ = MouseState.Normal;
 
     public bool isVisible = false;
-    public bool isPointing = false;
+    private bool IsPointing_ = false;
+    public bool IsPointing
+    {
+        get { return IsPointing_; }
+        set { IsPointing_ = value; }
+    }
+    public bool canDisappear = true;
 
     void Start()
     {
@@ -25,9 +37,10 @@ public partial class Mouse : MonoBehaviour
     
     void Update()
     {
+        MousePosition();
         SetState();
         SetMouse();
-        MousePosition();
+        MouseDisappear();
     }
 
     private void InitialSettings()
@@ -41,22 +54,24 @@ public partial class Mouse : MonoBehaviour
         sprite.sortingOrder = 500;
     }
 
+    /// <summary> 마우스 커서를 보이게 하거나 숨김. </summary>
     public void MouseVisible(bool isVisible)
     {
         if (Cursor.visible == isVisible) return;
-        Cursor.visible = isVisible;
+        this.isVisible = isVisible;
+        Cursor.visible = this.isVisible;
     }
-
     private void MousePosition()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouse.transform.position = mousePos;
     }
 
+    /// <summary> 마우스 종류 변경. </summary>
     public void SetType(MouseType type) => Type = type;
     private void SetState()
     {
-        if (isPointing) State = MouseState.Pointing;
+        if (IsPointing_) State = MouseState.Pointing;
         else
         {
             if (Input.GetMouseButton(0)) State = MouseState.Drag;
@@ -64,28 +79,35 @@ public partial class Mouse : MonoBehaviour
         }
     }
 
-    private void SetMouse()
+    private void MouseDisappear()
     {
-        switch (Type)
+        if (!canDisappear)
         {
-            case MouseType.Default:
-                SetMouseSprite(Default, new Vector2(0.25f, 0.875f));
-                break;
-            case MouseType.Cat:
-                SetMouseSprite(Cat, new Vector2(0.3125f, 0.75f));
-                break;
-            case MouseType.Triangle:
-                SetMouseSprite(Triangle, new Vector2(0.1875f, 0.8125f));
-                break;
-            case MouseType.TriangleSmall:
-                SetMouseSprite(TriangleSmall, new Vector2(0.125f, 0.875f));
-                break;
+            SetMouseAlpha(1);
+            return;
         }
+        if (Input.mousePosition != lastMousePos || State != MouseState.Normal)
+        { 
+            Timer = 0;
+            SetMouseAlpha(1);
+        }
+        else
+        {
+            Timer += Time.deltaTime;
+            if (Timer > DisappearTime) 
+                FadeMouse();
+        }
+        lastMousePos = Input.mousePosition;
     }
-    private void SetMouseSprite(Texture2D[] textures, Vector2 pivot)
+    private void FadeMouse()
     {
-        Texture2D texture = textures[(int)State];
-        sprite.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), pivot, 16);
+        alpha = Mathf.Lerp(1, 0, (Timer - DisappearTime) / fadeTime);
+        SetMouseAlpha(alpha);
     }
-
+    private void SetMouseAlpha(float alpha)
+    {
+        Color color = sprite.color;
+        color.a = alpha;
+        sprite.color = color;
+    }
 }

@@ -54,13 +54,8 @@ namespace PlayerCharacter
         private void OnDrawGizmos()
         {
             if (pivotTr == null) return;
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireCube((Vector2)pivotTr.position + Vector2.up * 0.1f, GetBoxCastSize());
-            Gizmos.DrawWireCube((Vector2)pivotTr.position + Vector2.down * 0.1f, GetBoxCastSize());
-            Gizmos.DrawWireCube((Vector2)pivotTr.position + Vector2.left * 0.1f, GetBoxCastSize());
-            Gizmos.DrawWireCube((Vector2)pivotTr.position + Vector2.right * 0.1f, GetBoxCastSize());
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(GetRayOriginPos(pivotTr.position), GetBoxCastSize());
+            DrawGroundBoxCast();
+            DrawGroundBoxCastLookAt();
         }
     }
 }
