@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GUI : MonoBehaviour
+public class GUI_TileMap : MonoBehaviour
 {
-    private static GUI Instance_;
-    public static GUI Instance { get { return Instance_; } }
+    private static GUI_TileMap Instance_;
+    public static GUI_TileMap Instance { get { return Instance_; } }
 
     void Start()
     {

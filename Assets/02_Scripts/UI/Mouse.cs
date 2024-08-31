@@ -5,10 +5,10 @@ public partial class Mouse : MonoBehaviour
     private GameObject mouse;
     private SpriteRenderer sprite;
 
-    public Vector2 hotSpotDefault = new(5, 2);
-    public Vector2 hotSpotCat = new(9, 6);
-    public Vector2 hotSpotTriangle = new(3, 13);
-    public Vector2 hotSpotTriangleSmall = new(2, 14);
+    private Vector2 hotSpotDefault = new(5, 2);
+    private Vector2 hotSpotCat = new(9, 6);
+    private Vector2 hotSpotTriangle = new(3, 13);
+    private Vector2 hotSpotTriangleSmall = new(2, 14);
 
     private float DisappearTime = 2.0f;
     private float Timer = 0;
@@ -16,17 +16,18 @@ public partial class Mouse : MonoBehaviour
     private float alpha = 1;
     private Vector3 lastMousePos = Vector3.zero;
 
-    private MouseType Type_ = MouseType.Triangle;
+    private MouseType Type_ = MouseType.Default;
     private MouseState State_ = MouseState.Normal;
 
-    public bool isVisible = false;
-    private bool IsPointing_ = false;
+    private bool isVisible = false;     // 마우스 커서 보이는 여부
+    private bool IsPointing_ = false;   // 마우스 포인팅 여부
+    /// <summary> 마우스 포인팅 여부를 설정하거나 반환함. </summary>
     public bool IsPointing
     {
         get { return IsPointing_; }
         set { IsPointing_ = value; }
     }
-    public bool canDisappear = true;
+    private bool canDisappear = true;   // 마우스 커서 자동으로 사라지게 할지 여부
 
     void Start()
     {
