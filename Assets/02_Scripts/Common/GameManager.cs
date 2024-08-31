@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
         if (FollowTarget == null || MainCam == null) return;
         MainCam.position = new Vector3(Mathf.Clamp(FollowTarget.position.x, MinX, MaxX), Mathf.Clamp(FollowTarget.position.y, MinY, MaxY), -10);
     }
-
     public void SetCameraTarget(Transform tr) => FollowTarget = tr;
     public void SetCameraPosLimit_X(float MinPosX, float MaxPosX)
     {

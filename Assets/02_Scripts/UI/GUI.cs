@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileMap_UI : MonoBehaviour
+public class GUI : MonoBehaviour
 {
-    private static TileMap_UI Instance_;
-    public static TileMap_UI Instance { get { return Instance_; } }
+    private static GUI Instance_;
+    public static GUI Instance { get { return Instance_; } }
 
     void Start()
     {
