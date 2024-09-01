@@ -160,7 +160,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Weather_UI_0
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 136
+        width: 65
+        height: 33
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf5e98703608c4488b1693a9c50393bb
+      internalID: -1448662952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weather_UI_1
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 67
+        width: 65
+        height: 54
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d798f60534394e9391bc0a8c28ca5e6
+      internalID: -1440520195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weather_UI_2
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 83
+        width: 9
+        height: 9
+      alignment: 9
+      pivot: {x: -0.1, y: 0.16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc61ddb0b967948b1a2901c2ecd970d7
+      internalID: -249841425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weather_UI_3
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 67
+        width: 10
+        height: 8
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff905cc1b2bd249b89de9c88fc098112
+      internalID: -717058641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weather_UI_4
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 51
+        width: 9
+        height: 9
+      alignment: 9
+      pivot: {x: -0.1, y: 0.83}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c9a909ea48374be683ee93537f39d35
+      internalID: 1826306477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weather_UI_5
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 40
+        width: 13
+        height: 17
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e541b2cf8d988474db9fa67270fbbe94
+      internalID: 1652252024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -171,7 +297,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Weather_UI_0: -1448662952
+      Weather_UI_1: -1440520195
+      Weather_UI_2: -249841425
+      Weather_UI_3: -717058641
+      Weather_UI_4: 1826306477
+      Weather_UI_5: 1652252024
+      Weather_UI_6: -131899075
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

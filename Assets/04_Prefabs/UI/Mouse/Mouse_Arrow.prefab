@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2282974576146440920}
   - component: {fileID: -941149805686544289}
+  - component: {fileID: 5069820574774429290}
   m_Layer: 0
   m_Name: Mouse_Arrow
   m_TagString: Untagged
@@ -44,13 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58a6f3ef2daa42698c4ec627b60999c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hotSpotDefault: {x: 5, y: 2}
-  hotSpotCat: {x: 9, y: 6}
-  hotSpotTriangle: {x: 3, y: 13}
-  hotSpotTriangleSmall: {x: 2, y: 14}
-  isVisible: 0
-  isPointing: 0
   Default: []
   Cat: []
   Triangle: []
   TriangleSmall: []
+--- !u!114 &5069820574774429290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4937114318389988339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a1ccfbe8dff1412ebe00c7297898101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: []

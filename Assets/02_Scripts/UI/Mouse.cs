@@ -1,7 +1,9 @@
+using System.Collections;
 using UnityEngine;
 
 public partial class Mouse : MonoBehaviour
 {
+    public static Mouse Instance {get; set;}
     private GameObject mouse;
     private SpriteRenderer sprite;
 
@@ -16,21 +18,22 @@ public partial class Mouse : MonoBehaviour
     private float alpha = 1;
     private Vector3 lastMousePos = Vector3.zero;
 
-    private MouseType Type_ = MouseType.Default;
+    private MouseType Type_ = MouseType.Cat;
     private MouseState State_ = MouseState.Normal;
 
-    private bool isVisible = false;     // 마우스 커서 보이는 여부
-    private bool IsPointing_ = false;   // 마우스 포인팅 여부
-    /// <summary> 마우스 포인팅 여부를 설정하거나 반환함. </summary>
-    public bool IsPointing
-    {
-        get { return IsPointing_; }
-        set { IsPointing_ = value; }
-    }
-    private bool canDisappear = true;   // 마우스 커서 자동으로 사라지게 할지 여부
+    private bool isVisible = false;                 // 마우스 커서 보이는 여부
+    public bool IsPointing { get; set; }            // 마우스 포인팅 여부
+    private bool canDisappear = true;               // 마우스 커서 자동으로 사라지게 할지 여부
+
+    private bool isBlinking = false;                    // 마우스 깜빡임 여부
+    private Coroutine blinkCoroutine;
 
     void Start()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
         MouseVisible(isVisible);
         LoadTextureAll();
         InitialSettings();
@@ -53,6 +56,8 @@ public partial class Mouse : MonoBehaviour
         sprite = mouse.GetComponent<SpriteRenderer>();
         sprite.sortingLayerName = "UI";
         sprite.sortingOrder = 500;
+
+        
     }
 
     /// <summary> 마우스 커서를 보이게 하거나 숨김. </summary>
@@ -72,30 +77,56 @@ public partial class Mouse : MonoBehaviour
     public void SetType(MouseType type) => Type = type;
     private void SetState()
     {
-        if (IsPointing_) State = MouseState.Pointing;
+        if (IsPointing)
+        {
+            State = MouseState.Pointing;
+            if (!isBlinking)
+                blinkCoroutine = StartCoroutine(BlinkMouse());
+        }
         else
         {
             if (Input.GetMouseButton(0)) State = MouseState.Drag;
             else State = MouseState.Normal;
+
+            isBlinking = false;
+            if (blinkCoroutine != null)
+            {
+                StopCoroutine(blinkCoroutine);
+                blinkCoroutine = null;
+            }
+            sprite.color = new Color(1, 1, 1, 1);
+
+        }
+    }
+    private IEnumerator BlinkMouse()
+    {
+        isBlinking = true;
+        while (isBlinking)
+        {
+            sprite.color = Color.white;
+            yield return new WaitForSeconds(0.5f);
+            sprite.color = new Color(0.85f, 0.85f, 0.85f, 1f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
+
     private void MouseDisappear()
     {
-        if (!canDisappear)
+        if (!canDisappear && !isBlinking)
         {
             SetMouseAlpha(1);
             return;
         }
         if (Input.mousePosition != lastMousePos || State != MouseState.Normal)
-        { 
+        {
             Timer = 0;
             SetMouseAlpha(1);
         }
         else
         {
             Timer += Time.deltaTime;
-            if (Timer > DisappearTime) 
+            if (Timer > DisappearTime)
                 FadeMouse();
         }
         lastMousePos = Input.mousePosition;
