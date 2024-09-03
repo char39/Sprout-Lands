@@ -28,9 +28,11 @@ namespace PlayerCharacter
             GetPlayerMoveKeyInput();
             SetPlayerAnimation();
             SetPlayerMoveVelocity();
+            SetPlayerOrderMask();
         }
         //--------------------------------------------------------//
         private Animator ani;
+        private SpriteRenderer sr;
         private Rigidbody2D rb;
         private Transform tr;
         private Transform pivotTr;
@@ -39,6 +41,7 @@ namespace PlayerCharacter
         private void GetComponents()
         {
             ani = GetComponent<Animator>();
+            sr = GetComponent<SpriteRenderer>();
             rb = GetComponent<Rigidbody2D>();
             tr = GetComponent<Transform>();
             pivotTr = tr.GetChild(0).GetComponent<Transform>();
@@ -46,7 +49,9 @@ namespace PlayerCharacter
         }
         private void SetValue()
         {
-            groundMask = 1 << LayerMask.NameToLayer("GroundLayerMask");
+            groundMask = 1 << LayerMask.NameToLayer("GroundMask");
+            structureMask = 1 << LayerMask.NameToLayer("StructureMask");
+            structureOrderMask = 1 << LayerMask.NameToLayer("StructureOrderMask");
         }
 
 

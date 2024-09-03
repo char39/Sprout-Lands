@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public partial class Mouse : MonoBehaviour
@@ -16,10 +17,27 @@ public partial class Mouse : MonoBehaviour
         private set { State_ = value; }
     }
 
+    public enum MouseAlpha { Zero = 0, Half = 1, Full = 2 }
+    public MouseAlpha Alpha
+    {
+        get { return Alpha_; }
+        private set { Alpha_ = value; }
+    }
+
     public Texture2D[] Default;
     public Texture2D[] Cat;
     public Texture2D[] Triangle;
     public Texture2D[] TriangleSmall;
+
+    public List<Texture2D> ReSizeDefault = new();
+    public List<Texture2D> ReSizeCat = new();
+    public List<Texture2D> ReSizeTriangle = new();
+    public List<Texture2D> ReSizeTriangleSmall = new();
+
+    public List<Texture2D> ReSizeHalfDefault = new();
+    public List<Texture2D> ReSizeHalfCat = new();
+    public List<Texture2D> ReSizeHalfTriangle = new();
+    public List<Texture2D> ReSizeHalfTriangleSmall = new();
 
     private void LoadTextureAll()
     {
@@ -35,27 +53,54 @@ public partial class Mouse : MonoBehaviour
         return textures;
     }
 
-    private void SetMouse()
+    private void UpdateResizeTexture2D()
     {
-        switch (Type)
-        {
-            case MouseType.Default:
-                SetMouseSprite(Default, new Vector2(0.25f, 0.875f));
-                break;
-            case MouseType.Cat:
-                SetMouseSprite(Cat, new Vector2(0.3125f, 0.75f));
-                break;
-            case MouseType.Triangle:
-                SetMouseSprite(Triangle, new Vector2(0.1875f, 0.8125f));
-                break;
-            case MouseType.TriangleSmall:
-                SetMouseSprite(TriangleSmall, new Vector2(0.125f, 0.875f));
-                break;
-        }
+
     }
-    private void SetMouseSprite(Texture2D[] textures, Vector2 pivot)
+
+    private void SetMouseCursor(Texture2D[] textures, Vector2 pivot)
     {
         Texture2D texture = textures[(int)State];
-        sprite.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), pivot, 16);
+        Cursor.SetCursor(texture, pivot, CursorMode.Auto);
     }
+
+    private Texture2D ResizeTexture(Texture2D originalTexture, int width, int height)
+    {
+        Texture2D resizedTexture = new Texture2D(width, height, originalTexture.format, false);
+        Color[] pixels = originalTexture.GetPixels(0, 0, originalTexture.width, originalTexture.height);
+        Color[] resizedPixels = new Color[width * height];
+
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                float u = x / (float)width;
+                float v = y / (float)height;
+                resizedPixels[y * width + x] = originalTexture.GetPixelBilinear(u, v);
+            }
+        }
+
+        resizedTexture.SetPixels(resizedPixels);
+        resizedTexture.Apply();
+        return resizedTexture;
+    }
+
+    private Texture2D ChangeTextureColor(Texture2D originalTexture, Color color)
+    {
+        Texture2D coloredTexture = new Texture2D(originalTexture.width, originalTexture.height, originalTexture.format, false);
+        Color[] pixels = originalTexture.GetPixels();
+
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            pixels[i] = color * pixels[i];
+        }
+
+        coloredTexture.SetPixels(pixels);
+        coloredTexture.Apply();
+        return coloredTexture;
+    }
+
+
+
+
 }

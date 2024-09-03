@@ -4,8 +4,6 @@ namespace PlayerCharacter
 {
     public partial class Player
     {
-        private LayerMask groundMask;
-
         private KeyCode upKey = KeyCode.UpArrow;
         private KeyCode downKey = KeyCode.DownArrow;
         private KeyCode leftKey = KeyCode.LeftArrow;
@@ -110,14 +108,14 @@ namespace PlayerCharacter
         private bool GetGroundBoxCast()
         {
             Vector2 origin = GetRayOriginPos(pivotTr.position);
-            RaycastHit2D hit = Physics2D.BoxCast(origin, GetBoxCastSize(), 0, Vector2.zero, 0, groundMask);
+            RaycastHit2D hit = Physics2D.BoxCast(origin, GetBoxCastSize(), 0, Vector2.zero, 0, groundMask | structureMask);
             return hit.collider == null;    // true면 움직일 수 있음.
         }
         /// <summary> 플레이어의 BoxCol부터 원하는 방향의 BoxCast 충돌 여부를 반환. </summary>
         private bool GetGroundBoxCastSelect(Vector2 pivot, Vector2 direction)
         {
             Vector2 origin = pivot + direction * 0.1f;
-            RaycastHit2D hit = Physics2D.BoxCast(origin, GetBoxCastSize(), 0, Vector2.zero, 0, groundMask);
+            RaycastHit2D hit = Physics2D.BoxCast(origin, GetBoxCastSize(), 0, Vector2.zero, 0, groundMask | structureMask);
             return hit.collider == null;    // true면 움직일 수 있음.
         }
     

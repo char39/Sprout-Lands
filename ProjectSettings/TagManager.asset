@@ -8,13 +8,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - GroundLayerMask
+  - GroundMask
   - GUI
-  - 
-  - 
+  - StructureOrderMask
+  - StructureMask
   - 
   - 
   - 
@@ -46,9 +46,6 @@ TagManager:
     locked: 0
   - name: Object
     uniqueID: 625662749
-    locked: 0
-  - name: Creature
-    uniqueID: 2221945927
     locked: 0
   - name: Default
     uniqueID: 0
