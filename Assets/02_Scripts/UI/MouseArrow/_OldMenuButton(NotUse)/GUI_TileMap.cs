@@ -15,6 +15,6 @@ public class GUI_TileMap : MonoBehaviour
         //     Destroy(gameObject);
         // DontDestroyOnLoad(gameObject);
 
-        GameManager.Instance.SetUIFollowTarget(transform);
+        //GameManager.Instance.SetUIFollowTarget(transform);
     }
 }

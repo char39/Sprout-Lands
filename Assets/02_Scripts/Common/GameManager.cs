@@ -1,23 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public partial class GameManager : MonoBehaviour
 {
     private static GameManager Instance_;
     public static GameManager Instance { get { return Instance_; } }
-    public Transform MainCam;
-    public Transform FollowTarget;
-    public Transform FollowUI;
 
-    private float MinX = 0;
-    private float MaxX = 0;
-    private float MinY = 0;
-    private float MaxY = 0;
-
-    private const float ScreenRatio_H = 16;
-    private const float ScreenRatio_V = 9;
+    public GM_CameraSetting CameraSetting;
+    public GameTimeRule gameTimeRule;
+    public GM_DateInfo DateInfo;
 
     void Awake()
     {
@@ -27,43 +17,24 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
 
-        MainCam = Camera.main.transform;
+        AddComponent();
+    }
+
+    private void AddComponent()
+    {
+        CameraSetting = gameObject.AddComponent<GM_CameraSetting>();
+        gameTimeRule = gameObject.AddComponent<GameTimeRule>();
+        DateInfo = gameObject.AddComponent<GM_DateInfo>();
+    }
+
+    void Start()
+    {
+        CameraSetting.MainCam = Camera.main.transform;
     }
 
     void Update()
     {
-        CameraFollow();
-        UI_Follow();
+        CameraSetting.ResetCameraPosLimit();
+        CameraSetting.CameraFollow();
     }
-
-    private void CameraFollow()
-    {
-        if (FollowTarget == null || MainCam == null) return;
-        MainCam.position = new Vector3(Mathf.Clamp(FollowTarget.position.x, MinX, MaxX), Mathf.Clamp(FollowTarget.position.y, MinY, MaxY), -1);
-    }
-    public void SetCameraTarget(Transform tr) => FollowTarget = tr;
-    public void SetCameraPosLimit_X(float MinPosX, float MaxPosX)
-    {
-        float AspectRatio = ScreenRatio_H * MainCam.GetComponent<Camera>().orthographicSize / ScreenRatio_V;
-        if (MinPosX + AspectRatio > MaxPosX - AspectRatio)
-            throw new ArgumentOutOfRangeException("MinPosX는 MaxPosX보다 클 수 없습니다.");
-        MinX = MinPosX + AspectRatio;
-        MaxX = MaxPosX - AspectRatio;
-    }
-    public void SetCameraPosLimit_Y(float MinPosY, float MaxPosY)
-    {
-        float AspectRatio = MainCam.GetComponent<Camera>().orthographicSize;
-        if (MinPosY + AspectRatio > MaxPosY - AspectRatio)
-            throw new ArgumentOutOfRangeException("MinPosY는 MaxPosY보다 클 수 없습니다.");
-        MinY = MinPosY + AspectRatio;
-        MaxY = MaxPosY - AspectRatio; 
-    }
-
-    private void UI_Follow()
-    {
-        if (FollowUI == null || MainCam == null) return;
-        FollowUI.position = new Vector3(MainCam.position.x, MainCam.position.y, 0);
-    }
-    public void SetUIFollowTarget(Transform tr) => FollowUI = tr;
-
 }

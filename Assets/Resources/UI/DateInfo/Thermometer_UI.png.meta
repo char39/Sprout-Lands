@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 84fe53d75637840c491e04d0e1f353cb
+guid: a65c5f8a58c7f4e2aa7e064533b0c33d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -162,127 +162,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Weather_UI_0
+      name: Thermometer_UI_0
       rect:
         serializedVersion: 2
-        x: 358
-        y: 136
-        width: 65
-        height: 33
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 0
+        y: 48
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf5e98703608c4488b1693a9c50393bb
-      internalID: -1448662952
+      spriteID: 0f9d493017bf14d6ab64066afdb1d600
+      internalID: 1845463892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weather_UI_1
+      name: Thermometer_UI_1
       rect:
         serializedVersion: 2
-        x: 358
-        y: 67
-        width: 65
-        height: 54
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 32
+        y: 48
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d798f60534394e9391bc0a8c28ca5e6
-      internalID: -1440520195
+      spriteID: ce2e3e6f5b61045059ec9074b5f00db4
+      internalID: -726313093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weather_UI_2
+      name: Thermometer_UI_2
       rect:
         serializedVersion: 2
-        x: 340
-        y: 83
-        width: 9
-        height: 9
-      alignment: 9
-      pivot: {x: -0.1, y: 0.16}
+        x: 64
+        y: 48
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc61ddb0b967948b1a2901c2ecd970d7
-      internalID: -249841425
+      spriteID: 4d314bb5639ae442cb845edb22f4e8a8
+      internalID: -748390052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weather_UI_3
+      name: Thermometer_UI_3
       rect:
         serializedVersion: 2
-        x: 340
-        y: 67
-        width: 10
-        height: 8
-      alignment: 9
-      pivot: {x: 0, y: 0.5}
+        x: 96
+        y: 48
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff905cc1b2bd249b89de9c88fc098112
-      internalID: -717058641
+      spriteID: ddb3ddcb152994f738100aaee7b34a68
+      internalID: 2037293105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weather_UI_4
+      name: Thermometer_UI_4
       rect:
         serializedVersion: 2
-        x: 340
-        y: 51
-        width: 9
-        height: 9
-      alignment: 9
-      pivot: {x: -0.1, y: 0.83}
+        x: 128
+        y: 48
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c9a909ea48374be683ee93537f39d35
-      internalID: 1826306477
+      spriteID: 816798d63dfe24f04816a24e9ea72093
+      internalID: -2043741306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weather_UI_5
+      name: Thermometer_UI_5
       rect:
         serializedVersion: 2
-        x: 369
-        y: 40
-        width: 13
-        height: 17
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 0
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e541b2cf8d988474db9fa67270fbbe94
-      internalID: 1652252024
+      spriteID: 1a8b4a6648a9f45dbb23e1aeaa249974
+      internalID: 1963332092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thermometer_UI_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f4633b9204724af9bf17cfde899454f
+      internalID: -1637361580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thermometer_UI_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 872d68b093f5d4b6aa0bdddd9a2b0b6d
+      internalID: -810788366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thermometer_UI_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78e08fc83de914a769b590c22181d8d8
+      internalID: 1177094004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thermometer_UI_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cee8da583865241a38972ec32ba7c7de
+      internalID: -1266978046
       vertices: []
       indices: 
       edges: []
@@ -298,13 +382,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Weather_UI_0: -1448662952
-      Weather_UI_1: -1440520195
-      Weather_UI_2: -249841425
-      Weather_UI_3: -717058641
-      Weather_UI_4: 1826306477
-      Weather_UI_5: 1652252024
-      Weather_UI_6: -131899075
+      Thermometer_UI_0: 1845463892
+      Thermometer_UI_1: -726313093
+      Thermometer_UI_2: -748390052
+      Thermometer_UI_3: 2037293105
+      Thermometer_UI_4: -2043741306
+      Thermometer_UI_5: 1963332092
+      Thermometer_UI_6: -1637361580
+      Thermometer_UI_7: -810788366
+      Thermometer_UI_8: 1177094004
+      Thermometer_UI_9: -1266978046
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

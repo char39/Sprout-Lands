@@ -12,14 +12,14 @@ public class MousePointing : MonoBehaviour
         Vector2 mousePos2D = new(mousePos.x, mousePos.y);
         RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
 
-        bool isPointing = false;
+        //bool isPointing = false;
         if (hit.collider != null)
         {
             foreach (var collider in col)
             {
                 if (hit.collider == collider)
                 {
-                    isPointing = true;
+                    //isPointing = true;
                     break;
                 }
             }
