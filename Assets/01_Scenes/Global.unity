@@ -957,6 +957,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mouse_Arrow
       objectReference: {fileID: 0}
+    - target: {fileID: 4937114318389988339, guid: cd7b79d1fa7514ccbb1561bb7a39162f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5069820574774429290, guid: cd7b79d1fa7514ccbb1561bb7a39162f, type: 3}
       propertyPath: col.Array.size
       value: 2

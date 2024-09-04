@@ -55,7 +55,39 @@ public partial class Mouse : MonoBehaviour
 
     private void UpdateResizeTexture2D()
     {
+        ReSizeDefault.Clear();
+        ReSizeCat.Clear();
+        ReSizeTriangle.Clear();
+        ReSizeTriangleSmall.Clear();
 
+        ReSizeHalfDefault.Clear();
+        ReSizeHalfCat.Clear();
+        ReSizeHalfTriangle.Clear();
+        ReSizeHalfTriangleSmall.Clear();
+
+        for (int i = 0; i < Default.Length; i++)
+        {
+            ReSizeDefault.Add(ResizeTexture(Default[i], MouseSize, MouseSize));
+            ReSizeHalfDefault.Add(ChangeTextureColor(ReSizeDefault[i], new Color(1, 1, 1, GetAlpha(MouseAlpha.Half))));
+        }
+
+        for (int i = 0; i < Cat.Length; i++)
+        {
+            ReSizeCat.Add(ResizeTexture(Cat[i], MouseSize, MouseSize));
+            ReSizeHalfCat.Add(ChangeTextureColor(ReSizeCat[i], new Color(1, 1, 1, GetAlpha(MouseAlpha.Half))));
+        }
+
+        for (int i = 0; i < Triangle.Length; i++)
+        {
+            ReSizeTriangle.Add(ResizeTexture(Triangle[i], MouseSize, MouseSize));
+            ReSizeHalfTriangle.Add(ChangeTextureColor(ReSizeTriangle[i], new Color(1, 1, 1, GetAlpha(MouseAlpha.Half))));
+        }
+
+        for (int i = 0; i < TriangleSmall.Length; i++)
+        {
+            ReSizeTriangleSmall.Add(ResizeTexture(TriangleSmall[i], MouseSize, MouseSize));
+            ReSizeHalfTriangleSmall.Add(ChangeTextureColor(ReSizeTriangleSmall[i], new Color(1, 1, 1, GetAlpha(MouseAlpha.Half))));
+        }
     }
 
     private void SetMouseCursor(Texture2D[] textures, Vector2 pivot)

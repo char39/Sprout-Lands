@@ -25,14 +25,13 @@ public partial class Mouse : MonoBehaviour
             Destroy(gameObject);
         MouseVisible(IsVisible);
         LoadTextureAll();
-
-        
+        UpdateResizeTexture2D();
     }
     
     void Update()
     {
         SetState();
-        GetTextureType();
+        GetTextureTypes();
     }
 
     /// <summary> 마우스 커서를 보이게 하거나 숨김. (외부에서 변경 가능) </summary>
@@ -61,22 +60,31 @@ public partial class Mouse : MonoBehaviour
         else return 0;
     }
 
-    private void GetTextureType()
+    private void GetTextureTypes()
     {
-        switch (Type)
+        if (Type == MouseType.Default)
         {
-            case MouseType.Default:
-                SetMouseCursor(Default, PivotDefault);
-                break;
-            case MouseType.Cat:
-                SetMouseCursor(Cat, PivotCat);
-                break;
-            case MouseType.Triangle:
-                SetMouseCursor(Triangle, PivotTriangle);
-                break;
-            case MouseType.TriangleSmall:
-                SetMouseCursor(TriangleSmall, PivotTriangleSmall);
-                break;
+            if (State == MouseState.Drag) SetMouseCursor(ReSizeDefault.ToArray(), PivotDefault);
+            else if (State == MouseState.Pointing) SetMouseCursor(ReSizeHalfDefault.ToArray(), PivotDefault);
+            else SetMouseCursor(Default, PivotDefault);
+        }
+        else if (Type == MouseType.Cat)
+        {
+            if (State == MouseState.Drag) SetMouseCursor(ReSizeCat.ToArray(), PivotCat);
+            else if (State == MouseState.Pointing) SetMouseCursor(ReSizeHalfCat.ToArray(), PivotCat);
+            else SetMouseCursor(Cat, PivotCat);
+        }
+        else if (Type == MouseType.Triangle)
+        {
+            if (State == MouseState.Drag) SetMouseCursor(ReSizeTriangle.ToArray(), PivotTriangle);
+            else if (State == MouseState.Pointing) SetMouseCursor(ReSizeHalfTriangle.ToArray(), PivotTriangle);
+            else SetMouseCursor(Triangle, PivotTriangle);
+        }
+        else if (Type == MouseType.TriangleSmall)
+        {
+            if (State == MouseState.Drag) SetMouseCursor(ReSizeTriangleSmall.ToArray(), PivotTriangleSmall);
+            else if (State == MouseState.Pointing) SetMouseCursor(ReSizeHalfTriangleSmall.ToArray(), PivotTriangleSmall);
+            else SetMouseCursor(TriangleSmall, PivotTriangleSmall);
         }
     }
 }

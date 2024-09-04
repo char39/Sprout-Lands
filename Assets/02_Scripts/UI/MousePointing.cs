@@ -25,6 +25,6 @@ public class MousePointing : MonoBehaviour
             }
         }
 
-        Mouse.Instance.IsPointing = isPointing;
+        //Mouse.Instance.IsPointing = isPointing;
     }
 }
