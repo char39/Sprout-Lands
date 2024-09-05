@@ -29,7 +29,7 @@ public partial class GameManager
 
         void Start()
         {
-            DateInfo_Frame = GameObject.Find("UI_Canvas").transform.GetChild(0);
+            DateInfo_Frame = GameObject.Find("UI_Canvas").transform.GetChild(0).GetChild(0);
             Time_HourHand = DateInfo_Frame.GetChild(0).GetChild(0).GetComponent<RectTransform>();
             Weather_Now = DateInfo_Frame.GetChild(1).GetChild(1).GetComponent<Image>();
             WeatherTexures = Resources.LoadAll<Sprite>("UI/DateInfo/Weather_Icons_small");

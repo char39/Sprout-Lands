@@ -1,0 +1,1123 @@
+fileFormatVersion: 2
+guid: 076efcf43a51643b9a4e407888bcc194
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 893630a05c0294218ae422ef914e6f52
+      internalID: 477590564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbba9715cedaf430c9eb91015b809fea
+      internalID: -840323591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 478fb9031556f4cc2b68a9c48bb88cb9
+      internalID: -894679265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d18a1a64b3feb4d9894d050b7e9ed829
+      internalID: 1749749949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 067a52355607048799c34010191817a4
+      internalID: -1264146839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2689951c58f3454ca5fdd1d78935d27
+      internalID: 1737064901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66022e13edab74ad4b53f1df48b40682
+      internalID: -1484288464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66ee2678f281940ab819b1ae86654578
+      internalID: -700247258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a4060aaf5d514ca7b9949389e730b67
+      internalID: -2043154792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3917663552e24ff4beca97467dbd4f9
+      internalID: -1206879477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdfc16ee4c88a4e8e9a82de77c521d0a
+      internalID: -858686567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a9439836e48d4522a7c42f072baf9f0
+      internalID: 264277988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5ee7b950aef04ac795c9c8338719b79
+      internalID: -2017835561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 384e2d7f01f304f5db94a027681ae1e9
+      internalID: -694261512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dccc18b2084fb459d81aa1fa72265d19
+      internalID: -1986434977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eb60f0feaf9d4999b7dc427868e997d
+      internalID: 2076341827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e601b1187eb2423393501ef10eb7667
+      internalID: 665593192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96a74ec2d0a4249e8948dcdd39030bbc
+      internalID: 382932083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58910baa294bf47598a19afbc24218d9
+      internalID: 1849506442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fd95d68363d84174ba8a9a92cade0d0
+      internalID: 865019026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77086fc9fd5e9466fa8cfe553142f3f5
+      internalID: -2116458628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_54
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c811e6a0537b144d09f6ac6e2ba60666
+      internalID: 1235231859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_56
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c7acc682a9314c4aa319782696944d0
+      internalID: 1713847651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_58
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8df93aa65cb34b9b801ef80985b2599
+      internalID: -433936805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 288
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 290bb07058aad4ca4908c333386d0f4d
+      internalID: -553533509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 288
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb091912afb674cdc8b9f59a3ce37968
+      internalID: 412560856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inventory_Spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 288
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04bad3de377b94bb0a5b79a8aef79ee0
+      internalID: 639905073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Inventory_Spritesheet_0: 477590564
+      Inventory_Spritesheet_1: -840323591
+      Inventory_Spritesheet_10: -858686567
+      Inventory_Spritesheet_100: 844586479
+      Inventory_Spritesheet_101: 1270427536
+      Inventory_Spritesheet_102: -621019815
+      Inventory_Spritesheet_103: -784444579
+      Inventory_Spritesheet_104: 654403916
+      Inventory_Spritesheet_105: -717940611
+      Inventory_Spritesheet_106: -1545561085
+      Inventory_Spritesheet_107: 1395736510
+      Inventory_Spritesheet_108: 317840102
+      Inventory_Spritesheet_109: -1162229854
+      Inventory_Spritesheet_11: 264277988
+      Inventory_Spritesheet_110: 1144318157
+      Inventory_Spritesheet_111: 1717496267
+      Inventory_Spritesheet_112: 576582936
+      Inventory_Spritesheet_113: -646420302
+      Inventory_Spritesheet_114: 49285595
+      Inventory_Spritesheet_115: 875085878
+      Inventory_Spritesheet_116: 2053935756
+      Inventory_Spritesheet_117: -408968658
+      Inventory_Spritesheet_118: -2109674635
+      Inventory_Spritesheet_119: 1008859385
+      Inventory_Spritesheet_12: -553533509
+      Inventory_Spritesheet_120: -1420112660
+      Inventory_Spritesheet_121: 2145054221
+      Inventory_Spritesheet_122: 2124801353
+      Inventory_Spritesheet_123: 1570502534
+      Inventory_Spritesheet_124: 1250415401
+      Inventory_Spritesheet_125: 1281962983
+      Inventory_Spritesheet_126: -1721576244
+      Inventory_Spritesheet_127: -1271687540
+      Inventory_Spritesheet_128: 819683172
+      Inventory_Spritesheet_129: -448624055
+      Inventory_Spritesheet_13: 412560856
+      Inventory_Spritesheet_130: 363851669
+      Inventory_Spritesheet_131: 2040814118
+      Inventory_Spritesheet_132: -213875410
+      Inventory_Spritesheet_133: 1736498947
+      Inventory_Spritesheet_134: -1532929133
+      Inventory_Spritesheet_135: -1323494894
+      Inventory_Spritesheet_136: 588448957
+      Inventory_Spritesheet_137: -440222424
+      Inventory_Spritesheet_138: 687749601
+      Inventory_Spritesheet_139: -1808809519
+      Inventory_Spritesheet_14: 639905073
+      Inventory_Spritesheet_140: -1265763770
+      Inventory_Spritesheet_141: -989140777
+      Inventory_Spritesheet_142: 480375489
+      Inventory_Spritesheet_143: 1766761323
+      Inventory_Spritesheet_144: -1657597682
+      Inventory_Spritesheet_145: 1022803557
+      Inventory_Spritesheet_146: -507068976
+      Inventory_Spritesheet_147: 1617151553
+      Inventory_Spritesheet_148: 763169759
+      Inventory_Spritesheet_149: -737224199
+      Inventory_Spritesheet_15: -1076017808
+      Inventory_Spritesheet_150: -1011649712
+      Inventory_Spritesheet_151: 1077617454
+      Inventory_Spritesheet_152: 917437874
+      Inventory_Spritesheet_153: -144739482
+      Inventory_Spritesheet_154: -1402005808
+      Inventory_Spritesheet_155: -698564427
+      Inventory_Spritesheet_156: -1492357944
+      Inventory_Spritesheet_157: 574350075
+      Inventory_Spritesheet_158: -908913203
+      Inventory_Spritesheet_159: 849918016
+      Inventory_Spritesheet_16: 523102444
+      Inventory_Spritesheet_160: -1524696908
+      Inventory_Spritesheet_161: -1858672316
+      Inventory_Spritesheet_162: -126619581
+      Inventory_Spritesheet_163: -1661329526
+      Inventory_Spritesheet_164: 257220164
+      Inventory_Spritesheet_165: -1091524616
+      Inventory_Spritesheet_166: 1513761848
+      Inventory_Spritesheet_167: 1308289729
+      Inventory_Spritesheet_168: -1045391851
+      Inventory_Spritesheet_169: -1404782738
+      Inventory_Spritesheet_17: -1049820825
+      Inventory_Spritesheet_170: 681000564
+      Inventory_Spritesheet_171: -1918224910
+      Inventory_Spritesheet_172: -893414901
+      Inventory_Spritesheet_173: 758488674
+      Inventory_Spritesheet_174: 916331652
+      Inventory_Spritesheet_175: -1043273096
+      Inventory_Spritesheet_176: 423806341
+      Inventory_Spritesheet_177: -1952080755
+      Inventory_Spritesheet_178: -1644452622
+      Inventory_Spritesheet_179: 494589844
+      Inventory_Spritesheet_18: -1733783460
+      Inventory_Spritesheet_180: -416111810
+      Inventory_Spritesheet_181: -1126163458
+      Inventory_Spritesheet_182: -663869212
+      Inventory_Spritesheet_183: -579429348
+      Inventory_Spritesheet_184: -1939375202
+      Inventory_Spritesheet_185: -737977421
+      Inventory_Spritesheet_186: 1048053230
+      Inventory_Spritesheet_187: 2131044000
+      Inventory_Spritesheet_188: -1787639955
+      Inventory_Spritesheet_189: 451668751
+      Inventory_Spritesheet_19: -2017835561
+      Inventory_Spritesheet_190: 504721587
+      Inventory_Spritesheet_191: -741644111
+      Inventory_Spritesheet_192: -1803404037
+      Inventory_Spritesheet_193: -808083030
+      Inventory_Spritesheet_194: -426489251
+      Inventory_Spritesheet_195: 325976318
+      Inventory_Spritesheet_196: 1525399608
+      Inventory_Spritesheet_197: -246213005
+      Inventory_Spritesheet_198: -422365276
+      Inventory_Spritesheet_199: -1495093480
+      Inventory_Spritesheet_2: -894679265
+      Inventory_Spritesheet_20: -694261512
+      Inventory_Spritesheet_200: -56548458
+      Inventory_Spritesheet_201: 1015213268
+      Inventory_Spritesheet_202: -310499867
+      Inventory_Spritesheet_203: 711591116
+      Inventory_Spritesheet_204: -1939192431
+      Inventory_Spritesheet_205: -1922239551
+      Inventory_Spritesheet_206: 174808944
+      Inventory_Spritesheet_207: 817510812
+      Inventory_Spritesheet_208: 1263159164
+      Inventory_Spritesheet_209: -644322358
+      Inventory_Spritesheet_21: -451012037
+      Inventory_Spritesheet_210: -1542582645
+      Inventory_Spritesheet_211: 1731511922
+      Inventory_Spritesheet_212: -1900445234
+      Inventory_Spritesheet_213: -1216018599
+      Inventory_Spritesheet_214: 321902929
+      Inventory_Spritesheet_215: 1151119178
+      Inventory_Spritesheet_216: 17904909
+      Inventory_Spritesheet_217: -145174929
+      Inventory_Spritesheet_218: -2066356341
+      Inventory_Spritesheet_219: 240963265
+      Inventory_Spritesheet_22: -1986434977
+      Inventory_Spritesheet_220: 1812958653
+      Inventory_Spritesheet_221: 1862327386
+      Inventory_Spritesheet_222: 184830140
+      Inventory_Spritesheet_223: -1100865676
+      Inventory_Spritesheet_224: 610743331
+      Inventory_Spritesheet_225: 39106817
+      Inventory_Spritesheet_226: 1063733851
+      Inventory_Spritesheet_227: 1584882329
+      Inventory_Spritesheet_228: 1880209857
+      Inventory_Spritesheet_229: -905814273
+      Inventory_Spritesheet_23: 698109486
+      Inventory_Spritesheet_230: 754454750
+      Inventory_Spritesheet_231: -2034120939
+      Inventory_Spritesheet_232: -2097276666
+      Inventory_Spritesheet_233: -1234492766
+      Inventory_Spritesheet_234: 432296805
+      Inventory_Spritesheet_235: 1374999034
+      Inventory_Spritesheet_236: -1721355268
+      Inventory_Spritesheet_237: 260384985
+      Inventory_Spritesheet_238: 857192929
+      Inventory_Spritesheet_239: -1501547553
+      Inventory_Spritesheet_24: 2076341827
+      Inventory_Spritesheet_240: 1055606598
+      Inventory_Spritesheet_241: -142249440
+      Inventory_Spritesheet_242: -1464754707
+      Inventory_Spritesheet_243: 1771087856
+      Inventory_Spritesheet_244: 1618249348
+      Inventory_Spritesheet_245: 2137362804
+      Inventory_Spritesheet_246: 2024235205
+      Inventory_Spritesheet_247: -789990147
+      Inventory_Spritesheet_248: 921703066
+      Inventory_Spritesheet_249: -446848752
+      Inventory_Spritesheet_25: 165001346
+      Inventory_Spritesheet_250: 1762001648
+      Inventory_Spritesheet_251: -1966930176
+      Inventory_Spritesheet_252: 976940390
+      Inventory_Spritesheet_253: -1152091916
+      Inventory_Spritesheet_254: 1310171288
+      Inventory_Spritesheet_255: 161401978
+      Inventory_Spritesheet_256: -2033315353
+      Inventory_Spritesheet_257: 223663378
+      Inventory_Spritesheet_258: 100022735
+      Inventory_Spritesheet_259: -546414037
+      Inventory_Spritesheet_26: 665593192
+      Inventory_Spritesheet_260: -120973611
+      Inventory_Spritesheet_261: 1027899278
+      Inventory_Spritesheet_262: 1857608191
+      Inventory_Spritesheet_263: -1132957647
+      Inventory_Spritesheet_264: -331088066
+      Inventory_Spritesheet_265: 1033599102
+      Inventory_Spritesheet_266: 302720287
+      Inventory_Spritesheet_267: -1346182725
+      Inventory_Spritesheet_268: -1667202035
+      Inventory_Spritesheet_269: 1415017677
+      Inventory_Spritesheet_27: 826434380
+      Inventory_Spritesheet_270: -1271164889
+      Inventory_Spritesheet_271: -1895136267
+      Inventory_Spritesheet_272: 2032442522
+      Inventory_Spritesheet_273: 407081615
+      Inventory_Spritesheet_274: -1688735680
+      Inventory_Spritesheet_275: -1632144467
+      Inventory_Spritesheet_276: -1366880349
+      Inventory_Spritesheet_277: -1094297614
+      Inventory_Spritesheet_278: -234807157
+      Inventory_Spritesheet_279: 1617552355
+      Inventory_Spritesheet_28: 382932083
+      Inventory_Spritesheet_280: -511956373
+      Inventory_Spritesheet_281: 920402605
+      Inventory_Spritesheet_282: 121830286
+      Inventory_Spritesheet_283: 1546787575
+      Inventory_Spritesheet_284: -1940087936
+      Inventory_Spritesheet_285: 1791929741
+      Inventory_Spritesheet_286: -240037505
+      Inventory_Spritesheet_287: 511636108
+      Inventory_Spritesheet_288: -712819788
+      Inventory_Spritesheet_289: 2057977352
+      Inventory_Spritesheet_29: -1725682445
+      Inventory_Spritesheet_290: 365765808
+      Inventory_Spritesheet_291: -1226494090
+      Inventory_Spritesheet_292: -1734677553
+      Inventory_Spritesheet_293: 2110128525
+      Inventory_Spritesheet_294: 1346401335
+      Inventory_Spritesheet_295: -1976073002
+      Inventory_Spritesheet_296: -111359900
+      Inventory_Spritesheet_297: -886626251
+      Inventory_Spritesheet_298: -378343860
+      Inventory_Spritesheet_299: 1194411604
+      Inventory_Spritesheet_3: 1749749949
+      Inventory_Spritesheet_30: -368917750
+      Inventory_Spritesheet_300: -2114182639
+      Inventory_Spritesheet_301: -1622086479
+      Inventory_Spritesheet_302: -384824513
+      Inventory_Spritesheet_303: -1959950034
+      Inventory_Spritesheet_304: -1888260790
+      Inventory_Spritesheet_305: 301015436
+      Inventory_Spritesheet_306: -1533565327
+      Inventory_Spritesheet_307: 1795040229
+      Inventory_Spritesheet_308: 1158208319
+      Inventory_Spritesheet_309: 105818386
+      Inventory_Spritesheet_31: -1492473249
+      Inventory_Spritesheet_310: 1637526076
+      Inventory_Spritesheet_311: -485929225
+      Inventory_Spritesheet_312: -1540372794
+      Inventory_Spritesheet_313: -2036783064
+      Inventory_Spritesheet_314: 1296627968
+      Inventory_Spritesheet_315: -962187651
+      Inventory_Spritesheet_316: 779358188
+      Inventory_Spritesheet_317: -1322020221
+      Inventory_Spritesheet_318: -1465802651
+      Inventory_Spritesheet_319: -2080643929
+      Inventory_Spritesheet_32: -852731736
+      Inventory_Spritesheet_320: -1233367639
+      Inventory_Spritesheet_321: 2084029783
+      Inventory_Spritesheet_322: -230325456
+      Inventory_Spritesheet_323: 203980934
+      Inventory_Spritesheet_324: -737084273
+      Inventory_Spritesheet_325: -413629059
+      Inventory_Spritesheet_326: 1421439610
+      Inventory_Spritesheet_327: 831314060
+      Inventory_Spritesheet_328: 146574503
+      Inventory_Spritesheet_329: 326311970
+      Inventory_Spritesheet_33: -913714607
+      Inventory_Spritesheet_330: 147868407
+      Inventory_Spritesheet_331: -1409790071
+      Inventory_Spritesheet_332: -135866325
+      Inventory_Spritesheet_333: 317583092
+      Inventory_Spritesheet_334: 152806514
+      Inventory_Spritesheet_335: 1621288642
+      Inventory_Spritesheet_336: 2025808666
+      Inventory_Spritesheet_337: 514954964
+      Inventory_Spritesheet_338: 743587136
+      Inventory_Spritesheet_339: 927286264
+      Inventory_Spritesheet_34: 1060225293
+      Inventory_Spritesheet_340: -1722522788
+      Inventory_Spritesheet_341: 205980832
+      Inventory_Spritesheet_342: -1090653175
+      Inventory_Spritesheet_343: 838292494
+      Inventory_Spritesheet_344: -1712074154
+      Inventory_Spritesheet_345: -141425593
+      Inventory_Spritesheet_346: -699476634
+      Inventory_Spritesheet_347: -379363611
+      Inventory_Spritesheet_348: 1475791054
+      Inventory_Spritesheet_349: 998350028
+      Inventory_Spritesheet_35: 1765510557
+      Inventory_Spritesheet_350: 1055319270
+      Inventory_Spritesheet_351: 403761208
+      Inventory_Spritesheet_352: 1142663600
+      Inventory_Spritesheet_353: 578549729
+      Inventory_Spritesheet_354: 967960283
+      Inventory_Spritesheet_355: 1838647305
+      Inventory_Spritesheet_356: -114649588
+      Inventory_Spritesheet_357: 1591175894
+      Inventory_Spritesheet_358: -1361397071
+      Inventory_Spritesheet_359: 99301321
+      Inventory_Spritesheet_36: 155313305
+      Inventory_Spritesheet_360: -700089080
+      Inventory_Spritesheet_361: 1391316921
+      Inventory_Spritesheet_362: -978891162
+      Inventory_Spritesheet_363: 353926098
+      Inventory_Spritesheet_364: -470413299
+      Inventory_Spritesheet_365: -2114324818
+      Inventory_Spritesheet_366: 625922187
+      Inventory_Spritesheet_367: -641907622
+      Inventory_Spritesheet_368: 307317106
+      Inventory_Spritesheet_369: -1766678309
+      Inventory_Spritesheet_37: 433738014
+      Inventory_Spritesheet_370: 1014840744
+      Inventory_Spritesheet_371: -1051849242
+      Inventory_Spritesheet_372: -1676469715
+      Inventory_Spritesheet_373: -659975164
+      Inventory_Spritesheet_374: 946803186
+      Inventory_Spritesheet_375: 463384420
+      Inventory_Spritesheet_376: 1054659973
+      Inventory_Spritesheet_38: 1754051290
+      Inventory_Spritesheet_39: 1233191524
+      Inventory_Spritesheet_4: -1264146839
+      Inventory_Spritesheet_40: -729218227
+      Inventory_Spritesheet_41: -1405116688
+      Inventory_Spritesheet_42: 109456597
+      Inventory_Spritesheet_43: -371816535
+      Inventory_Spritesheet_44: 1026034448
+      Inventory_Spritesheet_45: 390037336
+      Inventory_Spritesheet_46: -1658059988
+      Inventory_Spritesheet_47: -2143627341
+      Inventory_Spritesheet_48: 1849506442
+      Inventory_Spritesheet_49: -2017193733
+      Inventory_Spritesheet_5: 1737064901
+      Inventory_Spritesheet_50: 865019026
+      Inventory_Spritesheet_51: -570691867
+      Inventory_Spritesheet_52: -2116458628
+      Inventory_Spritesheet_53: 1240744687
+      Inventory_Spritesheet_54: 1235231859
+      Inventory_Spritesheet_55: -1612514020
+      Inventory_Spritesheet_56: 1713847651
+      Inventory_Spritesheet_57: -461688036
+      Inventory_Spritesheet_58: -433936805
+      Inventory_Spritesheet_59: 557336389
+      Inventory_Spritesheet_6: -1484288464
+      Inventory_Spritesheet_60: -1354206970
+      Inventory_Spritesheet_61: 1449147001
+      Inventory_Spritesheet_62: 1817955425
+      Inventory_Spritesheet_63: 1743893337
+      Inventory_Spritesheet_64: -1627483603
+      Inventory_Spritesheet_65: -1485937725
+      Inventory_Spritesheet_66: 1617758174
+      Inventory_Spritesheet_67: -989830890
+      Inventory_Spritesheet_68: -1486251031
+      Inventory_Spritesheet_69: -1557738144
+      Inventory_Spritesheet_7: -700247258
+      Inventory_Spritesheet_70: -338005540
+      Inventory_Spritesheet_71: -727410365
+      Inventory_Spritesheet_72: -183601271
+      Inventory_Spritesheet_73: 376571808
+      Inventory_Spritesheet_74: 1674845997
+      Inventory_Spritesheet_75: 1449542266
+      Inventory_Spritesheet_76: 243259778
+      Inventory_Spritesheet_77: 1071515409
+      Inventory_Spritesheet_78: 237388827
+      Inventory_Spritesheet_79: 1803394831
+      Inventory_Spritesheet_8: -2043154792
+      Inventory_Spritesheet_80: 559112277
+      Inventory_Spritesheet_81: 294469474
+      Inventory_Spritesheet_82: 927545160
+      Inventory_Spritesheet_83: 716161315
+      Inventory_Spritesheet_84: 1326964342
+      Inventory_Spritesheet_85: 2058621618
+      Inventory_Spritesheet_86: 48352225
+      Inventory_Spritesheet_87: -1553237829
+      Inventory_Spritesheet_88: -1138498905
+      Inventory_Spritesheet_89: 778461270
+      Inventory_Spritesheet_9: -1206879477
+      Inventory_Spritesheet_90: -770675228
+      Inventory_Spritesheet_91: -391143106
+      Inventory_Spritesheet_92: -836557454
+      Inventory_Spritesheet_93: -144005831
+      Inventory_Spritesheet_94: -333627399
+      Inventory_Spritesheet_95: -212248178
+      Inventory_Spritesheet_96: 327469370
+      Inventory_Spritesheet_97: 1687082306
+      Inventory_Spritesheet_98: -245987321
+      Inventory_Spritesheet_99: 710672897
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
