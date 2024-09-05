@@ -6,7 +6,7 @@ public partial class GameManager : MonoBehaviour
     public static GameManager Instance { get { return Instance_; } }
 
     public GM_CameraSetting CameraSetting;
-    public GameTimeRule gameTimeRule;
+    public GM_GameTimeRule gameTimeRule;
     public GM_DateInfo DateInfo;
 
     void Awake()
@@ -23,7 +23,7 @@ public partial class GameManager : MonoBehaviour
     private void AddComponent()
     {
         CameraSetting = gameObject.AddComponent<GM_CameraSetting>();
-        gameTimeRule = gameObject.AddComponent<GameTimeRule>();
+        gameTimeRule = gameObject.AddComponent<GM_GameTimeRule>();
         DateInfo = gameObject.AddComponent<GM_DateInfo>();
     }
 
