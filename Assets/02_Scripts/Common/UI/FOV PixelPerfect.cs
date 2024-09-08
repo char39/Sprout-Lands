@@ -3,8 +3,8 @@ using UnityEngine.U2D;
 
 public class FOV_PixelPerfect : MonoBehaviour
 {
-    private const int minPPU = 60;
-    private const int maxPPU = 120;
+    private const byte minPPU = 60;
+    private const byte maxPPU = 120;
 
     public void FOV_Up()
     {

@@ -8,7 +8,8 @@ public interface IItem
     public int Stack { get; }
     public int MaxStack { get; }
     public bool IsStackable { get; }
-    public bool IsConsumable { get; }   // 소비템인가 여부
+    public bool IsConsumable { get; }   // 소비템인가
+    public int Index { get; }
     public void Use();
     public void Remove();
 }

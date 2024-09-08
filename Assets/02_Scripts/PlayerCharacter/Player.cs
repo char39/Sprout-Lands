@@ -12,7 +12,7 @@ public partial class Player : MonoBehaviour
     {
         GetComponents();
         SetValue();
-        UpdateAlphaObj();
+        ReFreshAlphaObj();
     }
 
     void FixedUpdate()

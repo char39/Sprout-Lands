@@ -32,12 +32,15 @@ public class GM_CameraSetting : MonoBehaviour
         SetMaxY = MaxY - AspectRatioH;
     }
 
+    /// <summary> 카메라가 따라갈 타겟을 지정함. </summary>
     public void SetCameraTarget(Transform tr) => FollowTarget = tr;
+    /// <summary> 카메라의 X축 이동 제한을 설정함. </summary>
     public void SetCameraPosLimit_X(float MinPosX, float MaxPosX)
     {
         MinX = MinPosX;
         MaxX = MaxPosX;
     }
+    /// <summary> 카메라의 Y축 이동 제한을 설정함. </summary>
     public void SetCameraPosLimit_Y(float MinPosY, float MaxPosY)
     {
         MinY = MinPosY;

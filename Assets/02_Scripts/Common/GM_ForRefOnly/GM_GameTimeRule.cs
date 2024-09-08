@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class GM_GameTimeRule : MonoBehaviour
 {
-    internal const float GameTimeRatio = 60f;      // GameTimeRatio 초 = 게임시간 1시간
-    internal const float StartTime = 6f;
+    public const float GameTimeRatio = 60f;      // GameTimeRatio 초 = 게임시간 1시간
+    public const float StartTime = 6f;
     public float GameTime;          // 게임시간
     public int GameTimeHour;        // 게임시간 시
     public int GameTimeMinute;      // 게임시간 분

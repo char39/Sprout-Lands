@@ -17,7 +17,7 @@ public class GM_DateInfo : MonoBehaviour
     public Text Time_Second;
     public Text TimeZone;
 
-    internal const float maxAngle = 80f;
+    public const float maxAngle = 80f;
     private const string AM = "AM";
     private const string PM = "PM";
     private const string TimeColon = ":";
@@ -63,7 +63,7 @@ public class GM_DateInfo : MonoBehaviour
     }
     private void UpdateTimeState()
     {
-        // 아침(6 ~ 9)[3] 낮 (9 ~ 18)[9] 저녁 (18 ~ 24)[6]
+        // 아침(6 ~ 9)[3시간]    낮 (9 ~ 18)[9시간]    저녁 (18 ~ 24)[6시간]
         if (GameTime > GM_GameTimeRule.GameTimeRatio * 18)
             timeState = TimeState.Night;
         else if (GameTime > GM_GameTimeRule.GameTimeRatio * 9)
@@ -74,7 +74,7 @@ public class GM_DateInfo : MonoBehaviour
     }
     private void UpdateWeatherImage()
     {
-        int[,] TexturesMap = new int[,]
+        int[,] TexturesMap = new int[,]             // -1은 변경되지 않음을 의미함.
         {
                 // Morning, Afternoon, Night
                 { 14,  0,  7 },     // Clear

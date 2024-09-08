@@ -26,7 +26,7 @@ public partial class Player
     }
 
     /// <summary> SetAlpha가 적용된 오브젝트들을 찾아서 SetAlphaObj에 저장함. </summary>
-    public void UpdateAlphaObj() => SetAlphaObj = FindObjectsOfType<SetAlpha>();
+    public void ReFreshAlphaObj() => SetAlphaObj = FindObjectsOfType<SetAlpha>();
 
     private RaycastHit2D GetOthersBoxCast(LayerMask layerMasks)
     {
