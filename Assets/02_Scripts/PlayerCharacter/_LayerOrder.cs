@@ -5,20 +5,29 @@ public partial class Player
     private LayerMask groundMask;
     private LayerMask structureMask;
     private LayerMask structureOrderMask;
+    private LayerMask structureAlphaMask;
+    private SetAlpha[] SetAlphaObj;
 
     private void SetPlayerOrderMask()
     {
-        if (GetOthersBoxCastBool(structureOrderMask))
+        var hit = GetOthersBoxCast(structureOrderMask);
+        var hitAlpha = GetOthersBoxCast(structureAlphaMask);
+
+        if (hit.collider != null)
             sr.sortingOrder = 0;
         else
             sr.sortingOrder = 10;
+
+        if (hitAlpha.collider != null)
+            hitAlpha.collider.SendMessage(nameof(SetAlpha.SetAlphaLow), SendMessageOptions.DontRequireReceiver);
+        else
+            foreach (var obj in SetAlphaObj)
+                obj.SetAlphaOrigin();
     }
 
-    private bool GetOthersBoxCastBool(LayerMask layerMasks)
-    {
-        RaycastHit2D hit = GetOthersBoxCast(layerMasks);
-        return hit.collider != null;    // 충돌하면 true
-    }
+    /// <summary> SetAlpha가 적용된 오브젝트들을 찾아서 SetAlphaObj에 저장함. </summary>
+    public void UpdateAlphaObj() => SetAlphaObj = FindObjectsOfType<SetAlpha>();
+
     private RaycastHit2D GetOthersBoxCast(LayerMask layerMasks)
     {
         Vector2 origin = GetRayOriginPos(pivotTr.position);

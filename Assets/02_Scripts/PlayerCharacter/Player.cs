@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public partial class Player : MonoBehaviour
@@ -14,6 +12,7 @@ public partial class Player : MonoBehaviour
     {
         GetComponents();
         SetValue();
+        UpdateAlphaObj();
     }
 
     void FixedUpdate()
@@ -50,6 +49,7 @@ public partial class Player : MonoBehaviour
         groundMask = 1 << LayerMask.NameToLayer("GroundMask");
         structureMask = 1 << LayerMask.NameToLayer("StructureMask");
         structureOrderMask = 1 << LayerMask.NameToLayer("StructureOrderMask");
+        structureAlphaMask = 1 << LayerMask.NameToLayer("StructureAlphaMask");
     }
 
 

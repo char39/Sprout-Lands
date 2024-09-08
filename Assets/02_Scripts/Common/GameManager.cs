@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public partial class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    private static GameManager Instance_;
-    public static GameManager Instance { get { return Instance_; } }
+    private static GameManager instance;
+    public static GameManager Instance { get { return instance; } }
 
     public GM_CameraSetting CameraSetting;
     public GM_GameTimeRule gameTimeRule;
@@ -11,9 +11,9 @@ public partial class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance_ == null)
-            Instance_ = this;
-        else if (Instance_ != this)
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
 
