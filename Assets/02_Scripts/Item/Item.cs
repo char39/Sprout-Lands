@@ -1,17 +1,17 @@
 using UnityEngine;
 
-public abstract class Item : IItem
+public class Item : IItem
 {
-    public Sprite Icon { get; private set; }                    // 아이템의 아이콘
-    public string Name { get; private set; }                    // 아이템의 이름
-    public int ID { get; private set; }                         // 아이템의 고유 ID
-    public int Stack { get; set; } = 1;                         // 아이템의 개수
-    public int MaxStack { get; private set; } = 255;            // 아이템의 최대 개수 (기본값 255)
-    public bool IsStackable => Stack < MaxStack;                // 아이템의 중첩 가능 여부
-    public bool IsConsumable { get; private set; } = false;     // 아이템의 소모 가능 여부 (true: 소모, false: 사용)
-    public int Index { get; set; }                              // 아이템의 인덱스. 인벤토리에서 순서를 정할 때 사용
+    public Sprite Icon { get; set; }                            // 아이템의 아이콘
+    public string Name { get; set; }                            // 아이템의 이름
+    public int ID { get; set; }                                 // 아이템의 고유 ID
+    public int Stack { get; set; } = 1;                                 // 아이템의 개수
+    public int MaxStack { get; set; } = 255;                    // 아이템의 최대 개수 (기본값 255)
+    public bool IsStackable => Stack < MaxStack || !(MaxStack == 1);    // 아이템의 중첩 가능 여부
+    public bool IsConsumable { get; set; } = false;             // 아이템의 소모 가능 여부 (true: 소모, false: 사용)
+    public int Index { get; set; }                                      // 아이템의 인덱스. 인벤토리에서 순서를 정할 때 사용
 
-    protected Item(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsConsumable)
+    public Item(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsConsumable)
     {
         this.Icon = Icon;
         this.Name = Name;
@@ -21,8 +21,8 @@ public abstract class Item : IItem
         this.IsConsumable = IsConsumable;
     }
 
-    public abstract void Use();
-    public abstract void Remove();
+    public virtual void Use() { }
+    public virtual void Remove() { }
 }
 
 public class ToolItem : Item

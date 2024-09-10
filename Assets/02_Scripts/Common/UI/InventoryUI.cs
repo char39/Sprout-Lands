@@ -12,6 +12,7 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         inventory = GameManager.Instance.inventory;
+        inventory.OnRefreshInventoryUI += RefreshInventoryUI;
         InvenSlot_Group = GameObject.Find("InventorySlot_Group").transform;
         SlotPref = Resources.Load<GameObject>("Item/ItemSlot");
         ItemPref = Resources.Load<GameObject>("Item/GameItem");
