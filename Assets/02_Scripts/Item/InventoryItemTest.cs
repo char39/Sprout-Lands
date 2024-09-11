@@ -1,19 +1,18 @@
-using System.Collections;
 using UnityEngine;
 
 public class InventoryItemTest : MonoBehaviour
 {
-    internal int Quantity = 150;
+    internal int Quantity = 300;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
         {
 
-            FruitItem strawberry = ItemManager.GetFruitItem(2005, Quantity);
-            GameManager.Instance.inventory.AddItem(strawberry); // 이게 되는 이유는 GameManager에 inventory를 추가했기 때문. FruitItem은 Item을 상속받았기 때문에 AddItem이 가능.
+            Item strawberry = ItemManager.GetFruitItem(2005, Quantity);
+            Debug.Log($"아이템 이름: {strawberry.Name}, 아이템 개수: {strawberry.Stack}");
+            GameManager.Instance.inventory.AddItem(strawberry);
             GameManager.Instance.inventoryUI.RefreshInventoryUI();
-
             Destroy(gameObject);
         }
     }
