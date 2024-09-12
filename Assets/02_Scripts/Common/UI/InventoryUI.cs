@@ -49,7 +49,6 @@ public class InventoryUI : MonoBehaviour
         {
             var slot = Instantiate(SlotPref, InventorySlot_Group);
             slot.name = "ItemSlot (" + (i + 1) + ")";
-            slot.AddComponent<SlotDrop>();
             var itemObj = Instantiate(ItemPref, slot.transform);
             itemObj.GetComponent<Image>().sprite = null;
             itemObj.GetComponentsInChildren<Text>()[0].text = "";

@@ -9,8 +9,7 @@ public class InventoryItemTest2 : MonoBehaviour
         if (col.CompareTag("Player"))
         {
 
-            Item grass = ItemManager.GetToolItem(4, Quantity);
-            Debug.Log($"아이템 이름: {grass.Name}, 아이템 개수: {grass.Stack}");
+            ToolItem grass = ItemManager.GetToolItem(4, Quantity);
             GameManager.Instance.inventory.AddItem(grass);
             GameManager.Instance.inventoryUI.RefreshInventoryUI();
             Destroy(gameObject);

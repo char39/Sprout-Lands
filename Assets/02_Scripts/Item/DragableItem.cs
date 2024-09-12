@@ -38,33 +38,30 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (IsInvalidDropPosition(eventData))
+        if (IsValidDropPosition(eventData) && eventData.pointerEnter.GetComponent<DragableItem>() != null)
         {
-            if (eventData.pointerEnter.GetComponent<DragableItem>() != null)
-            {
-                tr.SetParent(eventData.pointerEnter.transform.parent);
-                tr.anchoredPosition = eventData.pointerEnter.transform.GetComponent<RectTransform>().anchoredPosition;
-            
-                eventData.pointerEnter.transform.SetParent(originParentTr);
-                eventData.pointerEnter.transform.GetComponent<RectTransform>().anchoredPosition = originPos;
+            tr.SetParent(eventData.pointerEnter.transform.parent);
+            tr.anchoredPosition = eventData.pointerEnter.transform.GetComponent<RectTransform>().anchoredPosition;
 
-                int tempSiblingIndex = eventData.pointerEnter.GetComponent<DragableItem>().siblingIndex;
-                GameManager.Instance.inventory.ChangeItemIndex(siblingIndex, tempSiblingIndex);
-                eventData.pointerEnter.GetComponent<DragableItem>().siblingIndex = siblingIndex;
-                siblingIndex = tempSiblingIndex;
-            }
-            else
-            {
-                tr.SetParent(originParentTr);
-                tr.anchoredPosition = originPos;
-            }
+            eventData.pointerEnter.transform.SetParent(originParentTr);
+            eventData.pointerEnter.transform.GetComponent<RectTransform>().anchoredPosition = originPos;
+
+            int tempSiblingIndex = eventData.pointerEnter.GetComponent<DragableItem>().siblingIndex;
+            GameManager.Instance.inventory.ChangeItemIndex(siblingIndex, tempSiblingIndex);
+            eventData.pointerEnter.GetComponent<DragableItem>().siblingIndex = siblingIndex;
+            siblingIndex = tempSiblingIndex;
+        }
+        else
+        {
+            tr.SetParent(originParentTr);
+            tr.anchoredPosition = originPos;
         }
         canvasGroup.blocksRaycasts = true;
     }
 
-    private bool IsInvalidDropPosition(PointerEventData eventData)
+    private bool IsValidDropPosition(PointerEventData eventData)
     {
-        if (eventData.pointerEnter == null || eventData.pointerEnter.GetComponent<SlotDrop>() == null)
+        if (eventData.pointerEnter != null)
             return true;
         return false;
     }
