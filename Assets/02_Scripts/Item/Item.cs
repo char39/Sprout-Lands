@@ -22,123 +22,117 @@ public class Item : IItem
         Index = null;
     }
 
-    public Item(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsConsumable, int Index)
-    {
-        this.Icon = Icon;
-        this.Name = Name;
-        this.ID = ID;
-        this.Stack = Stack;
-        this.MaxStack = MaxStack;
-        this.IsConsumable = IsConsumable;
-        this.Index = Index;
-    }
-
     public void SetIndex(int Index) => this.Index = Index;
     public void SetStack(int Stack) => this.Stack = Stack;
 
-    public void Use()
+    public virtual void Use()
     {
         if (IsConsumable) Debug.Log("Use Item [소비]");
         else Debug.Log("Use Item [사용]");
     }
 
-    public void Remove()
+    public virtual void Remove()
     {
         Debug.Log("Remove Item");
     }
 }
 
-// public class ToolItem : Item
-// {
-//     public ToolItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsStackable, bool IsConsumable) 
-//         : base(Icon, ID, Name, Stack, MaxStack, IsStackable, IsConsumable) { }
-//     public ToolItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsStackable, bool IsConsumable, int Index) 
-//         : base(Icon, ID, Name, Stack, MaxStack, IsStackable, IsConsumable, Index) { }
+public class ToolItem : Item
+{
+    public int Durability { get; private set; }                        // 아이템의 내구도
+    public int MaxDurability { get; private set; }                     // 아이템의 최대 내구도
+
+    public ToolItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsConsumable)
+        : base(Icon, ID, Name, Stack, MaxStack, IsConsumable)
+    {
+        Durability = 0;
+        MaxDurability = 0;
+    }
+    public ToolItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsConsumable, int Durability, int MaxDurability)
+        : base(Icon, ID, Name, Stack, MaxStack, IsConsumable)
+    {
+        this.Durability = Durability;
+        this.MaxDurability = MaxDurability;
+    }
+
+    public void SetDurability(int Durability) => this.Durability = Durability;
+
+    public override void Use()
+    {
+        if (IsConsumable) Debug.Log("Use ToolItem [소비]");
+        else Debug.Log("Use ToolItem [사용]");
+    }
+
+    public override void Remove()
+    {
+        Debug.Log("Remove ToolItem");
+    }
+}
+
+public class FarmingPlantItem : Item
+{
+    public FarmingPlantItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsConsumable)
+        : base(Icon, ID, Name, Stack, MaxStack, IsConsumable) { }
     
-//     public override void Use()
-//     {
-//         if (IsConsumable) Debug.Log("Use ToolItem [소비]");
-//         else Debug.Log("Use ToolItem [사용]");
-//     }
+    public override void Use()
+    {
+        if (IsConsumable) Debug.Log("Use FarmingPlantItem [소비]");
+        else Debug.Log("Use FarmingPlantItem [사용]");
+    }
 
-//     public override void Remove()
-//     {
-//         Debug.Log("Remove ToolItem");
-//     }
-// }
+    public override void Remove()
+    {
+        Debug.Log("Remove FarmingPlantItem");
+    }
+}
 
-// public class FarmingPlantItem : Item
-// {
-//     public FarmingPlantItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsStackable, bool IsConsumable) 
-//         : base(Icon, ID, Name, Stack, MaxStack, IsStackable, IsConsumable) { }
-//     public FarmingPlantItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsStackable, bool IsConsumable, int Index) 
-//         : base(Icon, ID, Name, Stack, MaxStack, IsStackable, IsConsumable, Index) { }
-    
-//     public override void Use()
-//     {
-//         if (IsConsumable) Debug.Log("Use FarmingPlantItem [소비]");
-//         else Debug.Log("Use FarmingPlantItem [사용]");
-//     }
+public class FruitItem : Item
+{
+    public FruitItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsConsumable)
+        : base(Icon, ID, Name, Stack, MaxStack, IsConsumable) { }
 
-//     public override void Remove()
-//     {
-//         Debug.Log("Remove FarmingPlantItem");
-//     }
-// }
+    public override void Use()
+    {
+        if (IsConsumable) Debug.Log("Use FruitItem [소비]");
+        else Debug.Log("Use FruitItem [사용]");
+    }
 
-// public class FruitItem : Item
-// {
-//     public FruitItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsStackable, bool IsConsumable) 
-//         : base(Icon, ID, Name, Stack, MaxStack, IsStackable, IsConsumable) { }
-//     public FruitItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsStackable, bool IsConsumable, int Index) 
-//         : base(Icon, ID, Name, Stack, MaxStack, IsStackable, IsConsumable, Index) { }
-    
-//     public override void Use()
-//     {
-//         if (IsConsumable) Debug.Log("Use FruitItem [소비]");
-//         else Debug.Log("Use FruitItem [사용]");
-//     }
+    public override void Remove()
+    {
+        Debug.Log("Remove FruitItem");
+    }
+}
 
-//     public override void Remove()
-//     {
-//         Debug.Log("Remove FruitItem");
-//     }
-// }
+public class EggItem : Item
+{
+    public EggItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsConsumable)
+        : base(Icon, ID, Name, Stack, MaxStack, IsConsumable) { }
 
-// public class EggItem : Item
-// {
-//     public EggItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsStackable, bool IsConsumable) 
-//         : base(Icon, ID, Name, Stack, MaxStack, IsStackable, IsConsumable) { }
-//     public EggItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsStackable, bool IsConsumable, int Index) 
-//         : base(Icon, ID, Name, Stack, MaxStack, IsStackable, IsConsumable, Index) { }
-    
-//     public override void Use()
-//     {
-//         if (IsConsumable) Debug.Log("Use EggItem [소비]");
-//         else Debug.Log("Use EggItem [사용]");
-//     }
+    public override void Use()
+    {
+        if (IsConsumable) Debug.Log("Use EggItem [소비]");
+        else Debug.Log("Use EggItem [사용]");
+    }
 
-//     public override void Remove()
-//     {
-//         Debug.Log("Remove EggItem");
-//     }
-// }
+    public override void Remove()
+    {
+        Debug.Log("Remove EggItem");
+    }
+}
 
-// public class MilkItem : Item
-// {
-//     public MilkItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsStackable, bool IsConsumable) 
-//         : base(Icon, ID, Name, Stack, MaxStack, IsStackable, IsConsumable) { }
-//     public MilkItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsStackable, bool IsConsumable, int Index) 
-//         : base(Icon, ID, Name, Stack, MaxStack, IsStackable, IsConsumable, Index) { }
-    
-//     public override void Use()
-//     {
-//         if (IsConsumable) Debug.Log("Use MilkItem [소비]");
-//         else Debug.Log("Use MilkItem [사용]");
-//     }
+public class MilkItem : Item
+{
+    public MilkItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsConsumable)
+        : base(Icon, ID, Name, Stack, MaxStack, IsConsumable) { }
 
-//     public override void Remove()
-//     {
-//         Debug.Log("Remove MilkItem");
-//     }
-// }
+    public override void Use()
+    {
+        if (IsConsumable) Debug.Log("Use MilkItem [소비]");
+        else Debug.Log("Use MilkItem [사용]");
+    }
+
+    public override void Remove()
+    {
+        Debug.Log("Remove MilkItem");
+    }
+}

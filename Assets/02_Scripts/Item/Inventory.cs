@@ -1,23 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Inventory : MonoBehaviour
 {
-    private List<Item> ListItem = new();
-    private const int InventorySize = 24;
+    public int InventorySize = 24;
+    private List<Item> ListItem = new(24) { };
 
     public delegate void RefreshInventoryUIDelegate();
     public event RefreshInventoryUIDelegate OnRefreshInventoryUI;
 
     public List<Item> GetAllItems() => ListItem;
-    public int GetInventorySize() => InventorySize - 1;
 
-    /// <summary> 인벤토리에 있는 아이템들을 순회하며 중첩 가능한 아이템이 존재하면 해당 아이템의 인덱스를 반환. </summary>
     private int FindExistItemIndex(Item AddItem)
     {
-        for (int index = 0; index < GetInventorySize(); index++)
+        for (int index = 0; index < ListItem.Count; index++)
         {
+            if (index >= InventorySize - 1) break;
             Item i = ListItem[index];
             if (AddItem.ID == i.ID && i.IsStackable)
                 return index;
@@ -37,13 +35,11 @@ public class Inventory : MonoBehaviour
             if (TotalStack > AddItem.MaxStack)
             {
                 Item RemainItem = ListItem[ExistIndex];
+                RemainItem.SetStack(RemainItem.MaxStack);
                 ListItem.RemoveAt(ExistIndex);
-                ListItem.Insert(ExistIndex, new Item(RemainItem.Icon, RemainItem.ID, RemainItem.Name, RemainItem.MaxStack, RemainItem.MaxStack, RemainItem.IsConsumable));
+                ListItem.Insert(ExistIndex, RemainItem);
                 RemainStack = TotalStack - ListItem[ExistIndex].MaxStack;
                 this.AddItem(new Item(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable));
-                UpdateItemIndices();
-                OnRefreshInventory();
-                return;
             }
             else
             {
@@ -59,9 +55,46 @@ public class Inventory : MonoBehaviour
                 RemainStack = AddItem.Stack - AddItem.MaxStack;
                 ListItem.Add(new Item(AddItem.Icon, AddItem.ID, AddItem.Name, AddItem.MaxStack, AddItem.MaxStack, AddItem.IsConsumable));
                 this.AddItem(new Item(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable));
-                UpdateItemIndices();
-                OnRefreshInventory();
-                return;
+            }
+            else
+                ListItem.Add(AddItem);
+        }
+        UpdateItemIndices();
+        OnRefreshInventory();
+    }
+
+    public void AddItem(ToolItem AddItem)
+    {
+        int TotalStack;
+        int RemainStack;
+        int ExistIndex = FindExistItemIndex(AddItem);
+        Debug.Log(ExistIndex);
+        if (ExistIndex != -1)
+        {
+            TotalStack = ListItem[ExistIndex].Stack + AddItem.Stack;
+            if (TotalStack > AddItem.MaxStack)
+            {
+                ToolItem RemainItem = (ToolItem)ListItem[ExistIndex];
+                RemainItem.SetStack(RemainItem.MaxStack);
+                ListItem.RemoveAt(ExistIndex);
+                ListItem.Insert(ExistIndex, RemainItem);
+                RemainStack = TotalStack - ListItem[ExistIndex].MaxStack;
+                this.AddItem(new ToolItem(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable, RemainItem.Durability, RemainItem.MaxDurability));
+            }
+            else
+            {
+                ToolItem RemainItem = (ToolItem)ListItem[ExistIndex];
+                ListItem.RemoveAt(ExistIndex);
+                ListItem.Insert(ExistIndex, new ToolItem(RemainItem.Icon, RemainItem.ID, RemainItem.Name, RemainItem.Stack + AddItem.Stack, RemainItem.MaxStack, RemainItem.IsConsumable, RemainItem.Durability, RemainItem.MaxDurability));
+            }
+        }
+        else
+        {
+            if (AddItem.Stack > AddItem.MaxStack)
+            {
+                RemainStack = AddItem.Stack - AddItem.MaxStack;
+                ListItem.Add(new ToolItem(AddItem.Icon, AddItem.ID, AddItem.Name, AddItem.MaxStack, AddItem.MaxStack, AddItem.IsConsumable, AddItem.Durability, AddItem.MaxDurability));
+                this.AddItem(new ToolItem(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable, AddItem.Durability, AddItem.MaxDurability));
             }
             else
                 ListItem.Add(AddItem);

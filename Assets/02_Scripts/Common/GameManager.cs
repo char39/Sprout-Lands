@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GM_CameraSetting CameraSetting;
     public GM_GameTimeRule gameTimeRule;
     public GM_DateInfo DateInfo;
+    public GM_DateInfoUI DateInfoUI;
+    public GM_MousePosition MousePos;
     public Inventory inventory;
     public InventoryUI inventoryUI;
 
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
         CameraSetting = gameObject.AddComponent<GM_CameraSetting>();
         gameTimeRule = gameObject.AddComponent<GM_GameTimeRule>();
         DateInfo = gameObject.AddComponent<GM_DateInfo>();
+        DateInfoUI = gameObject.AddComponent<GM_DateInfoUI>();
+        MousePos = gameObject.AddComponent<GM_MousePosition>();
         inventory = gameObject.AddComponent<Inventory>();
         inventoryUI = gameObject.AddComponent<InventoryUI>();
     }
@@ -42,5 +46,7 @@ public class GameManager : MonoBehaviour
     {
         CameraSetting.ResetCameraPosLimit();
         CameraSetting.CameraFollow();
+        inventoryUI.OnShowInventory();
+        DateInfoUI.OnMouseDateInfo_Frame();
     }
 }

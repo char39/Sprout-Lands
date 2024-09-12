@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,11 +9,14 @@ public class InventoryUI : MonoBehaviour
 
     // 인벤토리 슬롯 Transform
     public Transform Inventory_Frame;
+
     public Transform InventorySlot_Frame;
     public Transform InventorySlot_Group;
+    public CanvasGroup InvenSlotCanvasGroup;
+
     public Transform QuickSlot_Frame;
     public Transform QuickSlot_Group;
-    
+
     public GameObject SlotPref;
     public GameObject ItemPref;
 
@@ -22,13 +26,17 @@ public class InventoryUI : MonoBehaviour
         inventory.OnRefreshInventoryUI += RefreshInventoryUI;
         
         Inventory_Frame = GameObject.Find("UI_Canvas").transform.Find("Inventory_Frame");
+
         InventorySlot_Frame = Inventory_Frame.Find("InventorySlot_Frame");
         InventorySlot_Group = InventorySlot_Frame.GetChild(0).GetChild(0);
+        InvenSlotCanvasGroup = InventorySlot_Frame.GetComponent<CanvasGroup>();
+
         QuickSlot_Frame = Inventory_Frame.Find("QuickSlot_Frame");
         QuickSlot_Group = QuickSlot_Frame.GetChild(0).GetChild(0);
 
         SlotPref = Resources.Load<GameObject>("Item/ItemSlot");
         ItemPref = Resources.Load<GameObject>("Item/GameItem");
+
         RefreshInventoryUI();
     }
 
@@ -67,5 +75,38 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    public bool IsNowInventoryMove = false;
+    public void OnShowInventory()
+    {
+        bool OnInven = GameManager.Instance.MousePos.IsShowInventory;
+        bool OutInven = GameManager.Instance.MousePos.IsShowOutInventory;
 
+        if (OnInven)
+            StartCoroutine(SlerpInventoryMove(-500, true));
+        else if (OutInven)
+            StartCoroutine(SlerpInventoryMove(-925, false));
+    }
+    private IEnumerator SlerpInventoryMove(float value, bool ShowInven)
+    {
+        if (IsNowInventoryMove) yield break;
+        IsNowInventoryMove = true;
+        float duration = 0.7f;
+        float elapsed = 0f;
+        Vector3 targetPos = new(0, value, 0);
+
+        static bool IsApproximately(float a, float b, float tolerance) => Mathf.Abs(a - b) < tolerance;
+        while (!IsApproximately(Inventory_Frame.localPosition.y, value, 0.05f))
+        {
+            Inventory_Frame.localPosition = Vector3.Slerp(Inventory_Frame.localPosition, targetPos, elapsed / duration);
+            if (ShowInven)
+                InvenSlotCanvasGroup.alpha = Mathf.Lerp(InvenSlotCanvasGroup.alpha, 1, elapsed / duration);
+            else
+                InvenSlotCanvasGroup.alpha = Mathf.Lerp(InvenSlotCanvasGroup.alpha, 0, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        Inventory_Frame.localPosition = targetPos;
+        InvenSlotCanvasGroup.alpha = ShowInven ? 1 : 0;
+        IsNowInventoryMove = false;
+    }
 }
