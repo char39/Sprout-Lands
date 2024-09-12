@@ -48,5 +48,8 @@ public class GameManager : MonoBehaviour
         CameraSetting.CameraFollow();
         inventoryUI.OnShowInventory();
         DateInfoUI.OnMouseDateInfo_Frame();
+
+        if (Input.GetKeyDown(KeyCode.R))
+            inventory.RemoveItem(ItemManager.GetToolItem(4), 5);
     }
 }

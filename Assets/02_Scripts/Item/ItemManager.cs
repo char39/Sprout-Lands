@@ -137,35 +137,35 @@ public static class ItemManager
                 }; */
     }
 
-    public static ToolItem GetToolItem(int id, int quantity)
+    public static ToolItem GetToolItem(int id, int quantity = 1)
     {
         ToolItem item = (ToolItem)toolItem?[id] ?? null;
         item?.SetStack(quantity);
         return item;
     }
 
-    public static FarmingPlantItem GetFarmingPlantItem(int id, int quantity)
+    public static FarmingPlantItem GetFarmingPlantItem(int id, int quantity = 1)
     {
         FarmingPlantItem item = (FarmingPlantItem)farmingPlantItem?[id] ?? null;
         item?.SetStack(quantity);
         return item;
     }
 
-    public static FruitItem GetFruitItem(int id, int quantity)
+    public static FruitItem GetFruitItem(int id, int quantity = 1)
     {
         FruitItem item = (FruitItem)fruitItem?[id] ?? null;
         item?.SetStack(quantity);
         return item;
     }
 
-    public static EggItem GetEggItem(int id, int quantity)
+    public static EggItem GetEggItem(int id, int quantity = 1)
     {
         EggItem item = (EggItem)eggItem?[id] ?? null;
         item?.SetStack(quantity);
         return item;
     }
 
-    public static MilkItem GetMilkItem(int id, int quantity)
+    public static MilkItem GetMilkItem(int id, int quantity = 1)
     {
         MilkItem item = (MilkItem)milkItem?[id] ?? null;
         item?.SetStack(quantity);

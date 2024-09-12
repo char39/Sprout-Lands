@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
 
     private int FindExistItemIndex(Item AddItem)
     {
+        /*  기존 for문으로 index 찾는 코드
         for (int index = 0; index < ListItem.Count; index++)
         {
             if (index >= InventorySize - 1) break;
@@ -21,19 +22,21 @@ public class Inventory : MonoBehaviour
                 return index;
         }
         return -1;
+        */
+        int index = ListItem.FindIndex(i => AddItem.ID == i.ID && i.IsStackable);
+        if (index != -1 && index < InventorySize - 1)
+            return index;
+        return -1;
+        
     }
     private int FindNullItemIndex()
     {
-        for (int index = 0; index < ListItem.Count; index++)
-        {
-            if (index >= InventorySize - 1) break;
-            Item i = ListItem[index];
-            if (i.ID == -1)
-                return index;
-        }
+        int index = ListItem.FindIndex(i => i.ID == -1);
+        if (index != -1 && index < InventorySize - 1)
+            return index;
         return -1;
     }
-    // GameManager.Instance.inventory.ListItem.Add(new Item(null, -1, "null", 0, 0, false));
+
     public void AddItem(Item AddItem)
     {
         int TotalStack;
@@ -77,7 +80,6 @@ public class Inventory : MonoBehaviour
         UpdateItemIndices();
         OnRefreshInventory();
     }
-
     public void AddItem(ToolItem AddItem)
     {
         int TotalStack;
@@ -122,37 +124,52 @@ public class Inventory : MonoBehaviour
         OnRefreshInventory();
     }
 
-    public void RemoveItem(Item item, int Quantity = 1)
+    private int FindExistItemIndexForRemove(Item RemoveItem)
     {
-        Item existItem = ListItem.Find(i => i.ID == item.ID);
-        if (existItem != null)
+        int index = ListItem.FindLastIndex(i => RemoveItem.ID == i.ID);
+        if (index != -1 && index < InventorySize - 1)
+            return index;
+        return -1;
+    }
+    public void RemoveItem(Item RemoveItem, int Quantity = 1)
+    {
+        int RemainQuantity;
+        int existListIndex = FindExistItemIndexForRemove(RemoveItem);
+        if (existListIndex != -1)
         {
-            if (Quantity >= existItem.Stack)
+            Item ExistItem = null;
+            ToolItem ExistToolItem = null;
+            if (ListItem[existListIndex] is ToolItem)
+                ExistToolItem = (ToolItem)ListItem[existListIndex];
+            else
+                ExistItem = ListItem[existListIndex];
+
+            if ((ExistItem != null && Quantity >= ExistItem.Stack) || (ExistToolItem != null && Quantity >= ExistToolItem.Stack))
             {
-                int remainingQuantity = Quantity - existItem.Stack;
-                ListItem.Remove(existItem);
-                UpdateItemIndices();
-                if (remainingQuantity > 0)
-                    RemoveItem(item, remainingQuantity);
+                RemainQuantity = (ExistToolItem != null) ? Quantity - ExistToolItem.Stack : Quantity - ExistItem.Stack;
+                ListItem.RemoveAt(existListIndex);
+                ListItem.Insert(existListIndex, new Item(null, -1, "null", 0, 0, false));
+                if (RemainQuantity > 0)
+                    this.RemoveItem(RemoveItem, RemainQuantity);
             }
             else
             {
-                existItem.SetStack(existItem.Stack - Quantity);
-                if (existItem.Stack <= 0)
-                    ListItem.Remove(existItem);
-                UpdateItemIndices();
+                RemainQuantity = (ExistToolItem != null) ? ExistToolItem.Stack - Quantity : ExistItem.Stack - Quantity;
+                ListItem.RemoveAt(existListIndex);
+                if (ExistToolItem != null)
+                    ListItem.Insert(existListIndex, new ToolItem(ExistToolItem.Icon, ExistToolItem.ID, ExistToolItem.Name, RemainQuantity, ExistToolItem.MaxStack, ExistToolItem.IsConsumable, ExistToolItem.Durability, ExistToolItem.MaxDurability));
+                else
+                    ListItem.Insert(existListIndex, new Item(ExistItem.Icon, ExistItem.ID, ExistItem.Name, RemainQuantity, ExistItem.MaxStack, ExistItem.IsConsumable));
             }
         }
-        else
-            return;
+        UpdateItemIndices();
+        OnRefreshInventory();
     }
 
     public void UpdateItemIndices()
     {
         for (int i = 0; i < ListItem.Count; i++)
-        {
             ListItem[i].SetIndex(i);
-        }
     }
 
     public void ChangeItemIndex(int oldIndex, int newIndex)
