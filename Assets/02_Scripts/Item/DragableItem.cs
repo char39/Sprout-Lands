@@ -8,6 +8,9 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public RectTransform tr;
     public Vector2 originPos;
     public Transform originParentTr;
+    public int siblingIndex;
+
+    public Item item;
 
     void Start()
     {
@@ -17,6 +20,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         originPos = tr.anchoredPosition;
         originParentTr = transform.parent;
         canvasGroup.blocksRaycasts = true;
+        siblingIndex = transform.parent.GetSiblingIndex();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -40,8 +44,14 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             {
                 tr.SetParent(eventData.pointerEnter.transform.parent);
                 tr.anchoredPosition = eventData.pointerEnter.transform.GetComponent<RectTransform>().anchoredPosition;
+            
                 eventData.pointerEnter.transform.SetParent(originParentTr);
                 eventData.pointerEnter.transform.GetComponent<RectTransform>().anchoredPosition = originPos;
+
+                int tempSiblingIndex = eventData.pointerEnter.GetComponent<DragableItem>().siblingIndex;
+                GameManager.Instance.inventory.ChangeItemIndex(siblingIndex, tempSiblingIndex);
+                eventData.pointerEnter.GetComponent<DragableItem>().siblingIndex = siblingIndex;
+                siblingIndex = tempSiblingIndex;
             }
             else
             {
@@ -55,7 +65,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private bool IsInvalidDropPosition(PointerEventData eventData)
     {
         if (eventData.pointerEnter == null || eventData.pointerEnter.GetComponent<SlotDrop>() == null)
-                return true;
+            return true;
         return false;
     }
 }

@@ -50,6 +50,10 @@ public class InventoryUI : MonoBehaviour
             var slot = Instantiate(SlotPref, InventorySlot_Group);
             slot.name = "ItemSlot (" + (i + 1) + ")";
             slot.AddComponent<SlotDrop>();
+            var itemObj = Instantiate(ItemPref, slot.transform);
+            itemObj.GetComponent<Image>().sprite = null;
+            itemObj.GetComponentsInChildren<Text>()[0].text = "";
+            GameManager.Instance.inventory.ListItem.Add(new Item(null, -1, "null", 0, 0, false));
         }
     }
 
@@ -57,13 +61,6 @@ public class InventoryUI : MonoBehaviour
     {
         List<Item> items = inventory.GetAllItems();
         int itemCount = items.Count;    // 지금은 인벤토리 스크립트에서 아이템 개수를 가져오지만, 나중엔 여기에 인벤토리 개수를 작성할 예정.
-
-        for (int i = InventorySlot_Group.childCount; i < itemCount; i++)
-        {
-            var slot = Instantiate(SlotPref, InventorySlot_Group);
-            slot.name = "ItemSlot (" + (i + 1) + ")";
-            slot.AddComponent<SlotDrop>();
-        }
 
         for (int i = 0; i < InventorySlot_Group.childCount; i++)        // 인벤토리 슬롯 개수만큼 반복
         {
@@ -78,9 +75,11 @@ public class InventoryUI : MonoBehaviour
                 else                                                        // 슬롯에 아이템이 있으면
                     itemObj = slot.GetChild(0).gameObject;                      // 아이템 오브젝트를 가져옴
 
-                itemObj.GetComponent<Image>().sprite = item.Icon;
+                itemObj.transform.GetChild(0).GetComponent<Image>().sprite = item.Icon;
+                itemObj.transform.GetChild(0).GetComponent<Image>().color = item.Icon != null ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
+                itemObj.GetComponent<DragableItem>().item = item;
                 itemObj.name = item.Name;
-                itemObj.GetComponentsInChildren<Text>()[0].text = item.Stack.ToString();
+                itemObj.GetComponentsInChildren<Text>()[0].text = item.Stack != 0 ? item.Stack.ToString() : "";
                 itemObj.SetActive(true);
             }
             else                                                        // i가 아이템 개수보다 크거나 같으면
