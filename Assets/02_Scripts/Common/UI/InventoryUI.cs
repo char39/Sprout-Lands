@@ -13,6 +13,7 @@ public class InventoryUI : MonoBehaviour
     public Transform InventorySlot_Frame;
     public Transform InventorySlot_Group;
     public CanvasGroup InvenSlotCanvasGroup;
+    public Transform TempItem;
 
     public Transform QuickSlot_Frame;
     public Transform QuickSlot_Group;
@@ -30,6 +31,7 @@ public class InventoryUI : MonoBehaviour
         InventorySlot_Frame = Inventory_Frame.Find("InventorySlot_Frame");
         InventorySlot_Group = InventorySlot_Frame.GetChild(0).GetChild(0);
         InvenSlotCanvasGroup = InventorySlot_Frame.GetComponent<CanvasGroup>();
+        TempItem = Inventory_Frame.Find("TempItem");
 
         QuickSlot_Frame = Inventory_Frame.Find("QuickSlot_Frame");
         QuickSlot_Group = QuickSlot_Frame.GetChild(0).GetChild(0);
@@ -37,7 +39,18 @@ public class InventoryUI : MonoBehaviour
         SlotPref = Resources.Load<GameObject>("Item/ItemSlot");
         ItemPref = Resources.Load<GameObject>("Item/GameItem");
 
+        InitializeInventory();
         RefreshInventoryUI();
+    }
+
+    private void InitializeInventory()
+    {
+        for (int i = 0; i < 24; i++)
+        {
+            var slot = Instantiate(SlotPref, InventorySlot_Group);
+            slot.name = "ItemSlot (" + (i + 1) + ")";
+            slot.AddComponent<SlotDrop>();
+        }
     }
 
     public void RefreshInventoryUI()
@@ -48,7 +61,8 @@ public class InventoryUI : MonoBehaviour
         for (int i = InventorySlot_Group.childCount; i < itemCount; i++)
         {
             var slot = Instantiate(SlotPref, InventorySlot_Group);
-            slot.name = "Slot (" + (i + 1) + ")";
+            slot.name = "ItemSlot (" + (i + 1) + ")";
+            slot.AddComponent<SlotDrop>();
         }
 
         for (int i = 0; i < InventorySlot_Group.childCount; i++)        // 인벤토리 슬롯 개수만큼 반복

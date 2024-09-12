@@ -39,7 +39,8 @@ public class GM_MousePosition : MonoBehaviour
 
     public bool IsMouseOnWeatherUI()
     {
-        if (MousePosNormal.x > 0.831f && MousePosNormal.x < 0.976f && MousePosNormal.y > 0.747f && MousePosNormal.y < 0.976f)
+        bool Button = !(MousePosNormal.x > 0.945f && MousePosNormal.y < 0.84f);
+        if (MousePosNormal.x > 0.831f && MousePosNormal.x < 0.976f && MousePosNormal.y > 0.747f && MousePosNormal.y < 0.976f && Button)
             return true;
         return false;
     }
