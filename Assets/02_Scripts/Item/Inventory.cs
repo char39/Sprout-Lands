@@ -172,17 +172,36 @@ public class Inventory : MonoBehaviour
             ListItem[i].SetIndex(i);
     }
 
-    public void ChangeItemIndex(int oldIndex, int newIndex)
+    public void ChangeItemIndex(int Index1, int Index2)
     {
-        if (oldIndex < 0 || oldIndex >= ListItem.Count || newIndex < 0 || newIndex >= ListItem.Count)
+        if (Index1 < 0 || Index1 >= ListItem.Count || Index2 < 0 || Index2 >= ListItem.Count)
             return;
-        Item Old = ListItem[oldIndex];
-        Item New = ListItem[newIndex];
-        ListItem.RemoveAt(oldIndex);
-        ListItem.Insert(oldIndex, New);
-        ListItem.RemoveAt(newIndex);
-        ListItem.Insert(newIndex, Old);
+        Item item1 = ListItem[Index1];
+        Item item2 = ListItem[Index2];
+        if (item1.ID == item2.ID && (item1.IsStackable || item2.IsStackable))
+        {
+            int totalStack = item1.Stack + item2.Stack;
+            int maxStack = item1.MaxStack;
 
+            if (totalStack <= maxStack)
+            {
+                item2.SetStack(totalStack);
+                ListItem.RemoveAt(Index1);
+            }
+            else
+            {
+                item2.SetStack(maxStack);
+                item1.SetStack(totalStack - maxStack);
+                ListItem[Index1] = item1;
+            }
+        }
+        else
+        {
+            ListItem.RemoveAt(Index1);
+            ListItem.Insert(Index1, item2);
+            ListItem.RemoveAt(Index2);
+            ListItem.Insert(Index2, item1);
+        }
         UpdateItemIndices();
         OnRefreshInventory();
     }
