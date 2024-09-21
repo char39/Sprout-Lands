@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/01_Scenes/Global.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/01_Scenes/TileMap.unity
+    path: Assets/01_Scenes/Outside.unity
     guid: 6e545d89ed03d42bbb0d042b69edde96
   m_configObjects: {}

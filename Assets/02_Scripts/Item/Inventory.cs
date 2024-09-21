@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public int InventorySize = 24;
-    public List<Item> ListItem = new(24) { };
+    public int InventorySize = 32;
+    public List<Item> ListItem = new(32) { };
 
     public delegate void RefreshInventoryUIDelegate();
     public event RefreshInventoryUIDelegate OnRefreshInventoryUI;

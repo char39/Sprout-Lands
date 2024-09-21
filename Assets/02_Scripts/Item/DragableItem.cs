@@ -8,7 +8,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public RectTransform tr;
     public Vector2 originPos;
     public Transform originParentTr;
-    public int siblingIndex;
+    public int index;
 
     public Item item;
 
@@ -20,7 +20,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         originPos = tr.anchoredPosition;
         originParentTr = transform.parent;
         canvasGroup.blocksRaycasts = true;
-        siblingIndex = transform.parent.GetSiblingIndex();
+        //index = transform.parent.GetSiblingIndex();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -46,10 +46,10 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             eventData.pointerEnter.transform.SetParent(originParentTr);
             eventData.pointerEnter.transform.GetComponent<RectTransform>().anchoredPosition = originPos;
 
-            int tempSiblingIndex = eventData.pointerEnter.GetComponent<DragableItem>().siblingIndex;
-            GameManager.Instance.inventory.ChangeItemIndex(siblingIndex, tempSiblingIndex);
-            eventData.pointerEnter.GetComponent<DragableItem>().siblingIndex = siblingIndex;
-            siblingIndex = tempSiblingIndex;
+            int tempIndex = eventData.pointerEnter.GetComponent<DragableItem>().index;
+            GameManager.Instance.inventory.ChangeItemIndex(index, tempIndex);
+            eventData.pointerEnter.GetComponent<DragableItem>().index = index;
+            index = tempIndex;
         }
         else
         {

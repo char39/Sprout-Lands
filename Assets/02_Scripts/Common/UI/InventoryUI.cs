@@ -19,6 +19,7 @@ public class InventoryUI : MonoBehaviour
     public Transform QuickSlot_Group;
 
     public GameObject SlotPref;
+    public GameObject QuickSlotPref;
     public GameObject ItemPref;
 
     void Start()
@@ -37,6 +38,7 @@ public class InventoryUI : MonoBehaviour
         QuickSlot_Group = QuickSlot_Frame.GetChild(0).GetChild(0);
 
         SlotPref = Resources.Load<GameObject>("Item/ItemSlot");
+        QuickSlotPref = Resources.Load<GameObject>("Item/ItemQuickSlot");
         ItemPref = Resources.Load<GameObject>("Item/GameItem");
 
         InitializeInventory();
@@ -45,13 +47,14 @@ public class InventoryUI : MonoBehaviour
 
     private void InitializeInventory()
     {
-        for (int i = 0; i < 24; i++)
+        for (int i = 0; i < 32; i++)
         {
-            var slot = Instantiate(SlotPref, InventorySlot_Group);
+            var slot = i < 8 ? Instantiate(QuickSlotPref, QuickSlot_Group) : Instantiate(SlotPref, InventorySlot_Group);
             slot.name = "ItemSlot (" + (i + 1) + ")";
             var itemObj = Instantiate(ItemPref, slot.transform);
             itemObj.GetComponent<Image>().sprite = null;
             itemObj.GetComponentsInChildren<Text>()[0].text = "";
+            itemObj.GetComponent<DragableItem>().index = i;
             GameManager.Instance.inventory.ListItem.Add(new Item(null, -1, "null", 0, 0, false));
         }
     }
@@ -61,29 +64,56 @@ public class InventoryUI : MonoBehaviour
         List<Item> items = inventory.GetAllItems();
         int itemCount = items.Count;    // 지금은 인벤토리 스크립트에서 아이템 개수를 가져오지만, 나중엔 여기에 인벤토리 개수를 작성할 예정.
 
-        for (int i = 0; i < InventorySlot_Group.childCount; i++)        // 인벤토리 슬롯 개수만큼 반복
+        for (int i = 0; i < InventorySlot_Group.childCount + QuickSlot_Group.childCount; i++)        // 인벤토리 슬롯 개수만큼 반복
         {
-            Transform slot = InventorySlot_Group.GetChild(i);               // i번째 슬롯을 가져옴
-            if (i < itemCount)                                          // i가 아이템 개수보다 작으면
+            if (i < 8)
             {
-                Item item = items[i];                                       // i번째 아이템을 가져옴
-                GameObject itemObj;                                         // 아이템 오브젝트를 담을 변수
+                Transform slot = QuickSlot_Group.GetChild(i);
+                if (i < itemCount)                                          // i가 아이템 개수보다 작으면
+                {
+                    Item item = items[i];                                       // i번째 아이템을 가져옴
+                    GameObject itemObj;                                         // 아이템 오브젝트를 담을 변수
 
-                if (slot.childCount == 0)                                   // 슬롯에 아이템이 없으면
-                    itemObj = Instantiate(ItemPref, slot);                      // 아이템을 생성
-                else                                                        // 슬롯에 아이템이 있으면
-                    itemObj = slot.GetChild(0).gameObject;                      // 아이템 오브젝트를 가져옴
+                    if (slot.childCount == 0)                                   // 슬롯에 아이템이 없으면
+                        itemObj = Instantiate(ItemPref, slot);                      // 아이템을 생성
+                    else                                                        // 슬롯에 아이템이 있으면
+                        itemObj = slot.GetChild(0).gameObject;                      // 아이템 오브젝트를 가져옴
 
-                itemObj.transform.GetChild(0).GetComponent<Image>().sprite = item.Icon;
-                itemObj.transform.GetChild(0).GetComponent<Image>().color = item.Icon != null ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
-                itemObj.GetComponent<DragableItem>().item = item;
-                itemObj.name = item.Name;
-                itemObj.GetComponentsInChildren<Text>()[0].text = item.Stack != 0 ? item.Stack.ToString() : "";
-                itemObj.SetActive(true);
-            }
-            else                                                        // i가 아이템 개수보다 크거나 같으면
-                if (slot.childCount > 0)                                    // 슬롯에 아이템이 있으면
+                    itemObj.transform.GetChild(0).GetComponent<Image>().sprite = item.Icon;
+                    itemObj.transform.GetChild(0).GetComponent<Image>().color = item.Icon != null ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
+                    itemObj.GetComponent<DragableItem>().item = item;
+                    itemObj.name = item.Name;
+                    itemObj.GetComponentsInChildren<Text>()[0].text = item.Stack != 0 ? item.Stack.ToString() : "";
+                    itemObj.SetActive(true);
+                }
+                else                                                        // i가 아이템 개수보다 크거나 같으면
+                    if (slot.childCount > 0)                                    // 슬롯에 아이템이 있으면
                     slot.GetChild(0).gameObject.SetActive(false);               // 아이템 오브젝트를 비활성화
+            }
+            else
+            {
+                Transform slot = InventorySlot_Group.GetChild(i - 8);           // i번째 슬롯을 가져옴
+                if (i < itemCount)                                          // i가 아이템 개수보다 작으면
+                {
+                    Item item = items[i];                                       // i번째 아이템을 가져옴
+                    GameObject itemObj;                                         // 아이템 오브젝트를 담을 변수
+
+                    if (slot.childCount == 0)                                   // 슬롯에 아이템이 없으면
+                        itemObj = Instantiate(ItemPref, slot);                      // 아이템을 생성
+                    else                                                        // 슬롯에 아이템이 있으면
+                        itemObj = slot.GetChild(0).gameObject;                      // 아이템 오브젝트를 가져옴
+
+                    itemObj.transform.GetChild(0).GetComponent<Image>().sprite = item.Icon;
+                    itemObj.transform.GetChild(0).GetComponent<Image>().color = item.Icon != null ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
+                    itemObj.GetComponent<DragableItem>().item = item;
+                    itemObj.name = item.Name;
+                    itemObj.GetComponentsInChildren<Text>()[0].text = item.Stack != 0 ? item.Stack.ToString() : "";
+                    itemObj.SetActive(true);
+                }
+                else                                                        // i가 아이템 개수보다 크거나 같으면
+                    if (slot.childCount > 0)                                    // 슬롯에 아이템이 있으면
+                    slot.GetChild(0).gameObject.SetActive(false);               // 아이템 오브젝트를 비활성화
+            }
         }
     }
 

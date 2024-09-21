@@ -3,21 +3,11 @@ using UnityEngine;
 public partial class Player : MonoBehaviour
 {
     //--------------------------------------------------------//
-    void Awake()
-    {
-
-    }
-
     void Start()
     {
         GetComponents();
         SetValue();
         ReFreshAlphaObj();
-    }
-
-    void FixedUpdate()
-    {
-
     }
 
     void Update()
