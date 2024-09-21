@@ -7,15 +7,15 @@ public partial class Player : MonoBehaviour
     {
         GetComponents();
         SetValue();
-        ReFreshAlphaObj();
+        GetAllAlphaObj();
     }
 
     void Update()
     {
         GetPlayerMoveKeyInput();
-        SetPlayerAnimation();
-        SetPlayerMoveVelocity();
         SetPlayerOrderMask();
+        SetPlayerMoveVelocity();
+        SetPlayerAnimation();
     }
     //--------------------------------------------------------//
     private Animator ani;

@@ -12,8 +12,13 @@ public class GM_DateInfoUI : MonoBehaviour
         DateInfo_FrameCanvasGroup = DateInfo_Frame.GetComponent<CanvasGroup>();
     }
 
+    void Update()
+    {
+        OnMouseDateInfo_Frame();
+    }
+
     public bool IsNowChangeAlpha = false;
-    public void OnMouseDateInfo_Frame()
+    private void OnMouseDateInfo_Frame()
     {
         bool OnMouse = GameManager.Instance.MousePos.IsOnWeatherUI;
 
@@ -23,6 +28,7 @@ public class GM_DateInfoUI : MonoBehaviour
             StartCoroutine(SlerpFrameAlpha(1f));
 
     }
+
     private IEnumerator SlerpFrameAlpha(float value)
     {
         if (IsNowChangeAlpha) yield break;

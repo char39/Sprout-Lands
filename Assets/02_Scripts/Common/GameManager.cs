@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GM_DateInfo DateInfo;
     public GM_DateInfoUI DateInfoUI;
     public GM_MousePosition MousePos;
+    public GM_QuickSlotSelect SlotSelect;
     public Inventory inventory;
     public InventoryUI inventoryUI;
 
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
         DateInfo = gameObject.AddComponent<GM_DateInfo>();
         DateInfoUI = gameObject.AddComponent<GM_DateInfoUI>();
         MousePos = gameObject.AddComponent<GM_MousePosition>();
+        SlotSelect = gameObject.AddComponent<GM_QuickSlotSelect>();
         inventory = gameObject.AddComponent<Inventory>();
         inventoryUI = gameObject.AddComponent<InventoryUI>();
     }
@@ -46,10 +48,8 @@ public class GameManager : MonoBehaviour
     {
         CameraSetting.ResetCameraPosLimit();
         CameraSetting.CameraFollow();
-        inventoryUI.OnShowInventory();
-        DateInfoUI.OnMouseDateInfo_Frame();
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))    // 아이템 삭제 테스트용 추후 삭제
             inventory.RemoveItem(ItemManager.GetToolItem(4), 5);
     }
 }

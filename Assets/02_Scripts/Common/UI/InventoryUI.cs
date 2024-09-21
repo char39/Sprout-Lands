@@ -36,6 +36,9 @@ public class InventoryUI : MonoBehaviour
 
         QuickSlot_Frame = Inventory_Frame.Find("QuickSlot_Frame");
         QuickSlot_Group = QuickSlot_Frame.GetChild(0).GetChild(0);
+        
+        // Slot_Select가 이 클래스의 QuickSlot_Frame보다 먼저 호출되는 것을 방지하기 위해 이곳에서 할당함.
+        GameManager.Instance.SlotSelect.Slot_Select = QuickSlot_Frame.GetChild(0).GetChild(1);
 
         SlotPref = Resources.Load<GameObject>("Item/ItemSlot");
         QuickSlotPref = Resources.Load<GameObject>("Item/ItemQuickSlot");
@@ -43,6 +46,11 @@ public class InventoryUI : MonoBehaviour
 
         InitializeInventory();
         RefreshInventoryUI();
+    }
+
+    void Update()
+    {
+        OnShowInventory();
     }
 
     private void InitializeInventory()
@@ -118,7 +126,7 @@ public class InventoryUI : MonoBehaviour
     }
 
     public bool IsNowInventoryMove = false;
-    public void OnShowInventory()
+    private void OnShowInventory()
     {
         bool OnInven = GameManager.Instance.MousePos.IsShowInventory;
         bool OutInven = GameManager.Instance.MousePos.IsShowOutInventory;
@@ -128,6 +136,7 @@ public class InventoryUI : MonoBehaviour
         else if (OutInven)
             StartCoroutine(SlerpInventoryMove(-925, false));
     }
+    
     private IEnumerator SlerpInventoryMove(float value, bool ShowInven)
     {
         if (IsNowInventoryMove) yield break;
