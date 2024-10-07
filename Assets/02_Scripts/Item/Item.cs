@@ -31,7 +31,7 @@ public class Item : IItem
         else Debug.Log("Use Item [사용]");
     }
 
-    public virtual void Remove()
+    public virtual void Remove(int Stack)
     {
         Debug.Log("Remove Item");
     }
@@ -57,13 +57,50 @@ public class ToolItem : Item
 
     public void SetDurability(int Durability) => this.Durability = Durability;
 
-    public override void Use()
+    private void UseToolAni(int ID)
     {
-        if (IsConsumable) Debug.Log("Use ToolItem [소비]");
-        else Debug.Log("Use ToolItem [사용]");
+        if (ID == 1 || ID == 2 || ID == 3)
+            Player.Instance.SetPlayerAction(ID);
     }
 
-    public override void Remove()
+    public override void Use()
+    {
+        if (IsConsumable)
+        {
+            
+        }
+        else
+        {
+            if (Durability > MaxDurability)
+            {
+                if (MaxDurability == 0)
+                {
+                    Debug.Log($"{Name} 사용. 내구도 무한.");
+                    UseToolAni(ID);
+                }
+            }
+            else   // = else if (Durability <= MaxDurability)
+            {
+                if (MaxDurability == 0)
+                {
+                    Debug.Log($"{Name} 사용. 내구도 존재하지 않음.");
+                }
+                else if (Durability <= 0)
+                {
+                    Durability = 0;
+                    Debug.Log($"{Name}의 내구도가 {Durability}이 되었습니다.");
+                }
+                else
+                {
+                    Debug.Log($"{Name} 사용. 내구도 : {Durability}.");
+                    UseToolAni(ID);
+                    Durability -= 1;
+                }
+            }
+        }
+    }
+
+    public override void Remove(int Stack)
     {
         Debug.Log("Remove ToolItem");
     }
@@ -76,11 +113,13 @@ public class FarmingPlantItem : Item
     
     public override void Use()
     {
-        if (IsConsumable) Debug.Log("Use FarmingPlantItem [소비]");
-        else Debug.Log("Use FarmingPlantItem [사용]");
+        if (IsConsumable)
+            Debug.Log("Use FarmingPlantItem [소비]");
+        else
+            Debug.Log("Use FarmingPlantItem [사용]");
     }
 
-    public override void Remove()
+    public override void Remove(int Stack)
     {
         Debug.Log("Remove FarmingPlantItem");
     }
@@ -93,11 +132,13 @@ public class FruitItem : Item
 
     public override void Use()
     {
-        if (IsConsumable) Debug.Log("Use FruitItem [소비]");
-        else Debug.Log("Use FruitItem [사용]");
+        if (IsConsumable)
+            Debug.Log("Use FruitItem [소비]");
+        else
+            Debug.Log("Use FruitItem [사용]");
     }
 
-    public override void Remove()
+    public override void Remove(int Stack)
     {
         Debug.Log("Remove FruitItem");
     }
@@ -110,11 +151,13 @@ public class EggItem : Item
 
     public override void Use()
     {
-        if (IsConsumable) Debug.Log("Use EggItem [소비]");
-        else Debug.Log("Use EggItem [사용]");
+        if (IsConsumable)
+            Debug.Log("Use EggItem [소비]");
+        else
+            Debug.Log("Use EggItem [사용]");
     }
 
-    public override void Remove()
+    public override void Remove(int Stack)
     {
         Debug.Log("Remove EggItem");
     }
@@ -127,11 +170,13 @@ public class MilkItem : Item
 
     public override void Use()
     {
-        if (IsConsumable) Debug.Log("Use MilkItem [소비]");
-        else Debug.Log("Use MilkItem [사용]");
+        if (IsConsumable)
+            Debug.Log("Use MilkItem [소비]");
+        else
+            Debug.Log("Use MilkItem [사용]");
     }
 
-    public override void Remove()
+    public override void Remove(int Stack)
     {
         Debug.Log("Remove MilkItem");
     }

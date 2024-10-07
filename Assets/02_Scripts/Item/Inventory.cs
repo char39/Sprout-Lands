@@ -53,13 +53,49 @@ public class Inventory : MonoBehaviour
                 ListItem.RemoveAt(exListIndex);
                 ListItem.Insert(exListIndex, RemainItem);
                 RemainStack = TotalStack - ListItem[exListIndex].MaxStack;
-                this.AddItem(new Item(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable));
+                //this.AddItem(new Item(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable));
+                switch (AddItem)
+                {
+                    case ToolItem toolItem:
+                        this.AddItem(NewItem(toolItem, RemainStack));
+                        break;
+                    case FarmingPlantItem farmingPlantItem:
+                        this.AddItem(NewItem(farmingPlantItem, RemainStack));
+                        break;
+                    case FruitItem fruitItem:
+                        this.AddItem(NewItem(fruitItem, RemainStack));
+                        break;
+                    case EggItem eggItem:
+                        this.AddItem(NewItem(eggItem, RemainStack));
+                        break;
+                    case MilkItem milkItem:
+                        this.AddItem(NewItem(milkItem, RemainStack));
+                        break;
+                }
             }
             else
             {
                 Item RemainItem = ListItem[exListIndex];
                 ListItem.RemoveAt(exListIndex);
-                ListItem.Insert(exListIndex, new Item(RemainItem.Icon, RemainItem.ID, RemainItem.Name, RemainItem.Stack + AddItem.Stack, RemainItem.MaxStack, RemainItem.IsConsumable));
+                //ListItem.Insert(exListIndex, new Item(RemainItem.Icon, RemainItem.ID, RemainItem.Name, RemainItem.Stack + AddItem.Stack, RemainItem.MaxStack, RemainItem.IsConsumable));
+                switch (RemainItem)
+                {
+                    case ToolItem toolItem:
+                        ListItem.Insert(exListIndex, NewItem(toolItem, RemainItem.Stack + AddItem.Stack));
+                        break;
+                    case FarmingPlantItem farmingPlantItem:
+                        ListItem.Insert(exListIndex, NewItem(farmingPlantItem, RemainItem.Stack + AddItem.Stack));
+                        break;
+                    case FruitItem fruitItem:
+                        ListItem.Insert(exListIndex, NewItem(fruitItem, RemainItem.Stack + AddItem.Stack));
+                        break;
+                    case EggItem eggItem:
+                        ListItem.Insert(exListIndex, NewItem(eggItem, RemainItem.Stack + AddItem.Stack));
+                        break;
+                    case MilkItem milkItem:
+                        ListItem.Insert(exListIndex, NewItem(milkItem, RemainItem.Stack + AddItem.Stack));
+                        break;
+                }
             }
         }
         else
@@ -68,8 +104,31 @@ public class Inventory : MonoBehaviour
             {
                 RemainStack = AddItem.Stack - AddItem.MaxStack;
                 ListItem.RemoveAt(nullListIndex);
-                ListItem.Insert(nullListIndex, new Item(AddItem.Icon, AddItem.ID, AddItem.Name, AddItem.MaxStack, AddItem.MaxStack, AddItem.IsConsumable));
-                this.AddItem(new Item(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable));
+                //ListItem.Insert(nullListIndex, new Item(AddItem.Icon, AddItem.ID, AddItem.Name, AddItem.MaxStack, AddItem.MaxStack, AddItem.IsConsumable));
+                //this.AddItem(new Item(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable));
+                switch (AddItem)
+                {
+                    case ToolItem toolItem:
+                        ListItem.Insert(nullListIndex, NewItem(toolItem, AddItem.MaxStack));
+                        this.AddItem(NewItem(toolItem, RemainStack));
+                        break;
+                    case FarmingPlantItem farmingPlantItem:
+                        ListItem.Insert(nullListIndex, NewItem(farmingPlantItem, AddItem.MaxStack));
+                        this.AddItem(NewItem(farmingPlantItem, RemainStack));
+                        break;
+                    case FruitItem fruitItem:
+                        ListItem.Insert(nullListIndex, NewItem(fruitItem, AddItem.MaxStack));
+                        this.AddItem(NewItem(fruitItem, RemainStack));
+                        break;
+                    case EggItem eggItem:
+                        ListItem.Insert(nullListIndex, NewItem(eggItem, AddItem.MaxStack));
+                        this.AddItem(NewItem(eggItem, RemainStack));
+                        break;
+                    case MilkItem milkItem:
+                        ListItem.Insert(nullListIndex, NewItem(milkItem, AddItem.MaxStack));
+                        this.AddItem(NewItem(milkItem, RemainStack));
+                        break;
+                }
             }
             else
             {
@@ -80,7 +139,29 @@ public class Inventory : MonoBehaviour
         UpdateItemIndices();
         OnRefreshInventory();
     }
-    public void AddItem(ToolItem AddItem)
+
+    private Item NewItem(ToolItem item, int Stack)
+    {
+        return new ToolItem(item.Icon, item.ID, item.Name, Stack, item.MaxStack, item.IsConsumable, item.Durability, item.MaxDurability);
+    }
+    private Item NewItem(FarmingPlantItem item, int Stack)
+    {
+        return new FarmingPlantItem(item.Icon, item.ID, item.Name, Stack, item.MaxStack, item.IsConsumable);
+    }
+    private Item NewItem(FruitItem item, int Stack)
+    {
+        return new FruitItem(item.Icon, item.ID, item.Name, Stack, item.MaxStack, item.IsConsumable);
+    }
+    private Item NewItem(EggItem item, int Stack)
+    {
+        return new EggItem(item.Icon, item.ID, item.Name, Stack, item.MaxStack, item.IsConsumable);
+    }
+    private Item NewItem(MilkItem item, int Stack)
+    {
+        return new MilkItem(item.Icon, item.ID, item.Name, Stack, item.MaxStack, item.IsConsumable);
+    }
+
+/*     public void AddItem(ToolItem AddItem)
     {
         int TotalStack;
         int RemainStack;
@@ -122,7 +203,7 @@ public class Inventory : MonoBehaviour
         }
         UpdateItemIndices();
         OnRefreshInventory();
-    }
+    } */
 
     private int FindExistItemIndexForRemove(Item RemoveItem)
     {

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3959797606848882557}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RayPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5987221001891249001}
   - component: {fileID: 7940889565201961526}
   - component: {fileID: 4070533895107822569}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2073021369
+  m_SortingLayerID: 625662749
   m_SortingLayer: -1
   m_SortingOrder: 10
   m_Sprite: {fileID: -1405802691, guid: 2e595bac8acc74cd187af4ad0dcad4bc, type: 3}

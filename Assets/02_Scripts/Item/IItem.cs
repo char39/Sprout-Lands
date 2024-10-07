@@ -13,5 +13,5 @@ public interface IItem
     public void SetIndex(int Index);
     public void SetStack(int Stack);
     public void Use();
-    public void Remove();
+    public void Remove(int Stack);
 }

@@ -3,10 +3,14 @@ using UnityEngine;
 public partial class Player
 {
     internal enum State { UP, DOWN, LEFT, RIGHT }   // UP : Back(뒤), DOWN : Front(앞)
+    internal enum ActionType { AXE, HOE, WATER }
     internal State state = State.DOWN;
+    internal ActionType actionType = ActionType.AXE;
 
     private const string ANI_DIRECTION = "Direction";
     private const string MOVE_SPEED = "MoveSpeed";
+    private const string ACTION_TRIGGER = "ActionTrigger";
+    private const string ACTION_TYPE = "ActionType";
 
     /// <summary> 플레이어의 이동 상태를 반환함. </summary>
     private State GetPlayerMoveState()
@@ -24,11 +28,17 @@ public partial class Player
             else return state;
         }
     }
-    /// <summary> 플레이어의 이동 상태에 따라 애니메이션을 설정함. </summary>
+    /// <summary> 플레이어의 상태에 따라 애니메이션을 설정함. </summary>
     private void SetPlayerAnimation()
     {
         state = GetPlayerMoveState();
         ani.SetFloat(ANI_DIRECTION, (int)state);  // UP : 0, DOWN : 1, LEFT : 2, RIGHT : 3
         ani.SetFloat(MOVE_SPEED, rb.velocity.magnitude > 0 ? (run ? 2 : 1) : 0);
+    }
+
+    public void SetPlayerAction(int actionIndex)
+    {
+        ani.SetFloat(ACTION_TYPE, actionIndex);
+        ani.SetTrigger(ACTION_TRIGGER);
     }
 }

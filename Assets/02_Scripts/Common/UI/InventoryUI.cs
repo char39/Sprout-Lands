@@ -126,18 +126,22 @@ public class InventoryUI : MonoBehaviour
     }
 
     public bool IsNowInventoryMove = false;
+    public bool IsNowInventoryOpen = false;
     private void OnShowInventory()
     {
-        bool OnInven = GameManager.Instance.MousePos.IsShowInventory;
-        bool OutInven = GameManager.Instance.MousePos.IsShowOutInventory;
+        //bool OnInven = GameManager.Instance.MousePos.IsShowInventory;
+        //bool OutInven = GameManager.Instance.MousePos.IsShowOutInventory;
+        
+        if (Input.GetKeyDown(KeyCode.E))
+            IsNowInventoryOpen = !IsNowInventoryOpen;
 
-        if (OnInven)
+        if (IsNowInventoryOpen)
             StartCoroutine(SlerpInventoryMove(-500, true));
-        else if (OutInven)
+        else if (!IsNowInventoryOpen)
             StartCoroutine(SlerpInventoryMove(-925, false));
     }
     
-    private IEnumerator SlerpInventoryMove(float value, bool ShowInven)
+    private IEnumerator SlerpInventoryMove(float value, bool InvenOpen)
     {
         if (IsNowInventoryMove) yield break;
         IsNowInventoryMove = true;
@@ -149,7 +153,7 @@ public class InventoryUI : MonoBehaviour
         while (!IsApproximately(Inventory_Frame.localPosition.y, value, 0.05f))
         {
             Inventory_Frame.localPosition = Vector3.Slerp(Inventory_Frame.localPosition, targetPos, elapsed / duration);
-            if (ShowInven)
+            if (InvenOpen)
                 InvenSlotCanvasGroup.alpha = Mathf.Lerp(InvenSlotCanvasGroup.alpha, 1, elapsed / duration);
             else
                 InvenSlotCanvasGroup.alpha = Mathf.Lerp(InvenSlotCanvasGroup.alpha, 0, elapsed / duration);
@@ -157,7 +161,7 @@ public class InventoryUI : MonoBehaviour
             yield return null;
         }
         Inventory_Frame.localPosition = targetPos;
-        InvenSlotCanvasGroup.alpha = ShowInven ? 1 : 0;
+        InvenSlotCanvasGroup.alpha = InvenOpen ? 1 : 0;
         IsNowInventoryMove = false;
     }
 }

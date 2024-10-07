@@ -3,6 +3,10 @@ using UnityEngine;
 public partial class Player : MonoBehaviour
 {
     //--------------------------------------------------------//
+    void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         GetComponents();
@@ -13,11 +17,18 @@ public partial class Player : MonoBehaviour
     void Update()
     {
         GetPlayerMoveKeyInput();
+        OnUseKey();
+        OnInteractiveKey();
         SetPlayerOrderMask();
         SetPlayerMoveVelocity();
         SetPlayerAnimation();
     }
+    void LateUpdate()
+    {
+        StateInfoCheck();
+    }    
     //--------------------------------------------------------//
+    public static Player Instance;
     private Animator ani;
     private SpriteRenderer sr;
     private Rigidbody2D rb;

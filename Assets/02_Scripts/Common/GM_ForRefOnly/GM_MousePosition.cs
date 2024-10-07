@@ -1,18 +1,21 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GM_MousePosition : MonoBehaviour
 {
     public Vector2 MousePos;
     public Vector2 MousePosNormal;
+    [System.Obsolete]
     public bool IsShowInventory = false;
+    [System.Obsolete]
     public bool IsShowOutInventory = true;
     public bool IsOnWeatherUI = false;
 
     public void Update()
     {
         MousePosFind();
-        IsShowInventory = IsMouseOnInventory();
-        IsShowOutInventory = IsMouseOutInventory();
+        //IsShowInventory = IsMouseOnInventory();
+        //IsShowOutInventory = IsMouseOutInventory();
         IsOnWeatherUI = IsMouseOnWeatherUI();
     }
     
@@ -22,13 +25,20 @@ public class GM_MousePosition : MonoBehaviour
         MousePosNormal = new Vector2(MousePos.x / Screen.width, MousePos.y / Screen.height);
     }
 
+    public bool IsPointerOverGameObject()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
+    }
+
+    [System.Obsolete]
     public bool IsMouseOnInventory()
     {
         if (MousePosNormal.x > 0.25f && MousePosNormal.x < 0.75f && MousePosNormal.y < 0.02f)
             return true;
         return false;
     }
-
+    
+    [System.Obsolete]
     public bool IsMouseOutInventory()
     {
         if (!(MousePosNormal.x > 0.25f && MousePosNormal.x < 0.75f && MousePosNormal.y <= 0.5f))

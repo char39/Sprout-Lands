@@ -13,18 +13,18 @@ public static class ItemManager
     {
         toolItem = new Dictionary<int, Item>()
         {
-            { 1, new ToolItem(Icons.Tool[0], 1, "Watering Can",     1, 1, false) },
-            { 2, new ToolItem(Icons.Tool[1], 2, "Axe",              1, 1, false) },
-            { 3, new ToolItem(Icons.Tool[2], 3, "Hoe",              1, 1, false) },
-            { 4, new ToolItem(Icons.Tool[3], 4, "Grass",            1, 255, true) },
-            { 5, new ToolItem(Icons.Tool[4], 5, "Tree Twigs",       1, 255, true) },
-            { 6, new ToolItem(Icons.Tool[5], 6, "Tree Branch",      1, 255, true) },
-            { 7, new ToolItem(Icons.Tool[6], 7, "Wood",             1, 255, true) },
-            { 8, new ToolItem(Icons.Tool[7], 8, "Stick",            1, 255, true) },
-            { 9, new ToolItem(Icons.Tool[8], 9, "Wooden Planks",    1, 255, true) },
-            { 10, new ToolItem(Icons.Tool[9], 10, "Stone",          1, 255, true) },
-            { 11, new ToolItem(Icons.Tool[10], 11, "Iron Ingot",    1, 255, true) },
-            { 12, new ToolItem(Icons.Tool[11], 12, "Small Stone",   1, 255, true) }
+            { 1, new ToolItem(Icons.Tool[0], 1, "Watering Can",     1, 1, false, 1, 0) },
+            { 2, new ToolItem(Icons.Tool[1], 2, "Axe",              1, 1, false, 1, 0) },
+            { 3, new ToolItem(Icons.Tool[2], 3, "Hoe",              1, 1, false, 1, 0) },
+            { 4, new ToolItem(Icons.Tool[3], 4, "Grass",            1, 255, false) },
+            { 5, new ToolItem(Icons.Tool[4], 5, "Tree Twigs",       1, 255, false) },
+            { 6, new ToolItem(Icons.Tool[5], 6, "Tree Branch",      1, 255, false) },
+            { 7, new ToolItem(Icons.Tool[6], 7, "Wood",             1, 255, false) },
+            { 8, new ToolItem(Icons.Tool[7], 8, "Stick",            1, 255, false) },
+            { 9, new ToolItem(Icons.Tool[8], 9, "Wooden Planks",    1, 255, false) },
+            { 10, new ToolItem(Icons.Tool[9], 10, "Stone",          1, 255, false) },
+            { 11, new ToolItem(Icons.Tool[10], 11, "Iron Ingot",    1, 255, false) },
+            { 12, new ToolItem(Icons.Tool[11], 12, "Small Stone",   1, 255, false) }
         };
         farmingPlantItem = new Dictionary<int, Item>()
         {
@@ -120,21 +120,6 @@ public static class ItemManager
             { 4041, new MilkItem(Icons.Milk[40], 4041, "Green Milk Big Bottle",               1, 255, true) },
             { 4042, new MilkItem(Icons.Milk[41], 4042, "Green Milk Big Bottle Label",         1, 255, true) }
         };
-        /*      groundTileItem = new Dictionary<int, GroundTileItem>()
-                {
-                    { 1, new GroundTileItem(Icons.GroundTile[0], 1, "Grass", 1, 255, false) },
-                    { 2, new GroundTileItem(Icons.GroundTile[1], 2, "Dirt", 1, 255, false) },
-                    { 3, new GroundTileItem(Icons.GroundTile[2], 3, "Stone", 1, 255, false) },
-                    { 4, new GroundTileItem(Icons.GroundTile[3], 4, "Wood", 1, 255, false) },
-                    { 5, new GroundTileItem(Icons.GroundTile[4], 5, "Sand", 1, 255, false) },
-                    { 6, new GroundTileItem(Icons.GroundTile[5], 6, "Water", 1, 255, false) },
-                    { 7, new GroundTileItem(Icons.GroundTile[6], 7, "Snow", 1, 255, false) },
-                    { 8, new GroundTileItem(Icons.GroundTile[7], 8, "Ice", 1, 255, false) },
-                    { 9, new GroundTileItem(Icons.GroundTile[8], 9, "Lava", 1, 255, false) },
-                    { 10, new GroundTileItem(Icons.GroundTile[9], 10, "Mud", 1, 255, false) },
-                    { 11, new GroundTileItem(Icons.GroundTile[10], 11, "Gravel", 1, 255, false) },
-                    { 12, new GroundTileItem(Icons.GroundTile[11], 12, "Clay", 1, 255, false) }
-                }; */
     }
 
     public static ToolItem GetToolItem(int id, int quantity = 1)

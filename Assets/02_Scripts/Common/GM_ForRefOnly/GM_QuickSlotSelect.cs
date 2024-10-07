@@ -9,6 +9,7 @@ public class GM_QuickSlotSelect : MonoBehaviour
 
     void Update()
     {
+        GetMouseScroll();
         SetQuickSlotPosition();
         ApplySlotPosition();
     }
@@ -25,6 +26,16 @@ public class GM_QuickSlotSelect : MonoBehaviour
             if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), "Alpha" + i)))
                 return i;
         return 0;
+    }
+
+    private void GetMouseScroll()
+    {
+        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0)
+            slotPos = slotPos == SelectedSlotIndex.Slot1 ? SelectedSlotIndex.Slot8 : slotPos - 1;
+        else if (Input.GetAxisRaw("Mouse ScrollWheel") < 0)
+            slotPos = slotPos == SelectedSlotIndex.Slot8 ? SelectedSlotIndex.Slot1 : slotPos + 1;
+        
+        Debug.Log(Input.GetAxisRaw("Mouse ScrollWheel"));
     }
 
     private void ApplySlotPosition()
