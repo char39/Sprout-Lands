@@ -4,29 +4,44 @@ using UnityEngine.Tilemaps;
 
 public class SetAlpha : MonoBehaviour
 {
-    private Tilemap sr;
+    private SpriteRenderer spr;
+    private Tilemap tile;
     private bool IsAlphaOrigin = false;
     private bool IsStartCoroutine = false;
 
     void Start()
     {
-        transform.parent.TryGetComponent(out sr);
+        transform.parent.TryGetComponent(out spr);
+        transform.parent.TryGetComponent(out tile);
     }
 
     /// <summary> Alpha값을 0.5로 설정. </summary>
     public void SetAlphaLow() => StartCoroutine(StartAlphaLow());
     private IEnumerator StartAlphaLow()
     {
-        if (sr != null && !IsStartCoroutine)
+        if ((tile != null || spr != null) && !IsStartCoroutine)
         {
             IsAlphaOrigin = false;
             IsStartCoroutine = true;
-            Color color = sr.color;
-            while (sr.color.a > 0.5f)
+            if (spr != null)
             {
-                sr.color = color;
-                color.a -= 0.05f;
-                yield return new WaitForSeconds(0.02f);
+                Color color = spr.color;
+                while (spr.color.a > 0.65f)
+                {
+                    spr.color = color;
+                    color.a -= 0.05f;
+                    yield return new WaitForSeconds(0.02f);
+                }
+            }
+            else if (tile != null)
+            {
+                Color color = tile.color;
+                while (tile.color.a > 0.65f)
+                {
+                    tile.color = color;
+                    color.a -= 0.05f;
+                    yield return new WaitForSeconds(0.02f);
+                }
             }
             IsStartCoroutine = false;
         }
@@ -35,21 +50,37 @@ public class SetAlpha : MonoBehaviour
     public void SetAlphaOrigin() => StartCoroutine(StartAlphaOrigin());
     private IEnumerator StartAlphaOrigin()
     {
-        if (sr != null && !IsStartCoroutine && !IsAlphaOrigin)
+        if ((tile != null || spr != null) && !IsStartCoroutine && !IsAlphaOrigin)
         {
             IsStartCoroutine = true;
-            Color color = sr.color;
-            while (sr.color.a < 1)
+            if (spr != null)
             {
-                sr.color = color;
-                color.a += 0.05f;
-                yield return new WaitForSeconds(0.02f);
+                Color color = spr.color;
+                while (spr.color.a < 1)
+                {
+                    spr.color = color;
+                    color.a += 0.05f;
+                    yield return new WaitForSeconds(0.02f);
+                }
+            }
+            else if (tile != null)
+            {
+                Color color = tile.color;
+                while (tile.color.a < 1)
+                {
+                    tile.color = color;
+                    color.a += 0.05f;
+                    yield return new WaitForSeconds(0.02f);
+                }
             }
             IsAlphaOrigin = true;
             IsStartCoroutine = false;
         }
     }
 
-
-
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.TryGetComponent(out Player player))
+            SetAlphaOrigin();
+    }
 }

@@ -8,16 +8,16 @@ public partial class Player
     private KeyCode rightKey = KeyCode.D;
     private KeyCode runKey = KeyCode.LeftShift;
 
-    public int up;
-    public int down;
-    public int left;
-    public int right;
-    public bool run;
+    [HideInInspector] public int up;
+    [HideInInspector] public int down;
+    [HideInInspector] public int left;
+    [HideInInspector] public int right;
+    [HideInInspector] public bool run;
 
-    internal float walkSpeed = 3.0f;
-    internal float runSpeed = 4.5f;
+    [HideInInspector] public float walkSpeed = 3.0f;
+    [HideInInspector] public float runSpeed = 4.5f;
 
-    public bool IsMoveStop = false;
+    [HideInInspector] public bool IsMoveStop = false;
 
     /// <summary> 플레이어의 이동 키를 설정함. </summary>
     public void UpdateKeySettings(KeyCode up, KeyCode down, KeyCode left, KeyCode right, KeyCode run)
@@ -91,20 +91,20 @@ public partial class Player
     /// <summary> 플레이어의 이동 방향을 벡터로 반환함. </summary>
     private Vector2 GetDirVector() => new(right + left, up + down);
     /// <summary> 플레이어 Pivot의 중심을 기준으로 Ray Origin 위치를 반환. </summary>
-    private Vector2 GetlocalPivotPos(Vector2 pivot) => pivot + GetDirVector() * 0.1f;
+    private Vector2 GetlocalPivotPos(Vector2 pivot, float distance = 0.1f) => pivot + GetDirVector() * distance;
     /// <summary> 플레이어의 이동에 따라 Ray Origin 위치를 반환. </summary>
-    private Vector2 GetRayOriginPos(Vector2 pivot)
+    private Vector2 GetRayOriginPos(Vector2 pivot, float distance = 0.1f)
     {
         if (GetDirVector() == Vector2.zero)
         {
-            if (state == State.UP) return pivot + Vector2.up * 0.1f;
-            else if (state == State.DOWN) return pivot + Vector2.down * 0.1f;
-            else if (state == State.RIGHT) return pivot + Vector2.right * 0.1f;
-            else if (state == State.LEFT) return pivot + Vector2.left * 0.1f;
+            if (state == State.UP) return pivot + Vector2.up * distance;
+            else if (state == State.DOWN) return pivot + Vector2.down * distance;
+            else if (state == State.RIGHT) return pivot + Vector2.right * distance;
+            else if (state == State.LEFT) return pivot + Vector2.left * distance;
             else return Vector2.zero;
         }
         else
-            return GetlocalPivotPos(pivot);
+            return GetlocalPivotPos(pivot, distance);
     }
     /// <summary> 플레이어의 BoxCast Size를 반환. </summary>
     private Vector2 GetBoxCastSize() => new(0.3f, 0.3f);

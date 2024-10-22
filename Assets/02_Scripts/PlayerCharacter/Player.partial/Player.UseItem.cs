@@ -53,6 +53,25 @@ public partial class Player : MonoBehaviour
         }
     }
 
-    
 
+    #region 아이템 사용을 위한 호출 함수
+    public void SetPlayerUseTool(int actionIndex)
+    {
+        ani.SetFloat(ACTION_TYPE, actionIndex);
+        ani.SetTrigger(ACTION_TRIGGER);
+    }
+
+    public void UseSeed(int ID)
+    {
+        GameObject seedPref = Resources.Load<GameObject>("Object/Crops");
+        Vector2 pos = SnapToGrid(GetRayOriginPos(pivotTr.position, 0.75f));
+        GameObject seed = Instantiate(seedPref, pos, Quaternion.identity);
+        Debug.Log($"Seed ID : {ID} 사용. 위치 : {pos}");
+    }
+
+
+
+
+
+    #endregion
 }

@@ -35,10 +35,4 @@ public partial class Player
         ani.SetFloat(ANI_DIRECTION, (int)state);  // UP : 0, DOWN : 1, LEFT : 2, RIGHT : 3
         ani.SetFloat(MOVE_SPEED, rb.velocity.magnitude > 0 ? (run ? 2 : 1) : 0);
     }
-
-    public void SetPlayerAction(int actionIndex)
-    {
-        ani.SetFloat(ACTION_TYPE, actionIndex);
-        ani.SetTrigger(ACTION_TRIGGER);
-    }
 }

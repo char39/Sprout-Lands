@@ -9,8 +9,8 @@ public class InventoryItemTest2 : MonoBehaviour
         if (col.CompareTag("Player"))
         {
 
-            ToolItem grass = ItemManager.GetToolItem(4, Quantity);
-            GameManager.Instance.inventory.AddItem(grass);
+            FarmingPlantItem RadishSeed = ItemManager.GetFarmingPlantItem(1019, Quantity);
+            GameManager.Instance.inventory.AddItem(RadishSeed);
             GameManager.Instance.inventoryUI.RefreshInventoryUI();
             Destroy(gameObject);
         }

@@ -30,12 +30,13 @@ public class GM_QuickSlotSelect : MonoBehaviour
 
     private void GetMouseScroll()
     {
-        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0)
+        float scroll = Input.GetAxisRaw("Mouse ScrollWheel");
+        float scrollValue = scroll > 0 ? 1 : scroll < 0 ? -1 : 0;
+
+        if (scrollValue > 0)
             slotPos = slotPos == SelectedSlotIndex.Slot1 ? SelectedSlotIndex.Slot8 : slotPos - 1;
-        else if (Input.GetAxisRaw("Mouse ScrollWheel") < 0)
+        else if (scrollValue < 0)
             slotPos = slotPos == SelectedSlotIndex.Slot8 ? SelectedSlotIndex.Slot1 : slotPos + 1;
-        
-        Debug.Log(Input.GetAxisRaw("Mouse ScrollWheel"));
     }
 
     private void ApplySlotPosition()

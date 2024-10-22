@@ -13,16 +13,6 @@ public class Inventory : MonoBehaviour
 
     private int FindExistItemIndex(Item AddItem)
     {
-        /*  기존 for문으로 index 찾는 코드
-        for (int index = 0; index < ListItem.Count; index++)
-        {
-            if (index >= InventorySize - 1) break;
-            Item i = ListItem[index];
-            if (AddItem.ID == i.ID && i.IsStackable)
-                return index;
-        }
-        return -1;
-        */
         int index = ListItem.FindIndex(i => AddItem.ID == i.ID && i.IsStackable);
         if (index != -1 && index < InventorySize - 1)
             return index;
@@ -53,7 +43,7 @@ public class Inventory : MonoBehaviour
                 ListItem.RemoveAt(exListIndex);
                 ListItem.Insert(exListIndex, RemainItem);
                 RemainStack = TotalStack - ListItem[exListIndex].MaxStack;
-                //this.AddItem(new Item(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable));
+
                 switch (AddItem)
                 {
                     case ToolItem toolItem:
@@ -77,7 +67,7 @@ public class Inventory : MonoBehaviour
             {
                 Item RemainItem = ListItem[exListIndex];
                 ListItem.RemoveAt(exListIndex);
-                //ListItem.Insert(exListIndex, new Item(RemainItem.Icon, RemainItem.ID, RemainItem.Name, RemainItem.Stack + AddItem.Stack, RemainItem.MaxStack, RemainItem.IsConsumable));
+
                 switch (RemainItem)
                 {
                     case ToolItem toolItem:
@@ -104,8 +94,7 @@ public class Inventory : MonoBehaviour
             {
                 RemainStack = AddItem.Stack - AddItem.MaxStack;
                 ListItem.RemoveAt(nullListIndex);
-                //ListItem.Insert(nullListIndex, new Item(AddItem.Icon, AddItem.ID, AddItem.Name, AddItem.MaxStack, AddItem.MaxStack, AddItem.IsConsumable));
-                //this.AddItem(new Item(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable));
+
                 switch (AddItem)
                 {
                     case ToolItem toolItem:
@@ -140,70 +129,18 @@ public class Inventory : MonoBehaviour
         OnRefreshInventory();
     }
 
-    private Item NewItem(ToolItem item, int Stack)
+    private Item NewItem(Item item, int Stack)
     {
-        return new ToolItem(item.Icon, item.ID, item.Name, Stack, item.MaxStack, item.IsConsumable, item.Durability, item.MaxDurability);
-    }
-    private Item NewItem(FarmingPlantItem item, int Stack)
-    {
-        return new FarmingPlantItem(item.Icon, item.ID, item.Name, Stack, item.MaxStack, item.IsConsumable);
-    }
-    private Item NewItem(FruitItem item, int Stack)
-    {
-        return new FruitItem(item.Icon, item.ID, item.Name, Stack, item.MaxStack, item.IsConsumable);
-    }
-    private Item NewItem(EggItem item, int Stack)
-    {
-        return new EggItem(item.Icon, item.ID, item.Name, Stack, item.MaxStack, item.IsConsumable);
-    }
-    private Item NewItem(MilkItem item, int Stack)
-    {
-        return new MilkItem(item.Icon, item.ID, item.Name, Stack, item.MaxStack, item.IsConsumable);
-    }
-
-/*     public void AddItem(ToolItem AddItem)
-    {
-        int TotalStack;
-        int RemainStack;
-        int exListIndex = FindExistItemIndex(AddItem);
-        int nullListIndex = FindNullItemIndex();
-        if (exListIndex != -1)
+        return item switch
         {
-            TotalStack = ListItem[exListIndex].Stack + AddItem.Stack;
-            if (TotalStack > AddItem.MaxStack)
-            {
-                ToolItem RemainItem = (ToolItem)ListItem[exListIndex];
-                RemainItem.SetStack(RemainItem.MaxStack);
-                ListItem.RemoveAt(exListIndex);
-                ListItem.Insert(exListIndex, RemainItem);
-                RemainStack = TotalStack - ListItem[exListIndex].MaxStack;
-                this.AddItem(new ToolItem(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable, RemainItem.Durability, RemainItem.MaxDurability));
-            }
-            else
-            {
-                ToolItem RemainItem = (ToolItem)ListItem[exListIndex];
-                ListItem.RemoveAt(exListIndex);
-                ListItem.Insert(exListIndex, new ToolItem(RemainItem.Icon, RemainItem.ID, RemainItem.Name, RemainItem.Stack + AddItem.Stack, RemainItem.MaxStack, RemainItem.IsConsumable, RemainItem.Durability, RemainItem.MaxDurability));
-            }
-        }
-        else
-        {
-            if (AddItem.Stack > AddItem.MaxStack)
-            {
-                RemainStack = AddItem.Stack - AddItem.MaxStack;
-                ListItem.RemoveAt(nullListIndex);
-                ListItem.Insert(nullListIndex, new ToolItem(AddItem.Icon, AddItem.ID, AddItem.Name, AddItem.MaxStack, AddItem.MaxStack, AddItem.IsConsumable, AddItem.Durability, AddItem.MaxDurability));
-                this.AddItem(new ToolItem(AddItem.Icon, AddItem.ID, AddItem.Name, RemainStack, AddItem.MaxStack, AddItem.IsConsumable, AddItem.Durability, AddItem.MaxDurability));
-            }
-            else
-            {
-                ListItem.RemoveAt(nullListIndex);
-                ListItem.Insert(nullListIndex, AddItem);
-            }
-        }
-        UpdateItemIndices();
-        OnRefreshInventory();
-    } */
+            ToolItem toolItem => new ToolItem(toolItem.Icon, toolItem.ID, toolItem.Name, Stack, toolItem.MaxStack, toolItem.IsConsumable, toolItem.Durability, toolItem.MaxDurability),
+            FarmingPlantItem farmingPlantItem => new FarmingPlantItem(farmingPlantItem.Icon, farmingPlantItem.ID, farmingPlantItem.Name, Stack, farmingPlantItem.MaxStack, farmingPlantItem.IsConsumable),
+            FruitItem fruitItem => new FruitItem(fruitItem.Icon, fruitItem.ID, fruitItem.Name, Stack, fruitItem.MaxStack, fruitItem.IsConsumable),
+            EggItem eggItem => new EggItem(eggItem.Icon, eggItem.ID, eggItem.Name, Stack, eggItem.MaxStack, eggItem.IsConsumable),
+            MilkItem milkItem => new MilkItem(milkItem.Icon, milkItem.ID, milkItem.Name, Stack, milkItem.MaxStack, milkItem.IsConsumable),
+            _ => throw new System.ArgumentException("Invalid Item Type (존재하지 않는 아이템 타입임)"),
+        };
+    }
 
     private int FindExistItemIndexForRemove(Item RemoveItem)
     {
@@ -287,8 +224,5 @@ public class Inventory : MonoBehaviour
         OnRefreshInventory();
     }
 
-    protected virtual void OnRefreshInventory()
-    {
-        OnRefreshInventoryUI?.Invoke();
-    }
+    protected virtual void OnRefreshInventory() => OnRefreshInventoryUI?.Invoke();
 }

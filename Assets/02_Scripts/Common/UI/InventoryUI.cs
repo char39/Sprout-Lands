@@ -129,9 +129,6 @@ public class InventoryUI : MonoBehaviour
     public bool IsNowInventoryOpen = false;
     private void OnShowInventory()
     {
-        //bool OnInven = GameManager.Instance.MousePos.IsShowInventory;
-        //bool OutInven = GameManager.Instance.MousePos.IsShowOutInventory;
-        
         if (Input.GetKeyDown(KeyCode.E))
             IsNowInventoryOpen = !IsNowInventoryOpen;
 

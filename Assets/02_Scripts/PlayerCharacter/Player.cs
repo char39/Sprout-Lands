@@ -3,15 +3,12 @@ using UnityEngine;
 public partial class Player : MonoBehaviour
 {
     //--------------------------------------------------------//
-    void Awake()
-    {
-        Instance = this;
-    }
     void Start()
     {
         GetComponents();
         SetValue();
         GetAllAlphaObj();
+        GetAllOrderMaskObj();
     }
 
     void Update()
@@ -22,18 +19,21 @@ public partial class Player : MonoBehaviour
         SetPlayerOrderMask();
         SetPlayerMoveVelocity();
         SetPlayerAnimation();
+
+        FindObjectCheck();
     }
+    
     void LateUpdate()
     {
         StateInfoCheck();
     }    
     //--------------------------------------------------------//
-    public static Player Instance;
     private Animator ani;
     private SpriteRenderer sr;
     private Rigidbody2D rb;
     private Transform tr;
-    private Transform pivotTr;
+    public Transform pivotTr;   // 임시로 public으로 해둠. 추후 수정 필요.
+    private Transform FindTileObjectTr;
     private Collider2D col;
     //--------------------------------------------------------//
     private void GetComponents()
@@ -43,6 +43,7 @@ public partial class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<Transform>();
         pivotTr = tr.GetChild(0).GetComponent<Transform>();
+        FindTileObjectTr = pivotTr.GetChild(0).GetComponent<Transform>();
         col = GetComponent<BoxCollider2D>();
     }
     private void SetValue()
@@ -51,6 +52,7 @@ public partial class Player : MonoBehaviour
         structureMask = 1 << LayerMask.NameToLayer("StructureMask");
         structureOrderMask = 1 << LayerMask.NameToLayer("StructureOrderMask");
         structureAlphaMask = 1 << LayerMask.NameToLayer("StructureAlphaMask");
+        tileObjectsMask = 1 << LayerMask.NameToLayer("TileObjectMask");
     }
 
 
@@ -60,5 +62,7 @@ public partial class Player : MonoBehaviour
         if (pivotTr == null) return;
         DrawGroundBoxCast();
         DrawGroundBoxCastLookAt();
+
+        DrawFindObjectCheck();
     }
 }

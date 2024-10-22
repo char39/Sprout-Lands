@@ -57,44 +57,47 @@ public class ToolItem : Item
 
     public void SetDurability(int Durability) => this.Durability = Durability;
 
-    private void UseToolAni(int ID)
+    private void UseTool(int ID)
     {
-        if (ID == 1 || ID == 2 || ID == 3)
-            Player.Instance.SetPlayerAction(ID);
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+            player.GetComponent<Player>().SetPlayerUseTool(ID);
     }
 
     public override void Use()
     {
-        if (IsConsumable)
-        {
-            
-        }
+        if (IsConsumable) { }
         else
         {
-            if (Durability > MaxDurability)
+            if (Durability == 0 && MaxDurability == 0)      // 내구도가 존재하지 않음
             {
-                if (MaxDurability == 0)
-                {
-                    Debug.Log($"{Name} 사용. 내구도 무한.");
-                    UseToolAni(ID);
-                }
+                Debug.Log($"{Name} 사용.");
             }
-            else   // = else if (Durability <= MaxDurability)
+            else
             {
-                if (MaxDurability == 0)
+                if (Durability > MaxDurability)                 // 내구도 무한
                 {
-                    Debug.Log($"{Name} 사용. 내구도 존재하지 않음.");
+                    if (1 <= ID && ID <= 3)
+                        UseTool(ID);
                 }
-                else if (Durability <= 0)
+                else                                            // 내구도 유한
                 {
-                    Durability = 0;
-                    Debug.Log($"{Name}의 내구도가 {Durability}이 되었습니다.");
-                }
-                else
-                {
-                    Debug.Log($"{Name} 사용. 내구도 : {Durability}.");
-                    UseToolAni(ID);
-                    Durability -= 1;
+                    if (Durability <= 0)
+                    {
+                        Durability = 0;
+                        Debug.Log($"{Name}의 내구도가 {Durability}이 되어 사용할 수 없습니다.");
+                    }
+                    else
+                    {
+                        Debug.Log($"{Name} 사용. 내구도 : {Durability}.");
+                        UseTool(ID);
+                        Durability -= 1;
+                        if (Durability <= 0)
+                        {
+                            Durability = 0;
+                            Debug.Log($"{Name}의 내구도가 {Durability}이 되었습니다.");
+                        }
+                    }
                 }
             }
         }
@@ -111,12 +114,25 @@ public class FarmingPlantItem : Item
     public FarmingPlantItem(Sprite Icon, int ID, string Name, int Stack, int MaxStack, bool IsConsumable)
         : base(Icon, ID, Name, Stack, MaxStack, IsConsumable) { }
     
+    private void UseSeed(int ID)
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            
+        }
+    }
+
     public override void Use()
     {
         if (IsConsumable)
-            Debug.Log("Use FarmingPlantItem [소비]");
+        {
+            Debug.Log("Use FarmingPlantItem 작물 소비");
+        }
         else
-            Debug.Log("Use FarmingPlantItem [사용]");
+        {
+            UseSeed(ID);
+        }
     }
 
     public override void Remove(int Stack)
