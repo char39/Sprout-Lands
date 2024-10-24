@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public partial class Player : MonoBehaviour
 {
@@ -7,8 +8,6 @@ public partial class Player : MonoBehaviour
     {
         GetComponents();
         SetValue();
-        GetAllAlphaObj();
-        GetAllOrderMaskObj();
     }
 
     void Update()
@@ -16,9 +15,13 @@ public partial class Player : MonoBehaviour
         GetPlayerMoveKeyInput();
         OnUseKey();
         OnInteractiveKey();
-        SetPlayerOrderMask();
         SetPlayerMoveVelocity();
         SetPlayerAnimation();
+
+        UpdateAllAlphaObj();        // 임시
+        UpdateAllOrderMaskObj();    // 임시
+        SetObjectsOrderMask();
+        SetObjectsAlphaMask();
 
         FindObjectCheck();
     }
@@ -48,6 +51,8 @@ public partial class Player : MonoBehaviour
     }
     private void SetValue()
     {
+        SetAlphaList = new List<SetAlpha>();
+        SetOrderMaskList = new List<SetOrderMask>();
         groundMask = 1 << LayerMask.NameToLayer("GroundMask");
         structureMask = 1 << LayerMask.NameToLayer("StructureMask");
         structureOrderMask = 1 << LayerMask.NameToLayer("StructureOrderMask");

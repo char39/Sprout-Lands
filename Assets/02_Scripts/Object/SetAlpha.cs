@@ -77,10 +77,4 @@ public class SetAlpha : MonoBehaviour
             IsStartCoroutine = false;
         }
     }
-
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.TryGetComponent(out Player player))
-            SetAlphaOrigin();
-    }
 }

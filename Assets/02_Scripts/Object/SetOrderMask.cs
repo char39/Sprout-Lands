@@ -42,9 +42,4 @@ public class SetOrderMask : MonoBehaviour
             yield return null;
         }
     }
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.TryGetComponent(out Player player))
-            SetOrderOrigin();
-    }
 }

@@ -5,7 +5,7 @@ public class GM_QuickSlotSelect : MonoBehaviour
     public enum SelectedSlotIndex { Slot1 = 1, Slot2, Slot3, Slot4, Slot5, Slot6, Slot7, Slot8 }
     public SelectedSlotIndex slotPos = SelectedSlotIndex.Slot1;
 
-    public Transform Slot_Select;
+    [HideInInspector] public Transform Slot_Select;
 
     void Update()
     {
@@ -41,7 +41,7 @@ public class GM_QuickSlotSelect : MonoBehaviour
 
     private void ApplySlotPosition()
     {
-        Transform invenQuickSlotGroupTr = GameManager.Instance.inventoryUI.QuickSlot_Group;
+        Transform invenQuickSlotGroupTr = GameManager.InventoryUI.QuickSlot_Group;
         if (invenQuickSlotGroupTr == null || Slot_Select == null)
             return;
 

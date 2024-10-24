@@ -22,10 +22,12 @@ public partial class Player
 
     public void FindObjectCheck()
     {
-        List<Item> items = GameManager.Instance.inventory.GetAllItems();
-        int idIndex = items[(int)GameManager.Instance.SlotSelect.slotPos - 1].ID;
+        List<Item> items = GameManager.Inventory.GetAllItems();
+        int idIndex = items[(int)GameManager.SlotSelect.slotPos - 1].ID;
+        Item item = items[(int)GameManager.SlotSelect.slotPos - 1];
 
-        if (1 <= idIndex && idIndex <= 3)
+        bool FindTileOnCondition = (1 <= idIndex && idIndex <= 3) || (item is FarmingPlantItem && !item.IsConsumable);
+        if (FindTileOnCondition)
         {
             isFindObjectCheck = true;
             FindTileObjectTr.GetComponent<SpriteRenderer>().enabled = true;
@@ -54,7 +56,7 @@ public partial class Player
 
     private void DrawFindObjectCheck()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(GetRayOriginPos(pivotTr.position, 0.75f), new(0.1f, 0.1f));
+        Gizmos.color = new Color(0, 0, 1, 0.5f);
+        Gizmos.DrawSphere(GetRayOriginPos(pivotTr.position, 0.75f), 0.1f);
     }
 }

@@ -8,13 +8,13 @@ public class InventoryItemTest : MonoBehaviour
         {
 
             ToolItem axe = ItemManager.GetToolItem(2, 1);
-            GameManager.Instance.inventory.AddItem(axe);
+            GameManager.Inventory.AddItem(axe);
             ToolItem hoe = ItemManager.GetToolItem(3, 1);
-            GameManager.Instance.inventory.AddItem(hoe);
+            GameManager.Inventory.AddItem(hoe);
             ToolItem water = ItemManager.GetToolItem(1, 1);
-            GameManager.Instance.inventory.AddItem(water);
+            GameManager.Inventory.AddItem(water);
             
-            GameManager.Instance.inventoryUI.RefreshInventoryUI();
+            GameManager.InventoryUI.RefreshInventoryUI();
             Destroy(gameObject);
         }
     }

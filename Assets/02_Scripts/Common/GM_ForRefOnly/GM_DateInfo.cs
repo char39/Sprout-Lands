@@ -3,27 +3,27 @@ using UnityEngine.UI;
 
 public class GM_DateInfo : MonoBehaviour
 {
-    public Transform DateInfo_Frame;
-    public RectTransform Time_HourHand;
+    [HideInInspector] public Transform DateInfo_Frame;
+    [HideInInspector] public RectTransform Time_HourHand;
 
-    public Image Weather_Now;
-    public Sprite[] WeatherTexures;
+    [HideInInspector] public Image Weather_Now;
+    [HideInInspector] public Sprite[] WeatherTexures;
     public enum TimeState { Morning, Afternoon, Night }
     public enum WeatherState { Clear, Cloud, Rain, ShiningSun, Storm, Thunder, Fog }
     public TimeState timeState = TimeState.Morning;
     public WeatherState weatherState = WeatherState.Clear;
 
-    public Text Time_Text;
-    public Text Time_Second;
-    public Text TimeZone;
+    [HideInInspector] public Text Time_Text;
+    [HideInInspector] public Text Time_Second;
+    [HideInInspector] public Text TimeZone;
 
     public const float maxAngle = 80f;
     private const string AM = "AM";
     private const string PM = "PM";
     private const string TimeColon = ":";
-    internal float GameTime;
-    internal int GameTimeHour;
-    internal int GameTimeMinute;
+    [HideInInspector] public float GameTime;
+    [HideInInspector] public int GameTimeHour;
+    [HideInInspector] public int GameTimeMinute;
 
     void Start()
     {
@@ -38,9 +38,9 @@ public class GM_DateInfo : MonoBehaviour
 
     void Update()
     {
-        GameTime = GameManager.Instance.gameTimeRule.GameTime;
-        GameTimeHour = GameManager.Instance.gameTimeRule.GameTimeHour;
-        GameTimeMinute = GameManager.Instance.gameTimeRule.GameTimeMinute;
+        GameTime = GameManager.GameTimeRule.GameTime;
+        GameTimeHour = GameManager.GameTimeRule.GameTimeHour;
+        GameTimeMinute = GameManager.GameTimeRule.GameTimeMinute;
         UpdateHourHand();
         UpdateTimeText();
         UpdateTimeState();
@@ -59,7 +59,7 @@ public class GM_DateInfo : MonoBehaviour
         if (GameTimeMinute % 10 == 0)
             Time_Text.text = GameTimeHour.ToString() + "    " + GameTimeMinute.ToString("00");
         Time_Second.text = (int)(GameTime % 1.5) == 0 ? TimeColon : string.Empty;
-        TimeZone.text = GameManager.Instance.gameTimeRule.CheckMorning() ? AM : PM;
+        TimeZone.text = GameManager.GameTimeRule.CheckMorning() ? AM : PM;
     }
     private void UpdateTimeState()
     {

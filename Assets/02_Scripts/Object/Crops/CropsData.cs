@@ -2,37 +2,56 @@ using UnityEngine;
 
 public class CropsData : MonoBehaviour, ICrops
 {
-    public ICrops.CropType Type { get; set; }
-    public ICrops.Growth Growth { get; set; }
-}
+    private SpriteRenderer sr;
+    private BoxCollider2D col;
+    public ICrops.CropType Type;
+    public ICrops.Growth Growth;
 
-
-public interface ICrops
-{
-    public enum CropType
+    void Start()
     {
-        Corn,
-        Carrot,
-        Cauliflower,
-        Tomato,
-        EggPlant,
-        Flower,
-        Lettuce,
-        Wheat,
-        Pumpkin,
-        Radish,
-        Amaranth,
-        Turnip,
-        StarFruit,
-        Bean
+        TryGetComponent(out sr);
+        transform.GetChild(0).TryGetComponent(out col);
+        UpdateSprite();
     }
-    
-    public enum Growth
+
+    void Update()       // 임시로 Update에 넣어둠
     {
-        Sprout,
-        Growth1,
-        Growth2,
-        Growth3,
-        Harvest
+        UpdateSprite();
+        UpdateMask();
+    }
+
+    public void SetType(ICrops.CropType type) => Type = type;
+    public void SetGrowth(ICrops.Growth growth) => Growth = growth;
+    public void SetTypeAndGrowth(ICrops.CropType type, ICrops.Growth growth)
+    {
+        Type = type;
+        Growth = growth;
+    }
+
+    public void UpdateSprite()
+    {
+        if (sr == null || (Type != 0) && (int)Growth == 3)
+            return;
+        sr.sprite = Icons.FarmingPlant_Crops[CropsSprites.Index[(int)Type, (int)Growth]];
+    }
+
+    public void UpdateMask()
+    {
+        if (col == null)
+            return;
+        Vector2? offset = CropsStructureMasks.offsets[(int)Type, (int)Growth];
+        Vector2? size = CropsStructureMasks.sizes[(int)Type, (int)Growth];
+
+        if (offset == null || size == null)
+        {
+            col.enabled = false;
+            return;
+        }
+        else
+        {
+            col.enabled = true;
+            col.offset = (Vector2)offset;
+            col.size = (Vector2)size;
+        }
     }
 }

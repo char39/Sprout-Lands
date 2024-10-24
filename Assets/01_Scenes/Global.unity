@@ -1983,14 +1983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27e97cf7d3c94b65aa158155175ecaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraSetting: {fileID: 0}
-  gameTimeRule: {fileID: 0}
-  DateInfo: {fileID: 0}
-  DateInfoUI: {fileID: 0}
-  MousePos: {fileID: 0}
-  SlotSelect: {fileID: 0}
-  inventory: {fileID: 0}
-  inventoryUI: {fileID: 0}
 --- !u!4 &1417329861
 Transform:
   m_ObjectHideFlags: 0
@@ -2815,11 +2807,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1671887639665278417, guid: 30706a740a9f74a15acc70ad854fb64a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -6.74
       objectReference: {fileID: 0}
     - target: {fileID: 1671887639665278417, guid: 30706a740a9f74a15acc70ad854fb64a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.23
       objectReference: {fileID: 0}
     - target: {fileID: 1671887639665278417, guid: 30706a740a9f74a15acc70ad854fb64a, type: 3}
       propertyPath: m_LocalPosition.z

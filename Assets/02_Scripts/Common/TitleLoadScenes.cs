@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class TitleLoadScenes : MonoBehaviour
 {
-    private const string TileMap = "TileMap";
+    private const string OutsideSceneName = "Outside";
     void Start()
     {
-        SceneManager.LoadScene(TileMap, LoadSceneMode.Additive);
+        SceneManager.LoadScene(OutsideSceneName, LoadSceneMode.Additive);
         Destroy(gameObject);
     }
 }

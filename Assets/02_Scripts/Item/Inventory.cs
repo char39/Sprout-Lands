@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public int InventorySize = 32;
+    [HideInInspector] public int InventorySize = 32;
     public List<Item> ListItem = new(32) { };
 
     public delegate void RefreshInventoryUIDelegate();

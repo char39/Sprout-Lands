@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class GM_DateInfoUI : MonoBehaviour
 {
-    public Transform DateInfo_Frame;
-    public CanvasGroup DateInfo_FrameCanvasGroup;
+    [HideInInspector] public Transform DateInfo_Frame;
+    [HideInInspector] public CanvasGroup DateInfo_FrameCanvasGroup;
+    public bool IsNowChangeAlpha = false;
 
     void Start()
     {
@@ -17,10 +18,9 @@ public class GM_DateInfoUI : MonoBehaviour
         OnMouseDateInfo_Frame();
     }
 
-    public bool IsNowChangeAlpha = false;
     private void OnMouseDateInfo_Frame()
     {
-        bool OnMouse = GameManager.Instance.MousePos.IsOnWeatherUI;
+        bool OnMouse = GameManager.MousePos.IsOnWeatherUI;
 
         if (OnMouse)
             StartCoroutine(SlerpFrameAlpha(0.65f));
