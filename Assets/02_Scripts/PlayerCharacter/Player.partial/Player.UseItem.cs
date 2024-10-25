@@ -18,13 +18,13 @@ public partial class Player : MonoBehaviour
 
     private void OnUseKey()
     {
-        if (GameManager.MousePos.IsPointerOverGameObject())
+        if (GameManager.GM.MousePos.IsPointerOverGameObject())
             return;
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(useKey)) && !IsNowUse)
         {
             IsNowUse = true;
-            int nowSlotPos = (int)GameManager.SlotSelect.slotPos;
-            List<Item> items = GameManager.Inventory.GetAllItems();
+            int nowSlotPos = (int)GameManager.GM.SlotSelect.slotPos;
+            List<Item> items = GameManager.GM.Inventory.GetAllItems();
             if (items[nowSlotPos - 1].ID != -1)
             {
                 items[nowSlotPos - 1].Use();

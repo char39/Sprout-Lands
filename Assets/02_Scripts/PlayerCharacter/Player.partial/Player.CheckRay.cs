@@ -4,45 +4,45 @@ using System.Collections.Generic;
 public partial class Player
 {
     private LayerMask tileObjectsMask;
+    private LayerMask crops;
     private bool isFindObjectCheck = false;
 
-    private RaycastHit2D GetFindObjectCheck(LayerMask mask, float distance = 1f)
-    {
-        Vector2 dir = state switch
-        {
-            State.UP => Vector2.down,
-            State.DOWN => Vector2.up,
-            State.LEFT => Vector2.right,
-            State.RIGHT => Vector2.left,
-            _ => Vector2.zero,
-        };
-        Vector2 origin = GetRayOriginPos(pivotTr.position, distance);
-        return Physics2D.BoxCast(origin, new(0.1f, 0.1f), 0, dir, 1, mask);
-    }
+    private RaycastHit2D GetFindTileObjectBoxCast(Vector3 pos, LayerMask mask, Vector2 size) => Physics2D.BoxCast(pos, size, 0, Vector2.zero, 0, mask);
 
-    public void FindObjectCheck()
+    private void SetFindTileObjectPos()
     {
-        List<Item> items = GameManager.Inventory.GetAllItems();
-        int idIndex = items[(int)GameManager.SlotSelect.slotPos - 1].ID;
-        Item item = items[(int)GameManager.SlotSelect.slotPos - 1];
+        List<Item> items = GameManager.GM.Inventory.GetAllItems();
+        int idIndex = items[(int)GameManager.GM.SlotSelect.slotPos - 1].ID;
+        Item item = items[(int)GameManager.GM.SlotSelect.slotPos - 1];
 
-        bool FindTileOnCondition = (1 <= idIndex && idIndex <= 3) || (item is FarmingPlantItem && !item.IsConsumable);
-        if (FindTileOnCondition)
+        // 도구, 농작물 중 소비 아이템이 아닌 경우 (씨앗)
+        isFindObjectCheck = (1 <= idIndex && idIndex <= 3) || (item is FarmingPlantItem && !item.IsConsumable);
+
+        if (isFindObjectCheck)
         {
-            isFindObjectCheck = true;
             FindTileObjectTr.GetComponent<SpriteRenderer>().enabled = true;
-            float distance;
-            if (idIndex == 2) distance = 0.75f;
-            else if (idIndex == 3) distance = 0.75f;
-            else distance = 0.75f;
-            FindTileObjectTr.position = SnapToGrid(GetRayOriginPos(pivotTr.position, distance));
+            FindTileObjectTr.position = SnapToGrid(GetRayOriginPos(pivotTr.position, 0.75f));
         }
         else
         {
-            isFindObjectCheck = false;
-            FindTileObjectTr.localPosition = new Vector2(0, 0);
+            FindTileObjectTr.localPosition = Vector2.zero;
             FindTileObjectTr.GetComponent<SpriteRenderer>().enabled = false;
         }
+    }
+
+    public bool IsObjectDetected()
+    {
+        if (isFindObjectCheck)
+        {
+            RaycastHit2D hit = GetFindTileObjectBoxCast(FindTileObjectTr.position, crops, new Vector2(0.5f, 0.5f));
+            if (hit.collider != null && hit.collider.TryGetComponent(out CropsData cropsData))
+            {
+                if (cropsData.Growth == ICrops.Growth.Harvest)
+                    return true;
+            }
+
+        }
+        return false;
     }
 
     private Vector2 SnapToGrid(Vector2 original)

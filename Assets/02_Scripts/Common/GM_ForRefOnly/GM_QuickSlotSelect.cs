@@ -4,6 +4,7 @@ public class GM_QuickSlotSelect : MonoBehaviour
 {
     public enum SelectedSlotIndex { Slot1 = 1, Slot2, Slot3, Slot4, Slot5, Slot6, Slot7, Slot8 }
     public SelectedSlotIndex slotPos = SelectedSlotIndex.Slot1;
+    private SelectedSlotIndex slotPosPrev = SelectedSlotIndex.Slot1;
 
     [HideInInspector] public Transform Slot_Select;
 
@@ -11,21 +12,31 @@ public class GM_QuickSlotSelect : MonoBehaviour
     {
         GetMouseScroll();
         SetQuickSlotPosition();
-        ApplySlotPosition();
     }
 
-    public void SetQuickSlotPosition()
+    void LateUpdate()
     {
-        int slotNum = GetKeyNum();
-        slotPos = slotNum != 0 ? (SelectedSlotIndex)slotNum : slotPos;
+        RefreshSlotPosition();
     }
 
-    private int GetKeyNum()
+    public void ApplySlotPosition()
     {
-        for (int i = 1; i <= 8; i++)
-            if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), "Alpha" + i)))
-                return i;
-        return 0;
+        Transform QSlotGroup = GameManager.GM.InventoryUI.QuickSlot_Group;
+        if (QSlotGroup == null || Slot_Select == null)
+            return;
+
+        Vector2 QuickSlotPos = QSlotGroup.GetChild((int)slotPos - 1).position;
+
+        Slot_Select.position = (Vector2)Slot_Select.position != QuickSlotPos ? QuickSlotPos : Slot_Select.position;
+    }
+
+    private void RefreshSlotPosition()
+    {
+        if (slotPosPrev != slotPos)
+        {
+            ApplySlotPosition();
+            slotPosPrev = slotPos;
+        }
     }
 
     private void GetMouseScroll()
@@ -39,14 +50,19 @@ public class GM_QuickSlotSelect : MonoBehaviour
             slotPos = slotPos == SelectedSlotIndex.Slot8 ? SelectedSlotIndex.Slot1 : slotPos + 1;
     }
 
-    private void ApplySlotPosition()
+    private int GetKeyNum()
     {
-        Transform invenQuickSlotGroupTr = GameManager.InventoryUI.QuickSlot_Group;
-        if (invenQuickSlotGroupTr == null || Slot_Select == null)
-            return;
+        for (int i = 1; i <= 8; i++)
+            if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), "Alpha" + i)))
+                return i;
+        return 0;
+    }
 
-        Vector2 QuickSlotPos = invenQuickSlotGroupTr.GetChild((int)slotPos - 1).position;
+    public void SetQuickSlotPosition()
+    {
+        int slotNum = GetKeyNum();
 
-        Slot_Select.position = (Vector2)Slot_Select.position != QuickSlotPos ? QuickSlotPos : Slot_Select.position;
+        if (slotNum != 0)
+            slotPos = (SelectedSlotIndex)slotNum;
     }
 }

@@ -9,6 +9,7 @@ public class Icons
     public static Sprite[] Milk;
     public static Sprite[] GroundTile;
     public static Sprite ItemShadow;
+    public static Sprite[] InventorySpritesheet;
 
     public static Sprite[] FarmingPlant_Crops;
     
@@ -26,6 +27,7 @@ public class Icons
         Milk = Resources.LoadAll<Sprite>("Item/Milk");
         GroundTile = Resources.LoadAll<Sprite>("Item/GroundTile");
         ItemShadow = Resources.Load<Sprite>("Item/ItemShadow");
+        InventorySpritesheet = Resources.LoadAll<Sprite>("UI/Inventory/Inventory_Spritesheet");
 
         FarmingPlant_Crops = Resources.LoadAll<Sprite>("Item/Farming Plants");
     }

@@ -27,7 +27,7 @@ public class InventoryUI : MonoBehaviour
 
     void Start()
     {
-        inventory = GameManager.Inventory;
+        inventory = GameManager.GM.Inventory;
         inventory.OnRefreshInventoryUI += RefreshInventoryUI;
         
         Inventory_Frame = GameObject.Find("UI_Canvas").transform.Find("Inventory_Frame");
@@ -41,7 +41,7 @@ public class InventoryUI : MonoBehaviour
         QuickSlot_Group = QuickSlot_Frame.GetChild(0).GetChild(0);
         
         // Slot_Select가 이 클래스의 QuickSlot_Frame보다 먼저 호출되는 것을 방지하기 위해 이곳에서 할당함.
-        GameManager.SlotSelect.Slot_Select = QuickSlot_Frame.GetChild(0).GetChild(1);
+        GameManager.GM.SlotSelect.Slot_Select = QuickSlot_Frame.GetChild(0).GetChild(1);
 
         SlotPref = Resources.Load<GameObject>("Item/ItemSlot");
         QuickSlotPref = Resources.Load<GameObject>("Item/ItemQuickSlot");
@@ -66,7 +66,7 @@ public class InventoryUI : MonoBehaviour
             itemObj.GetComponent<Image>().sprite = null;
             itemObj.GetComponentsInChildren<Text>()[0].text = "";
             itemObj.GetComponent<DragableItem>().index = i;
-            GameManager.Inventory.ListItem.Add(new Item(null, -1, "null", 0, 0, false));
+            GameManager.GM.Inventory.ListItem.Add(new Item(null, -1, "null", 0, 0, false));
         }
     }
 

@@ -23,7 +23,7 @@ public partial class Player : MonoBehaviour
         SetObjectsOrderMask();
         SetObjectsAlphaMask();
 
-        FindObjectCheck();
+        SetFindTileObjectPos();
     }
     
     void LateUpdate()
@@ -58,6 +58,7 @@ public partial class Player : MonoBehaviour
         structureOrderMask = 1 << LayerMask.NameToLayer("StructureOrderMask");
         structureAlphaMask = 1 << LayerMask.NameToLayer("StructureAlphaMask");
         tileObjectsMask = 1 << LayerMask.NameToLayer("TileObjectMask");
+        crops = 1 << LayerMask.NameToLayer("Crops");
     }
 
 

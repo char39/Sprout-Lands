@@ -11,13 +11,11 @@ public class CropsData : MonoBehaviour, ICrops
     {
         TryGetComponent(out sr);
         transform.GetChild(0).TryGetComponent(out col);
-        UpdateSprite();
     }
 
     void Update()       // 임시로 Update에 넣어둠
     {
-        UpdateSprite();
-        UpdateMask();
+        RefreshAll();
     }
 
     public void SetType(ICrops.CropType type) => Type = type;
@@ -28,14 +26,14 @@ public class CropsData : MonoBehaviour, ICrops
         Growth = growth;
     }
 
-    public void UpdateSprite()
+    public void SetSprite()
     {
         if (sr == null || (Type != 0) && (int)Growth == 3)
             return;
         sr.sprite = Icons.FarmingPlant_Crops[CropsSprites.Index[(int)Type, (int)Growth]];
     }
 
-    public void UpdateMask()
+    public void SetMask()
     {
         if (col == null)
             return;
@@ -43,15 +41,18 @@ public class CropsData : MonoBehaviour, ICrops
         Vector2? size = CropsStructureMasks.sizes[(int)Type, (int)Growth];
 
         if (offset == null || size == null)
-        {
             col.enabled = false;
-            return;
-        }
         else
         {
             col.enabled = true;
             col.offset = (Vector2)offset;
             col.size = (Vector2)size;
         }
+    }
+
+    public void RefreshAll()
+    {
+        SetSprite();
+        SetMask();
     }
 }

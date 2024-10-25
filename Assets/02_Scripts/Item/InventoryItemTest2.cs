@@ -10,8 +10,8 @@ public class InventoryItemTest2 : MonoBehaviour
         {
 
             FarmingPlantItem RadishSeed = ItemManager.GetFarmingPlantItem(1019, Quantity);
-            GameManager.Inventory.AddItem(RadishSeed);
-            GameManager.InventoryUI.RefreshInventoryUI();
+            GameManager.GM.Inventory.AddItem(RadishSeed);
+            GameManager.GM.InventoryUI.RefreshInventoryUI();
             Destroy(gameObject);
         }
     }

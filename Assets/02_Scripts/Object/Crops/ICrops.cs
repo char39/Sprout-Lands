@@ -30,6 +30,6 @@ public interface ICrops
     public void SetType(CropType type);
     public void SetGrowth(Growth growth);
     public void SetTypeAndGrowth(CropType type, Growth growth);
-    public void UpdateSprite();
-    public void UpdateMask();
+    public void SetSprite();
+    public void SetMask();
 }

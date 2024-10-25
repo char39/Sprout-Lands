@@ -34,7 +34,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         if (index + 1 > 8 && !IsDragable)
             return;
-        GameManager.SlotSelect.slotPos = (GM_QuickSlotSelect.SelectedSlotIndex)index + 1;
+        GameManager.GM.SlotSelect.slotPos = (GM_QuickSlotSelect.SelectedSlotIndex)index + 1;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -42,7 +42,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         IsDragable = true;
         originPos = tr.anchoredPosition;
         originParentTr = transform.parent;
-        tr.SetParent(GameManager.InventoryUI.TempItem);
+        tr.SetParent(GameManager.GM.InventoryUI.TempItem);
         canvasGroup.blocksRaycasts = false;
     }
 
@@ -71,7 +71,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             eventData.pointerEnter.transform.GetComponent<RectTransform>().anchoredPosition = originPos;
 
             int tempIndex = eventData.pointerEnter.GetComponent<DragableItem>().index;
-            GameManager.Inventory.ChangeItemIndex(index, tempIndex);
+            GameManager.GM.Inventory.ChangeItemIndex(index, tempIndex);
             eventData.pointerEnter.GetComponent<DragableItem>().index = index;
             index = tempIndex;
         }

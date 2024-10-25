@@ -2,20 +2,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager GM;
 
-    public static GM_CameraSetting CameraSetting;
-    public static GM_GameTimeRule GameTimeRule;
-    public static GM_DateInfo DateInfo;
-    public static GM_DateInfoUI DateInfoUI;
-    public static GM_MousePosition MousePos;
-    public static GM_QuickSlotSelect SlotSelect;
-    public static Inventory Inventory;
-    public static InventoryUI InventoryUI;
+    public Player player;
+    public GM_CameraSetting CameraSetting;
+    public GM_GameTimeRule GameTimeRule;
+    public GM_DateInfo DateInfo;
+    public GM_DateInfoUI DateInfoUI;
+    public GM_MousePosition MousePos;
+    public GM_QuickSlotSelect SlotSelect;
+    public Inventory Inventory;
+    public InventoryUI InventoryUI;
 
     void Awake()
     {
-        Instance = this;
+        GM = this;
         AddComponent();
     }
 
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         CameraSetting.MainCam = Camera.main.transform;
+        player = FindObjectOfType<Player>();
     }
 
     void Update()

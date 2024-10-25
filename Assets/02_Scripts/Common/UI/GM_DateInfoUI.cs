@@ -20,7 +20,7 @@ public class GM_DateInfoUI : MonoBehaviour
 
     private void OnMouseDateInfo_Frame()
     {
-        bool OnMouse = GameManager.MousePos.IsOnWeatherUI;
+        bool OnMouse = GameManager.GM.MousePos.IsOnWeatherUI;
 
         if (OnMouse)
             StartCoroutine(SlerpFrameAlpha(0.65f));
