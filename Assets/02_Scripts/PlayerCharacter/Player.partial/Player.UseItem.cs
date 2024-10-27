@@ -9,6 +9,8 @@ public partial class Player : MonoBehaviour
     public bool IsNowUse = false;
     public bool IsNowInteractive = false;
 
+    public const int WateringCan = 1;
+
     /// <summary> 플레이어의 사용, 상호작용 등 키를 설정함. </summary>
     public void UpdateKeySettings(KeyCode use, KeyCode interact)
     {
@@ -55,10 +57,26 @@ public partial class Player : MonoBehaviour
 
 
     #region 아이템 사용을 위한 호출 함수
-    public void SetPlayerUseTool(int actionIndex)
+    public void SetPlayerUseTool(int itemID)
     {
-        ani.SetFloat(ACTION_TYPE, actionIndex);
+        ani.SetFloat(ACTION_TYPE, itemID);
         ani.SetTrigger(ACTION_TRIGGER);
+
+        if (itemID == WateringCan)   // 물뿌리개 사용 시 호출
+        {
+            if (IsObjectDetected())
+            {
+                RaycastHit2D hit = GetFindTileObjectBoxCast(FindTileObjectTr.position, crops | waterMask, new Vector2(0.2f, 0.2f));
+                if (hit.collider == null) return;
+
+                if (hit.collider.TryGetComponent(out CropsData cropsdata))
+                    cropsdata.SetWatered(true);
+                else if (hit.collider.TryGetComponent(out WaterTile waterTile))
+                    return;
+            }
+            water.transform.position = FindTileObjectTr.position;
+            water.WaterDropTrigger((int)state);
+        }
     }
 
     public void UseSeed(int ID)

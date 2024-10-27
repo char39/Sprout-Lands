@@ -37,23 +37,26 @@ public partial class Player : MonoBehaviour
     private Transform tr;
     public Transform pivotTr;   // 임시로 public으로 해둠. 추후 수정 필요.
     private Transform FindTileObjectTr;
+    private WaterDrop water;
     private Collider2D col;
     //--------------------------------------------------------//
     private void GetComponents()
     {
-        ani = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
-        tr = GetComponent<Transform>();
+        TryGetComponent(out ani);
+        TryGetComponent(out sr);
+        TryGetComponent(out rb);
+        TryGetComponent(out tr);
         pivotTr = tr.GetChild(0).GetComponent<Transform>();
         FindTileObjectTr = pivotTr.GetChild(0).GetComponent<Transform>();
-        col = GetComponent<BoxCollider2D>();
+        water = FindTileObjectTr.GetChild(0).GetComponent<WaterDrop>();
+        TryGetComponent(out col);
     }
     private void SetValue()
     {
         SetAlphaList = new List<SetAlpha>();
         SetOrderMaskList = new List<SetOrderMask>();
         groundMask = 1 << LayerMask.NameToLayer("GroundMask");
+        waterMask = 1 << LayerMask.NameToLayer("Water");
         structureMask = 1 << LayerMask.NameToLayer("StructureMask");
         structureOrderMask = 1 << LayerMask.NameToLayer("StructureOrderMask");
         structureAlphaMask = 1 << LayerMask.NameToLayer("StructureAlphaMask");

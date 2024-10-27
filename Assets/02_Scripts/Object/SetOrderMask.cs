@@ -22,9 +22,9 @@ public class SetOrderMask : MonoBehaviour
         {
             IsOrderOrigin = false;
             if (spr != null)
-                spr.sortingOrder = 11;
+                spr.sortingOrder = 12;
             else if (tile != null)
-                tile.sortingOrder = 11;
+                tile.sortingOrder = 12;
             yield return null;
         }
     }
@@ -35,9 +35,9 @@ public class SetOrderMask : MonoBehaviour
         if ((tile != null || spr != null) && !IsOrderOrigin)
         {
             if (spr != null)
-                spr.sortingOrder = 9;
+                spr.sortingOrder = 8;
             else if (tile != null)
-                tile.sortingOrder = 9;
+                tile.sortingOrder = 8;
             IsOrderOrigin = true;
             yield return null;
         }

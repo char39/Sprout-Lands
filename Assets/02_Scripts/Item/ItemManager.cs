@@ -13,9 +13,9 @@ public static class ItemManager
     {
         toolItem = new Dictionary<int, Item>()
         {
-            { 1, new ToolItem(Icons.Tool[0], 1, "Watering Can",     1, 1, false, 1, 0) },
-            { 2, new ToolItem(Icons.Tool[1], 2, "Axe",              1, 1, false, 1, 0) },
-            { 3, new ToolItem(Icons.Tool[2], 3, "Hoe",              1, 1, false, 1, 0) },
+            { 1, new ToolItem(Icons.Tool[0], 1, "Watering Can",     1, 1, false, 30, 30) },
+            { 2, new ToolItem(Icons.Tool[1], 2, "Axe",              1, 1, false, 0, -1) },
+            { 3, new ToolItem(Icons.Tool[2], 3, "Hoe",              1, 1, false, 0, -1) },
             { 4, new ToolItem(Icons.Tool[3], 4, "Grass",            1, 255, false) },
             { 5, new ToolItem(Icons.Tool[4], 5, "Tree Twigs",       1, 255, false) },
             { 6, new ToolItem(Icons.Tool[5], 6, "Tree Branch",      1, 255, false) },

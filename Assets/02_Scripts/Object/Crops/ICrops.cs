@@ -27,6 +27,8 @@ public interface ICrops
         Harvest
     }
 
+    public bool IsWatered { get; }
+
     public void SetType(CropType type);
     public void SetGrowth(Growth growth);
     public void SetTypeAndGrowth(CropType type, Growth growth);

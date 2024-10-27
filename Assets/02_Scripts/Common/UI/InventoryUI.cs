@@ -83,6 +83,9 @@ public class InventoryUI : MonoBehaviour
                 if (i < itemCount)                                          // i가 아이템 개수보다 작으면
                 {
                     Item item = items[i];                                       // i번째 아이템을 가져옴
+                    ToolItem toolItem = null;
+                    if (item is ToolItem item_T)
+                        toolItem = item_T;
                     GameObject itemObj;                                         // 아이템 오브젝트를 담을 변수
 
                     if (slot.childCount == 0)                                   // 슬롯에 아이템이 없으면
@@ -90,8 +93,31 @@ public class InventoryUI : MonoBehaviour
                     else                                                        // 슬롯에 아이템이 있으면
                         itemObj = slot.GetChild(0).gameObject;                      // 아이템 오브젝트를 가져옴
 
-                    itemObj.transform.GetChild(0).GetComponent<Image>().sprite = item.Icon;
-                    itemObj.transform.GetChild(0).GetComponent<Image>().color = item.Icon != null ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
+                    if (toolItem != null && !(toolItem.MaxDurability == 0 || toolItem.MaxDurability == -1))
+                    {
+                        itemObj.transform.GetChild(0).gameObject.SetActive(true);
+                        float fillAmount = (float)toolItem.Durability / toolItem.MaxDurability;
+                        itemObj.transform.GetChild(0).GetChild(0).GetComponent<Image>().fillAmount = fillAmount;
+                        if (fillAmount < 0.2f)
+                        {
+                            itemObj.transform.GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[5];
+                            itemObj.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[4];
+                        }
+                        else if (fillAmount < 0.5f)
+                        {
+                            itemObj.transform.GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[3];
+                            itemObj.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[2];
+                        }
+                        else
+                        {
+                            itemObj.transform.GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[1];
+                            itemObj.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[0];
+                        }
+                    }
+                    else
+                        itemObj.transform.GetChild(0).gameObject.SetActive(false);
+                    itemObj.transform.GetChild(1).GetComponent<Image>().sprite = item.Icon;
+                    itemObj.transform.GetChild(1).GetComponent<Image>().color = item.Icon != null ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
                     itemObj.GetComponent<DragableItem>().item = item;
                     itemObj.name = item.Name;
                     itemObj.GetComponentsInChildren<Text>()[0].text = item.Stack != 0 ? item.Stack.ToString() : "";
@@ -107,6 +133,9 @@ public class InventoryUI : MonoBehaviour
                 if (i < itemCount)                                          // i가 아이템 개수보다 작으면
                 {
                     Item item = items[i];                                       // i번째 아이템을 가져옴
+                    ToolItem toolItem = null;
+                    if (item is ToolItem item_T)
+                        toolItem = item_T;
                     GameObject itemObj;                                         // 아이템 오브젝트를 담을 변수
 
                     if (slot.childCount == 0)                                   // 슬롯에 아이템이 없으면
@@ -114,8 +143,31 @@ public class InventoryUI : MonoBehaviour
                     else                                                        // 슬롯에 아이템이 있으면
                         itemObj = slot.GetChild(0).gameObject;                      // 아이템 오브젝트를 가져옴
 
-                    itemObj.transform.GetChild(0).GetComponent<Image>().sprite = item.Icon;
-                    itemObj.transform.GetChild(0).GetComponent<Image>().color = item.Icon != null ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
+                    if (toolItem != null && !(toolItem.MaxDurability == 0 || toolItem.MaxDurability == -1))
+                    {
+                        itemObj.transform.GetChild(0).gameObject.SetActive(true);
+                        float fillAmount = (float)toolItem.Durability / toolItem.MaxDurability;
+                        itemObj.transform.GetChild(0).GetChild(0).GetComponent<Image>().fillAmount = fillAmount;
+                        if (fillAmount < 0.2f)
+                        {
+                            itemObj.transform.GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[5];
+                            itemObj.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[4];
+                        }
+                        else if (fillAmount < 0.5f)
+                        {
+                            itemObj.transform.GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[3];
+                            itemObj.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[2];
+                        }
+                        else
+                        {
+                            itemObj.transform.GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[1];
+                            itemObj.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons.DurabilityBar[0];
+                        }
+                    }
+                    else
+                        itemObj.transform.GetChild(0).gameObject.SetActive(false);
+                    itemObj.transform.GetChild(1).GetComponent<Image>().sprite = item.Icon;
+                    itemObj.transform.GetChild(1).GetComponent<Image>().color = item.Icon != null ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
                     itemObj.GetComponent<DragableItem>().item = item;
                     itemObj.name = item.Name;
                     itemObj.GetComponentsInChildren<Text>()[0].text = item.Stack != 0 ? item.Stack.ToString() : "";

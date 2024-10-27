@@ -35,6 +35,8 @@ public class Item : IItem
     {
         Debug.Log("Remove Item");
     }
+
+    protected void RefreshInventoryUI() => GameManager.GM.InventoryUI.RefreshInventoryUI();
 }
 
 public class ToolItem : Item
@@ -57,50 +59,55 @@ public class ToolItem : Item
 
     public void SetDurability(int Durability) => this.Durability = Durability;
 
-    private void UseTool(int ID)
-    {
-        GameObject player = GameObject.FindWithTag("Player");
-        if (player != null)
-            player.GetComponent<Player>().SetPlayerUseTool(ID);
-    }
-
     public override void Use()
     {
+        Player player = GameManager.GM.player;
+        if (player == null) return;
+
         if (IsConsumable) { }
         else
         {
-            if (Durability == 0 && MaxDurability == 0)      // 내구도가 존재하지 않음
-            {
-                Debug.Log($"{Name} 사용.");
-            }
-            else
-            {
-                if (Durability > MaxDurability)                 // 내구도 무한
-                {
-                    if (1 <= ID && ID <= 3)
-                        UseTool(ID);
-                }
-                else                                            // 내구도 유한
-                {
-                    if (Durability <= 0)
-                    {
-                        Durability = 0;
-                        Debug.Log($"{Name}의 내구도가 {Durability}이 되어 사용할 수 없습니다.");
-                    }
-                    else
-                    {
-                        Debug.Log($"{Name} 사용. 내구도 : {Durability}.");
-                        UseTool(ID);
-                        Durability -= 1;
-                        if (Durability <= 0)
-                        {
-                            Durability = 0;
-                            Debug.Log($"{Name}의 내구도가 {Durability}이 되었습니다.");
-                        }
-                    }
-                }
-            }
+            if (MaxDurability == 0)                         // 내구도가 존재하지 않음
+                UseToolDoesNotExistDurability(player);
+            else if (MaxDurability == -1)                   // 내구도 무한
+                UseToolUnlimited(ID, player);
+            else                                            // 내구도 유한
+                UseToolLimited(ID, player);
         }
+    }
+    
+    private void UseToolDoesNotExistDurability(Player player)
+    {
+        Debug.Log($"{Name} 사용.");
+    }
+
+    private void UseToolUnlimited(int ID, Player player)
+    {
+        player.SetPlayerUseTool(ID);
+    }
+
+    private void UseToolLimited(int ID, Player player)
+    {
+        if (ID == 1 && player.IsWaterDetected())
+        {
+            player.SetPlayerUseTool(ID);
+            Durability = MaxDurability;
+            //Debug.Log($"{Name}의 사용 가능 횟수가 {Durability}이 되어 사용이 가능합니다.");
+            RefreshInventoryUI();
+            return;
+        }
+
+        if (Durability <= 0)                            // 내구도가 0 이하
+            Durability = 0;     //Debug.Log($"{Name}의 사용 가능 횟수가 {Durability}이 되어 사용할 수 없습니다.");
+        else                                            // 내구도가 0 초과
+        {
+            Durability -= 1;    //Debug.Log($"{Name} 사용. 사용 가능 횟수 : {Durability}.");
+            player.SetPlayerUseTool(ID);
+            if (Durability <= 0)
+                Durability = 0; //Debug.Log($"{Name}의 사용 가능 횟수가 {Durability}이 되어 사용할 수 없습니다.");
+        }
+
+        RefreshInventoryUI();
     }
 
     public override void Remove(int Stack)

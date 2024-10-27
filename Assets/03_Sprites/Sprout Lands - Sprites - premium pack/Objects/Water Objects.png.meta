@@ -518,6 +518,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Water Objects_18
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 7
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8ecd229ab80b443a97a7da0c932b1a6
+      internalID: 313678584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -539,10 +560,10 @@ TextureImporter:
       Water Objects_15: -1926140334
       Water Objects_16: -2058966803
       Water Objects_17: 654613152
+      Water Objects_18: -25633317
       Water Objects_2: 1274234720
       Water Objects_3: -332131999
       Water Objects_4: 1984630795
-      Water Objects_5: -25633317
       Water Objects_6: -1337236291
       Water Objects_7: 306241664
       Water Objects_8: 1396678799
