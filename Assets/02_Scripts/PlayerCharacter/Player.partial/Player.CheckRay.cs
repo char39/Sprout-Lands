@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 public partial class Player
 {
-    private LayerMask tileObjectsMask;
-    private LayerMask crops;
     private bool isFindObjectCheck = false;
 
     private RaycastHit2D GetFindTileObjectBoxCast(Vector3 pos, LayerMask mask, Vector2 size) => Physics2D.BoxCast(pos, size, 0, Vector2.zero, 0, mask);
@@ -37,15 +35,15 @@ public partial class Player
     {
         if (isFindObjectCheck)
         {
-            RaycastHit2D hit = GetFindTileObjectBoxCast(FindTileObjectTr.position, crops | waterMask, new Vector2(0.2f, 0.2f));
-            if (hit.collider == null)
-                return false;
+            RaycastHit2D hitCrops = GetFindTileObjectBoxCast(FindTileObjectTr.position, cropsMask, new Vector2(0.2f, 0.2f));
+            RaycastHit2D hitWater = GetFindTileObjectBoxCast(FindTileObjectTr.position, waterMask, new Vector2(0.2f, 0.2f));
+            RaycastHit2D hitFarmLand = GetFindTileObjectBoxCast(FindTileObjectTr.position, farmLandMask, new Vector2(0.2f, 0.2f));
             
             if (IsSelecctedSlotNowIdSame(1))            // 물뿌리개를 들고 있을 때
             {
-                if (hit.collider.TryGetComponent(out CropsData cropsData))      // 물뿌리개로 물을 줄 수 있는 농작물
+                if (hitCrops.collider != null && hitCrops.collider.TryGetComponent(out CropsData cropsData))      // 물뿌리개로 물을 줄 수 있는 농작물
                     return cropsData.IsWatered == false;
-                else if (hit.collider.TryGetComponent(out WaterTile waterTile)) // 물뿌리개에 물을 채울 수 있는 물타일
+                else if (hitWater.collider != null && hitWater.collider.TryGetComponent(out WaterTile waterTile)) // 물뿌리개에 물을 채울 수 있는 물타일
                     return true;
             }
             else if (IsSelecctedSlotNowIdSame(2))       // 도끼를 들고 있을 때
@@ -54,8 +52,18 @@ public partial class Player
             }
             else if (IsSelecctedSlotNowIdSame(3))       // 괭이를 들고 있을 때
             {
-                if (hit.collider.TryGetComponent(out CropsData cropsData))
-                    return cropsData.Growth == ICrops.Growth.Harvest;
+                if (hitCrops.collider != null && hitCrops.collider.TryGetComponent(out CropsData cropsData))
+                    return true;
+                else if (hitFarmLand.collider != null && hitFarmLand.collider.TryGetComponent(out FarmLandTile farmLandTile))
+                    return true;
+            }
+            else                                        // 씨앗을 들고 있을 때
+            {
+                if (hitFarmLand.collider != null && hitFarmLand.collider.TryGetComponent(out FarmLandTile farmLandTile) && farmLandTile.isFarmLandObject)
+                    if (hitCrops.collider != null && hitCrops.collider.TryGetComponent(out CropsData cropsData))
+                        return false;
+                    else
+                        return true;
             }
         }
         return false;

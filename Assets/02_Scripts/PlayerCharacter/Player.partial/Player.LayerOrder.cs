@@ -6,6 +6,10 @@ public partial class Player
 {
     private LayerMask groundMask;
     private LayerMask waterMask;
+    private LayerMask farmLandMask;
+    private LayerMask tileObjectsMask;
+    private LayerMask cropsMask;
+
     private LayerMask structureMask;
     private LayerMask structureOrderMask;           // SetOrderMask가 적용된 오브젝트들을 찾기 위한 마스크
     private LayerMask structureAlphaMask;           // SetAlpha가 적용된 오브젝트들을 찾기 위한 마스크

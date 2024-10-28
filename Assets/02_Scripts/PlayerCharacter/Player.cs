@@ -57,11 +57,12 @@ public partial class Player : MonoBehaviour
         SetOrderMaskList = new List<SetOrderMask>();
         groundMask = 1 << LayerMask.NameToLayer("GroundMask");
         waterMask = 1 << LayerMask.NameToLayer("Water");
+        farmLandMask = 1 << LayerMask.NameToLayer("FarmLand");
         structureMask = 1 << LayerMask.NameToLayer("StructureMask");
         structureOrderMask = 1 << LayerMask.NameToLayer("StructureOrderMask");
         structureAlphaMask = 1 << LayerMask.NameToLayer("StructureAlphaMask");
         tileObjectsMask = 1 << LayerMask.NameToLayer("TileObjectMask");
-        crops = 1 << LayerMask.NameToLayer("Crops");
+        cropsMask = 1 << LayerMask.NameToLayer("Crops");
     }
 
 

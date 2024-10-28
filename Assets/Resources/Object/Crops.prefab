@@ -221,7 +221,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 625662749
   m_SortingLayer: -1
-  m_SortingOrder: -10
+  m_SortingOrder: 9
   m_Sprite: {fileID: 313678584, guid: bea61557f71ff41af9267b3aa5bb22dc, type: 3}
   m_Color: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 0.19607843}
   m_FlipX: 0
@@ -410,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5368512816301954751}
   - component: {fileID: 7423125516927581500}
-  - component: {fileID: 5513138684828986914}
+  - component: {fileID: 8908288312296087300}
   m_Layer: 9
   m_Name: OrderMask
   m_TagString: Untagged
@@ -478,7 +478,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5513138684828986914
+--- !u!114 &8908288312296087300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -487,6 +487,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7570193775165975419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40d7bc59e4a7846eaad5c7ff6eb3d36f, type: 3}
+  m_Script: {fileID: 11500000, guid: b3d8502c25d3f4fa4b4e3d53cde1bbe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

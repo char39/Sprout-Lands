@@ -4,11 +4,11 @@ using UnityEngine.Tilemaps;
 
 public class SetOrderMask : MonoBehaviour
 {
-    private SpriteRenderer spr;
-    private TilemapRenderer tile;
-    private bool IsOrderOrigin = false;
+    protected SpriteRenderer spr;
+    protected TilemapRenderer tile;
+    protected bool IsOrderOrigin = false;
 
-    void Start()
+    protected virtual void Start()
     {
         transform.parent.TryGetComponent(out spr);
         transform.parent.TryGetComponent(out tile);
@@ -16,7 +16,7 @@ public class SetOrderMask : MonoBehaviour
 
     /// <summary> SortingOrder을 높임. </summary>
     public void SetOrderHigh() => StartCoroutine(StartOrderHigh());
-    private IEnumerator StartOrderHigh()
+    protected virtual IEnumerator StartOrderHigh()
     {
         if (tile != null || spr != null)
         {
@@ -30,7 +30,7 @@ public class SetOrderMask : MonoBehaviour
     }
     /// <summary> SortingOrder을 복구함. </summary>
     public void SetOrderOrigin() => StartCoroutine(StartOrderOrigin());
-    private IEnumerator StartOrderOrigin()
+    protected virtual IEnumerator StartOrderOrigin()
     {
         if ((tile != null || spr != null) && !IsOrderOrigin)
         {
