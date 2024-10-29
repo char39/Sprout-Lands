@@ -7,7 +7,9 @@ public class FarmLandTile : MonoBehaviour
     public void MadeFarmLand(Vector2 pos)
     {
         GameObject farmLandPref = Resources.Load<GameObject>("Object/FarmLand");
-        Instantiate(farmLandPref, pos, Quaternion.identity);
+        GameObject farmLandObj = Instantiate(farmLandPref, pos, Quaternion.identity);
+        if (!isFarmLandObject)
+            farmLandObj.transform.SetParent(transform);
     }
 
     public void RemoveFarmLand() => Destroy(gameObject);

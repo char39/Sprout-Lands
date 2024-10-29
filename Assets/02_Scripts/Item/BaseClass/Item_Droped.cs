@@ -6,10 +6,12 @@ public class Item_Droped : MonoBehaviour
     public Item item;
     public int ID = -1;
     public int Stack = 0;
+    private bool isUpdated = false;
 
     public void SetItem(Item item)
     {
         this.item = item;
+        isUpdated = true;
         UpdateItemInfo();
     }
 
@@ -31,7 +33,10 @@ public class Item_Droped : MonoBehaviour
             if (ID == -1 || Stack == 0)
                 return;
             Item item = ItemManager.GetItem(ID, Stack);
-            GameManager.GM.Inventory.AddItem(item);
+            if (isUpdated)
+                GameManager.GM.Inventory.AddItem(this.item);
+            else
+                GameManager.GM.Inventory.AddItem(item);
             GameManager.GM.InventoryUI.RefreshInventoryUI();
             Destroy(gameObject);
         }

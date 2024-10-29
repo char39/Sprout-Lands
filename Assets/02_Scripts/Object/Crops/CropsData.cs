@@ -70,9 +70,9 @@ public class CropsData : MonoBehaviour, ICrops
         if (Growth == ICrops.Growth.Harvest)
         {
             int cropsStack = Random.Range(3, 6);
-            int seedStack = Random.Range(1, 4);
-            Vector2 cropsPos = Random.insideUnitCircle.normalized * 0.25f;
-            Vector2 seedPos = Random.insideUnitCircle.normalized * 0.25f;
+            int seedStack = (int)Random.Range(1.5f, 4f);
+            Vector2 cropsPos = Random.insideUnitCircle.normalized * 0.15f;
+            Vector2 seedPos = -cropsPos;
             int cropsID = ((int)Type * 2) + 1002;   // 농작물 ID
             int seedID = ((int)Type * 2) + 1001;    // 씨앗 ID
             GameObject crops = Instantiate(item_droped_pref, transform.position + (Vector3)cropsPos, Quaternion.identity);
@@ -90,7 +90,7 @@ public class CropsData : MonoBehaviour, ICrops
             if (seedStack != 0)
             {
                 int seedID = ((int)Type * 2) + 1001;    // 씨앗 ID
-                Vector2 seedPos = Random.insideUnitCircle * 0.25f;
+                Vector2 seedPos = Random.insideUnitCircle.normalized * 0.15f;
                 GameObject seed = Instantiate(item_droped_pref, transform.position + (Vector3)seedPos, Quaternion.identity);
                 seed.TryGetComponent(out Item_Droped item_droped_seed);
                 item_droped_seed.SetItem(ItemManager.GetFarmingPlantItem(seedID, seedStack));
