@@ -11,7 +11,7 @@ public class GM_GameTimeRule : MonoBehaviour
 
     void Start()
     {
-        GameTime = global::GameTimeHour.AM_6 * GameTimeRatio;
+        GameTime = Hour.AM_6 * GameTimeRatio;
     }
 
     void Update()

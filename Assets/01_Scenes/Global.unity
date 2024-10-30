@@ -237,9 +237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b682aaeb5edd34a88aad24a59aa07205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  global_Volume: {fileID: 0}
-  global_Main: {fileID: 0}
-  global_Morning: {fileID: 0}
 --- !u!1 &266996892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,7 +1844,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 0.8509804}
-  m_Intensity: 0.5
+  m_Intensity: 1
   m_LightVolumeIntensity: 0
   m_LightVolumeIntensityEnabled: 1
   m_ApplyToSortingLayers: 00000000857400b81ddb4a25b971d7527deac729
@@ -2254,7 +2251,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 51
   m_TargetDisplay: 0
 --- !u!1 &1798287840
 GameObject:

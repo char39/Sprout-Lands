@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 public partial class Lights_Global : MonoBehaviour
 {
@@ -10,46 +8,52 @@ public partial class Lights_Global : MonoBehaviour
         GetTimeRuleVars();
     }
 
-    /*
-    globalMain.Intensity
-    (AM 6) 0.5f, (PM 12) 1f, (PM 6) 1f, (PM 9)0.7f, (PM 10:30) 0.02f
-    */
-
     void Update()
     {
         SetLight2D();
     }
 
-    private void SetLight2D()
+    public bool IsGameTimeTrue(float nowGameTime, float minGameTimeHour, float maxGameTimeHour, float ratio)
     {
-        if (timeRule.GameTime < GameTimeHour.PM_12 * ratio)              // 06 ~ 12
-        {
-            float linearTransformTime = Mathf.Clamp01(LinearTransform(timeRule.GameTime, GameTimeHour.AM_6 * ratio, GameTimeHour.PM_12 * ratio));
-            global_Main.intensity = (0.5f * linearTransformTime) + 0.5f;
-            global_Main.intensity = LinearTransform(timeRule.GameTime, GameTimeHour.AM_6 * ratio, GameTimeHour.PM_12 * ratio, 0.5f, 1f);
-        }
-        else if (timeRule.GameTime < GameTimeHour.PM_6 * ratio)          // 12 ~ 18
-        {
-            global_Main.intensity = 1;
-        }
-        else if (timeRule.GameTime < GameTimeHour.PM_9 * ratio)          // 18 ~ 21
-        {
-            float linearTransformTime = Mathf.Clamp01(LinearTransform(timeRule.GameTime, GameTimeHour.PM_6 * ratio, GameTimeHour.PM_9 * ratio));
-            global_Main.intensity = 1 - (0.3f * linearTransformTime);
-        }
-        else if (timeRule.GameTime < GameTimeHour.AM_12 * ratio)         // 21 ~ 24
-        {
-            float linearTransformTime = Mathf.Clamp01(LinearTransform(timeRule.GameTime, GameTimeHour.PM_9 * ratio, GameTimeHour.PM_10_30 * ratio));
-            global_Main.intensity = (0.68f * (1 - linearTransformTime)) + 0.02f;
-        }
-        else                                        // 24 ~
-        {
-            
-        }
+        return minGameTimeHour * ratio <= nowGameTime && nowGameTime < maxGameTimeHour * ratio;
     }
 
     /// <summary> Value를 0(min) ~ 1(max)로 선형변환함  </summary>
     public float LinearTransform(float Value, float min, float max) => (Value - min) / (max - min);
     /// <summary> Value를 newMin ~ newMax로 선형변환함  </summary>
     public float LinearTransform(float Value, float min, float max, float newMin, float newMax) => (Value - min) / (max - min) * (newMax - newMin) + newMin;
+
+    private void SetLightOverTime(float StartTime, float startIntensity, float startWhiteBalace, float EndTime, float endIntensity, float endWhiteBalance)
+    {
+        float linearTransformTime = Mathf.Clamp01(LinearTransform(timeRule.GameTime, StartTime * ratio, EndTime * ratio));
+        global_Light.intensity = Mathf.Lerp(startIntensity, endIntensity, linearTransformTime);
+        global_whiteBalance.temperature.value = Mathf.Lerp(startWhiteBalace, endWhiteBalance, linearTransformTime);
+    }
+
+    private void SetLight2D()
+    {
+        if (IsGameTimeTrue(timeRule.GameTime, Hour.AM_0, Hour.AM_6, ratio))
+            SetLightOverTime(Hour.AM_0, 0.5f, -20f, Hour.AM_6, 0.5f, -20f);
+
+        else if (IsGameTimeTrue(timeRule.GameTime, Hour.AM_6, Hour.AM_7, ratio))
+            SetLightOverTime(Hour.AM_6, 0.5f, -20f, Hour.AM_7, 0.8f, 20f);
+
+        else if (IsGameTimeTrue(timeRule.GameTime, Hour.AM_7, Hour.AM_8, ratio))
+            SetLightOverTime(Hour.AM_7, 0.8f, 20f, Hour.AM_8, 0.95f, 10f);
+
+        else if (IsGameTimeTrue(timeRule.GameTime, Hour.AM_8, Hour.AM_9, ratio))
+            SetLightOverTime(Hour.AM_8, 0.95f, 10f, Hour.AM_9, 1f, 0f);
+
+        else if (IsGameTimeTrue(timeRule.GameTime, Hour.AM_9, Hour.PM_5, ratio))
+            SetLightOverTime(Hour.AM_9, 1f, 0f, Hour.PM_5, 1f, 0f);
+
+        else if (IsGameTimeTrue(timeRule.GameTime, Hour.PM_5, Hour.PM_6, ratio))
+            SetLightOverTime(Hour.PM_5, 1f, 0f, Hour.PM_6, 0.9f, 20f);
+
+        else if (IsGameTimeTrue(timeRule.GameTime, Hour.PM_6, Hour.PM_9, ratio))
+            SetLightOverTime(Hour.PM_6, 0.9f, 20f, Hour.PM_9, 0.3f, 0f);
+
+        else if (IsGameTimeTrue(timeRule.GameTime, Hour.PM_9, Hour.PM_10_30, ratio))
+            SetLightOverTime(Hour.PM_9, 0.3f, 0f, Hour.PM_10_30, 0.02f, -20f);
+    }
 }

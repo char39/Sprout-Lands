@@ -50,7 +50,7 @@ public class GM_DateInfo : MonoBehaviour
     private void UpdateHourHand()
     {
         // (아침 6시 ~ 저녁 12시) z축 회전값
-        float TimeNormal = (GameTime - GM_GameTimeRule.GameTimeRatio * 6) / (GM_GameTimeRule.GameTimeRatio * 18);
+        float TimeNormal = (GameTime - GM_GameTimeRule.GameTimeRatio * Hour.AM_6) / (GM_GameTimeRule.GameTimeRatio * Hour.PM_6);
         float lerpedAngle = Mathf.LerpAngle(maxAngle, -maxAngle, TimeNormal);
         Time_HourHand.localRotation = Quaternion.Euler(0, 0, lerpedAngle);
     }
@@ -64,9 +64,9 @@ public class GM_DateInfo : MonoBehaviour
     private void UpdateTimeState()
     {
         // 아침(6 ~ 9)[3시간]    낮 (9 ~ 18)[9시간]    저녁 (18 ~ 24)[6시간]
-        if (GameTime > GM_GameTimeRule.GameTimeRatio * 18)
+        if (GameTime > GM_GameTimeRule.GameTimeRatio * Hour.PM_6)
             timeState = TimeState.Night;
-        else if (GameTime > GM_GameTimeRule.GameTimeRatio * 9)
+        else if (GameTime > GM_GameTimeRule.GameTimeRatio * Hour.AM_9)
             timeState = TimeState.Afternoon;
         else
             timeState = TimeState.Morning;
