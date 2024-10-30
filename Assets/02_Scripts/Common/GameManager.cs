@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager GM;
 
     public Player player;
-    public Light_Global light_Global;
+    public Lights_Global light_Global;
     public Inventory inventory;
     public InventoryUI inventoryUI;
     public GM_CameraSetting cameraSetting;
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         cameraSetting.MainCam = Camera.main.transform;
         player = FindObjectOfType<Player>();
-        light_Global = FindObjectOfType<Light_Global>();
+        light_Global = FindObjectOfType<Lights_Global>();
     }
 
     void LateUpdate()
