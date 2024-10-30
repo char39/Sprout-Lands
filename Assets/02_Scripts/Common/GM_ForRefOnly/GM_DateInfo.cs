@@ -27,11 +27,11 @@ public class GM_DateInfo : MonoBehaviour
 
     void Start()
     {
-        DateInfo_Frame = GameObject.Find("UI_Canvas").transform.GetChild(0).GetChild(0);
-        Time_HourHand = DateInfo_Frame.GetChild(0).GetChild(0).GetComponent<RectTransform>();
-        Weather_Now = DateInfo_Frame.GetChild(1).GetChild(1).GetComponent<Image>();
+        DateInfo_Frame = GameObject.Find("UI_Canvas").transform.GetChild(0);
+        Time_HourHand = DateInfo_Frame.GetChild(0).GetChild(0).GetChild(0).GetComponent<RectTransform>();
+        Weather_Now = DateInfo_Frame.GetChild(0).GetChild(1).GetChild(1).GetComponent<Image>();
         WeatherTexures = Resources.LoadAll<Sprite>("UI/DateInfo/Weather_Icons_small");
-        Time_Text = DateInfo_Frame.GetChild(1).GetChild(0).GetComponent<Text>();
+        Time_Text = DateInfo_Frame.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>();
         Time_Second = Time_Text.transform.GetChild(0).GetComponent<Text>();
         TimeZone = Time_Text.transform.GetChild(1).GetComponent<Text>();
     }

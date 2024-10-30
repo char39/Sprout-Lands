@@ -38,10 +38,15 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
-    void Update()
+    void LateUpdate()
     {
         CameraSetting.ResetCameraPosLimit();
         CameraSetting.CameraFollow();
+
+        if (InventoryUI.Inventory_Frame != null)
+            InventoryUI.Inventory_Frame.localScale = new Vector3(0.675f * CameraSetting.UI_Scale, 0.675f * CameraSetting.UI_Scale, 1);
+        if (DateInfo.DateInfo_Frame != null)
+            DateInfo.DateInfo_Frame.localScale = new Vector3(0.75f * CameraSetting.UI_Scale, 0.75f * CameraSetting.UI_Scale, 1);
 
         if (Input.GetKeyDown(KeyCode.R))    // 아이템 삭제 테스트용 추후 삭제
             Inventory.RemoveItem(ItemManager.GetToolItem(4), 5);

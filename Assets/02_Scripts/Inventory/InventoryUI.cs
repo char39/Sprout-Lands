@@ -185,10 +185,12 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
             IsNowInventoryOpen = !IsNowInventoryOpen;
 
+        float halfScreenHeight = Screen.height * 0.5f;
+
         if (IsNowInventoryOpen)
-            StartCoroutine(SlerpInventoryMove(-500, true));
+            StartCoroutine(SlerpInventoryMove(-halfScreenHeight * 0.125f, true));
         else if (!IsNowInventoryOpen)
-            StartCoroutine(SlerpInventoryMove(-925, false));
+            StartCoroutine(SlerpInventoryMove(-halfScreenHeight * 0.625f, false));
     }
     
     private IEnumerator SlerpInventoryMove(float value, bool InvenOpen)

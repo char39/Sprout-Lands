@@ -17,6 +17,15 @@ public class GM_CameraSetting : MonoBehaviour
     private const float ScreenRatio_H = 16;
     private const float ScreenRatio_V = 9;
 
+    public readonly float defaultScreenPixelSize_V = 1080f;
+    public float nowScreenPixelSize_V = 1080f;
+    public float UI_Scale { get { return nowScreenPixelSize_V / defaultScreenPixelSize_V; } }
+
+    void Update()
+    {
+        nowScreenPixelSize_V = Screen.height;
+    }
+
     internal void CameraFollow()
     {
         if (FollowTarget == null || MainCam == null) return;
