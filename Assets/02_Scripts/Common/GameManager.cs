@@ -5,14 +5,15 @@ public class GameManager : MonoBehaviour
     public static GameManager GM;
 
     public Player player;
-    public GM_CameraSetting CameraSetting;
-    public GM_GameTimeRule GameTimeRule;
-    public GM_DateInfo DateInfo;
-    public GM_DateInfoUI DateInfoUI;
-    public GM_MousePosition MousePos;
-    public GM_QuickSlotSelect SlotSelect;
-    public Inventory Inventory;
-    public InventoryUI InventoryUI;
+    public Light_Global light_Global;
+    public Inventory inventory;
+    public InventoryUI inventoryUI;
+    public GM_CameraSetting cameraSetting;
+    public GM_GameTimeRule gameTimeRule;
+    public GM_DateInfo dateInfo;
+    public GM_DateInfoUI dateInfoUI;
+    public GM_MousePosition mousePos;
+    public GM_QuickSlotSelect slotSelect;
 
     void Awake()
     {
@@ -22,33 +23,34 @@ public class GameManager : MonoBehaviour
 
     private void AddComponent()
     {
-        CameraSetting = gameObject.AddComponent<GM_CameraSetting>();
-        GameTimeRule = gameObject.AddComponent<GM_GameTimeRule>();
-        DateInfo = gameObject.AddComponent<GM_DateInfo>();
-        DateInfoUI = gameObject.AddComponent<GM_DateInfoUI>();
-        MousePos = gameObject.AddComponent<GM_MousePosition>();
-        SlotSelect = gameObject.AddComponent<GM_QuickSlotSelect>();
-        Inventory = gameObject.AddComponent<Inventory>();
-        InventoryUI = gameObject.AddComponent<InventoryUI>();
+        inventory = gameObject.GetComponent<Inventory>();
+        inventoryUI = gameObject.GetComponent<InventoryUI>();
+        cameraSetting = gameObject.AddComponent<GM_CameraSetting>();
+        gameTimeRule = gameObject.AddComponent<GM_GameTimeRule>();
+        dateInfo = gameObject.AddComponent<GM_DateInfo>();
+        dateInfoUI = gameObject.AddComponent<GM_DateInfoUI>();
+        mousePos = gameObject.AddComponent<GM_MousePosition>();
+        slotSelect = gameObject.AddComponent<GM_QuickSlotSelect>();
     }
 
     void Start()
     {
-        CameraSetting.MainCam = Camera.main.transform;
+        cameraSetting.MainCam = Camera.main.transform;
         player = FindObjectOfType<Player>();
+        light_Global = FindObjectOfType<Light_Global>();
     }
 
     void LateUpdate()
     {
-        CameraSetting.ResetCameraPosLimit();
-        CameraSetting.CameraFollow();
+        cameraSetting.ResetCameraPosLimit();
+        cameraSetting.CameraFollow();
 
-        if (InventoryUI.Inventory_Frame != null)
-            InventoryUI.Inventory_Frame.localScale = new Vector3(0.675f * CameraSetting.UI_Scale, 0.675f * CameraSetting.UI_Scale, 1);
-        if (DateInfo.DateInfo_Frame != null)
-            DateInfo.DateInfo_Frame.localScale = new Vector3(0.75f * CameraSetting.UI_Scale, 0.75f * CameraSetting.UI_Scale, 1);
+        if (inventoryUI.Inventory_Frame != null)
+            inventoryUI.Inventory_Frame.localScale = new Vector3(0.675f * cameraSetting.UI_Scale, 0.675f * cameraSetting.UI_Scale, 1);
+        if (dateInfo.DateInfo_Frame != null)
+            dateInfo.DateInfo_Frame.localScale = new Vector3(0.75f * cameraSetting.UI_Scale, 0.75f * cameraSetting.UI_Scale, 1);
 
         if (Input.GetKeyDown(KeyCode.R))    // 아이템 삭제 테스트용 추후 삭제
-            Inventory.RemoveItem(ItemManager.GetToolItem(4), 5);
+            inventory.RemoveItem(ItemManager.GetToolItem(4), 5);
     }
 }

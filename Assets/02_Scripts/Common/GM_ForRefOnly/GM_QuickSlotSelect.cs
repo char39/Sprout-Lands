@@ -21,7 +21,7 @@ public class GM_QuickSlotSelect : MonoBehaviour
 
     public void ApplySlotPosition()
     {
-        Transform QSlotGroup = GameManager.GM.InventoryUI.QuickSlot_Group;
+        Transform QSlotGroup = GameManager.GM.inventoryUI.QuickSlot_Group;
         if (QSlotGroup == null || Slot_Select == null)
             return;
 

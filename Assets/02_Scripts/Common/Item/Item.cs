@@ -31,7 +31,7 @@ public class Item : IItem
         else Debug.Log("Use Item [사용]");
     }
 
-    public virtual void Remove(int Stack) => GameManager.GM.Inventory.RemoveItem(this, Stack, Index ?? -1);
+    public virtual void Remove(int Stack) => GameManager.GM.inventory.RemoveItem(this, Stack, Index ?? -1);
 
-    protected void RefreshInventoryUI() => GameManager.GM.InventoryUI.RefreshInventoryUI();
+    protected void RefreshInventoryUI() => GameManager.GM.inventoryUI.RefreshInventoryUI();
 }

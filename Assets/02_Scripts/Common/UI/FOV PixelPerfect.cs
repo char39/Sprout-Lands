@@ -11,7 +11,7 @@ public class FOV_PixelPerfect : MonoBehaviour
     [Obsolete]  // ui 버튼에 할당되어있음
     public void FOV_Up()
     {
-        GameManager.GM.CameraSetting.MainCam.TryGetComponent(out PixelPerfectCamera camera);
+        GameManager.GM.cameraSetting.MainCam.TryGetComponent(out PixelPerfectCamera camera);
         camera.assetsPPU += 10;
         camera.assetsPPU = Mathf.Clamp(camera.assetsPPU, minPPU, maxPPU);
     }
@@ -19,7 +19,7 @@ public class FOV_PixelPerfect : MonoBehaviour
     [Obsolete]
     public void FOV_Down()
     {
-        GameManager.GM.CameraSetting.MainCam.TryGetComponent(out PixelPerfectCamera camera);
+        GameManager.GM.cameraSetting.MainCam.TryGetComponent(out PixelPerfectCamera camera);
         camera.assetsPPU -= 10;
         camera.assetsPPU = Mathf.Clamp(camera.assetsPPU, minPPU, maxPPU);
     }

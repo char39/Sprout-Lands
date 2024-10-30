@@ -7,14 +7,14 @@ public partial class Player
 
     private RaycastHit2D GetFindTileObjectBoxCast(Vector3 pos, LayerMask mask, Vector2 size) => Physics2D.BoxCast(pos, size, 0, Vector2.zero, 0, mask);
 
-    private List<Item> GetItems() => GameManager.GM.Inventory.GetAllItems();
-    private int GetSelectedSlotNow() => GetItems()[(int)GameManager.GM.SlotSelect.slotPos - 1].ID;
+    private List<Item> GetItems() => GameManager.GM.inventory.GetAllItems();
+    private int GetSelectedSlotNow() => GetItems()[(int)GameManager.GM.slotSelect.slotPos - 1].ID;
     private bool IsSelecctedSlotNowIdSame(int id) => GetSelectedSlotNow() == id;
 
     private void SetFindTileObjectPos()
     {
         int idIndex = GetSelectedSlotNow();
-        Item item = GetItems()[(int)GameManager.GM.SlotSelect.slotPos - 1];
+        Item item = GetItems()[(int)GameManager.GM.slotSelect.slotPos - 1];
 
         // 도구, 농작물 중 소비 아이템이 아닌 경우 (씨앗)
         isFindObjectCheck = (1 <= idIndex && idIndex <= 3) || (item is FarmingPlantItem && !item.IsConsumable);

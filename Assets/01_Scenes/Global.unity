@@ -200,6 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 242194259}
+  - component: {fileID: 242194260}
   m_Layer: 0
   m_Name: Light_Global
   m_TagString: Untagged
@@ -225,6 +226,18 @@ Transform:
   - {fileID: 292633775}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &242194260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242194258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b682aaeb5edd34a88aad24a59aa07205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &266996892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,7 +1889,7 @@ GameObject:
   - component: {fileID: 1376283605}
   - component: {fileID: 1376283606}
   m_Layer: 0
-  m_Name: GlobalLight2D_Source
+  m_Name: GlobalLight2D_Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1957,6 +1970,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1417329861}
   - component: {fileID: 1417329860}
+  - component: {fileID: 1417329863}
+  - component: {fileID: 1417329862}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1977,14 +1992,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  CameraSetting: {fileID: 0}
-  GameTimeRule: {fileID: 0}
-  DateInfo: {fileID: 0}
-  DateInfoUI: {fileID: 0}
-  MousePos: {fileID: 0}
-  SlotSelect: {fileID: 0}
-  Inventory: {fileID: 0}
-  InventoryUI: {fileID: 0}
+  light_Global: {fileID: 0}
+  inventory: {fileID: 0}
+  inventoryUI: {fileID: 0}
+  cameraSetting: {fileID: 0}
+  gameTimeRule: {fileID: 0}
+  dateInfo: {fileID: 0}
+  dateInfoUI: {fileID: 0}
+  mousePos: {fileID: 0}
+  slotSelect: {fileID: 0}
 --- !u!4 &1417329861
 Transform:
   m_ObjectHideFlags: 0
@@ -2000,6 +2016,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1417329862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417329859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0cfe2df64324f5c81528b8ddb7857b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  Inventory_Frame: {fileID: 0}
+  InventorySlot_Frame: {fileID: 0}
+  InventorySlot_Group: {fileID: 0}
+  InvenSlotCanvasGroup: {fileID: 0}
+  TempItem: {fileID: 0}
+  QuickSlot_Frame: {fileID: 0}
+  QuickSlot_Group: {fileID: 0}
+  SlotPref: {fileID: 0}
+  QuickSlotPref: {fileID: 0}
+  ItemPref: {fileID: 0}
+  IsNowInventoryMove: 0
+  IsNowInventoryOpen: 0
+--- !u!114 &1417329863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417329859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6336f1c6d89f14fd29ea91c5ea4b855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventorySize: 32
 --- !u!1 &1457002005
 GameObject:
   m_ObjectHideFlags: 0

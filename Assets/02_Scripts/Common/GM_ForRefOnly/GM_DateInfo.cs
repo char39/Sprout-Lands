@@ -38,9 +38,9 @@ public class GM_DateInfo : MonoBehaviour
 
     void Update()
     {
-        GameTime = GameManager.GM.GameTimeRule.GameTime;
-        GameTimeHour = GameManager.GM.GameTimeRule.GameTimeHour;
-        GameTimeMinute = GameManager.GM.GameTimeRule.GameTimeMinute;
+        GameTime = GameManager.GM.gameTimeRule.GameTime;
+        GameTimeHour = GameManager.GM.gameTimeRule.GameTimeHour;
+        GameTimeMinute = GameManager.GM.gameTimeRule.GameTimeMinute;
         UpdateHourHand();
         UpdateTimeText();
         UpdateTimeState();
@@ -59,7 +59,7 @@ public class GM_DateInfo : MonoBehaviour
         if (GameTimeMinute % 10 == 0)
             Time_Text.text = GameTimeHour.ToString() + "    " + GameTimeMinute.ToString("00");
         Time_Second.text = (int)(GameTime % 1.5) == 0 ? TimeColon : string.Empty;
-        TimeZone.text = GameManager.GM.GameTimeRule.CheckMorning() ? AM : PM;
+        TimeZone.text = GameManager.GM.gameTimeRule.CheckMorning() ? AM : PM;
     }
     private void UpdateTimeState()
     {

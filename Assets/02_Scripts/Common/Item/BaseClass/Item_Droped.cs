@@ -34,10 +34,10 @@ public class Item_Droped : MonoBehaviour
                 return;
             Item item = ItemManager.GetItem(ID, Stack);
             if (isUpdated)
-                GameManager.GM.Inventory.AddItem(this.item);
+                GameManager.GM.inventory.AddItem(this.item);
             else
-                GameManager.GM.Inventory.AddItem(item);
-            GameManager.GM.InventoryUI.RefreshInventoryUI();
+                GameManager.GM.inventory.AddItem(item);
+            GameManager.GM.inventoryUI.RefreshInventoryUI();
             Destroy(gameObject);
         }
     }
