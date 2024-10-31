@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler//, IPointerEnterHandler, IPointerExitHandler
 {
     public Item item;
 
@@ -12,6 +12,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public Transform originParentTr;
     public int index;
     private bool IsDragable = false;
+    //private bool IsMouseOn = false;
 
     void Start()
     {
@@ -29,6 +30,16 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         item.SetIndex(index);
     }
+
+    // public void OnPointerEnter(PointerEventData eventData)
+    // {
+    //     IsMouseOn = true;
+    // }
+
+    // public void OnPointerExit(PointerEventData eventData)
+    // {
+    //     IsMouseOn = false;
+    // }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -49,7 +60,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
         if (IsDragable)
-            tr.anchoredPosition += eventData.delta / canvas.scaleFactor;
+            tr.anchoredPosition += eventData.delta / (GameManager.GM.dateInfo.DateInfo_Frame.localScale * 0.9f);
     }
 
     public void OnEndDrag(PointerEventData eventData)

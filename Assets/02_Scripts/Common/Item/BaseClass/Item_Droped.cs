@@ -8,10 +8,20 @@ public class Item_Droped : MonoBehaviour
     public int Stack = 0;
     private bool isUpdated = false;
 
-    public void SetItem(Item item)
+    internal float waitTime = 0f;
+    internal bool CanTrigger { get { return waitTime <= 0f; } }
+
+    void Update()
+    {
+        if (!CanTrigger)
+            waitTime -= Time.deltaTime;
+    }
+
+    public void SetItem(Item item, float waitTime = 0.25f)
     {
         this.item = item;
         isUpdated = true;
+        this.waitTime = waitTime;
         UpdateItemInfo();
     }
 
@@ -26,9 +36,9 @@ public class Item_Droped : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
-        if (col.TryGetComponent(out Player player))
+        if (col.TryGetComponent(out Player player) && CanTrigger)
         {
             if (ID == -1 || Stack == 0)
                 return;

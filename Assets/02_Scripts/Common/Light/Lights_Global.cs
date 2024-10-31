@@ -1,11 +1,23 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
-public partial class Lights_Global : MonoBehaviour
+public class Lights_Global : LightCtrl
 {
-    void Start()
+    // Volume
+    private Volume global_Volume;
+    private WhiteBalance global_whiteBalance;
+    // Light2D
+    private Light2D global_Light;
+
+    protected override void Start()
     {
-        GetAllComponents();
-        GetTimeRuleVars();
+        base.Start();
+
+        transform.GetChild(0).TryGetComponent(out global_Volume);
+        transform.GetChild(1).TryGetComponent(out global_Light);
+
+        global_Volume.profile.TryGet(out global_whiteBalance);
     }
 
     void Update()
@@ -13,47 +25,27 @@ public partial class Lights_Global : MonoBehaviour
         SetLight2D();
     }
 
-    public bool IsGameTimeTrue(float nowGameTime, float minGameTimeHour, float maxGameTimeHour, float ratio)
+    /// <summary> 게임 시간이 min ~ max 사이인 경우, Global Light를 설정 </summary>
+    private void SetGlobalLights(float StartTime, float EndTime, float inten_S, float inten_E, float whiteB_S, float whiteB_E)
     {
-        return minGameTimeHour * ratio <= nowGameTime && nowGameTime < maxGameTimeHour * ratio;
-    }
-
-    /// <summary> Value를 0(min) ~ 1(max)로 선형변환함  </summary>
-    public float LinearTransform(float Value, float min, float max) => (Value - min) / (max - min);
-    /// <summary> Value를 newMin ~ newMax로 선형변환함  </summary>
-    public float LinearTransform(float Value, float min, float max, float newMin, float newMax) => (Value - min) / (max - min) * (newMax - newMin) + newMin;
-
-    private void SetLightOverTime(float StartTime, float startIntensity, float startWhiteBalace, float EndTime, float endIntensity, float endWhiteBalance)
-    {
-        float linearTransformTime = Mathf.Clamp01(LinearTransform(timeRule.GameTime, StartTime * ratio, EndTime * ratio));
-        global_Light.intensity = Mathf.Lerp(startIntensity, endIntensity, linearTransformTime);
-        global_whiteBalance.temperature.value = Mathf.Lerp(startWhiteBalace, endWhiteBalance, linearTransformTime);
+        if (IsGameTimeTrue(StartTime, EndTime))
+        {
+            float linearTransformTime = Mathf.Clamp01(LinearTransform(timeRule.GameTime, StartTime, EndTime));
+            global_Light.intensity = Mathf.Lerp(inten_S, inten_E, linearTransformTime);
+            global_whiteBalance.temperature.value = Mathf.Lerp(whiteB_S, whiteB_E, linearTransformTime);
+        }
     }
 
     private void SetLight2D()
     {
-        if (IsGameTimeTrue(timeRule.GameTime, Hour.AM_0, Hour.AM_6, ratio))
-            SetLightOverTime(Hour.AM_0, 0.5f, -20f, Hour.AM_6, 0.5f, -20f);
-
-        else if (IsGameTimeTrue(timeRule.GameTime, Hour.AM_6, Hour.AM_7, ratio))
-            SetLightOverTime(Hour.AM_6, 0.5f, -20f, Hour.AM_7, 0.8f, 20f);
-
-        else if (IsGameTimeTrue(timeRule.GameTime, Hour.AM_7, Hour.AM_8, ratio))
-            SetLightOverTime(Hour.AM_7, 0.8f, 20f, Hour.AM_8, 0.95f, 10f);
-
-        else if (IsGameTimeTrue(timeRule.GameTime, Hour.AM_8, Hour.AM_9, ratio))
-            SetLightOverTime(Hour.AM_8, 0.95f, 10f, Hour.AM_9, 1f, 0f);
-
-        else if (IsGameTimeTrue(timeRule.GameTime, Hour.AM_9, Hour.PM_5, ratio))
-            SetLightOverTime(Hour.AM_9, 1f, 0f, Hour.PM_5, 1f, 0f);
-
-        else if (IsGameTimeTrue(timeRule.GameTime, Hour.PM_5, Hour.PM_6, ratio))
-            SetLightOverTime(Hour.PM_5, 1f, 0f, Hour.PM_6, 0.9f, 20f);
-
-        else if (IsGameTimeTrue(timeRule.GameTime, Hour.PM_6, Hour.PM_9, ratio))
-            SetLightOverTime(Hour.PM_6, 0.9f, 20f, Hour.PM_9, 0.3f, 0f);
-
-        else if (IsGameTimeTrue(timeRule.GameTime, Hour.PM_9, Hour.PM_10_30, ratio))
-            SetLightOverTime(Hour.PM_9, 0.3f, 0f, Hour.PM_10_30, 0.02f, -20f);
+        SetGlobalLights(Hour.AM_0, Hour.AM_6, 0.01f, 0.3f, -20f, -20f);
+        SetGlobalLights(Hour.AM_6, Hour.AM_7, 0.3f, 0.5f, -20f, 20f);
+        SetGlobalLights(Hour.AM_7, Hour.AM_8, 0.5f, 0.95f, 20f, 10f);
+        SetGlobalLights(Hour.AM_8, Hour.AM_9, 0.95f, 1.2f, 10f, 0f);
+        SetGlobalLights(Hour.AM_9, Hour.PM_5, 1.2f, 1.2f, 0f, 0f);
+        SetGlobalLights(Hour.PM_5, Hour.PM_6, 1.2f, 1f, 0f, 20f);
+        SetGlobalLights(Hour.PM_6, Hour.PM_9, 1f, 0.02f, 20f, -10f);
+        SetGlobalLights(Hour.PM_9, Hour.PM_10_30, 0.02f, 0.01f, -10f, -20f);
+        SetGlobalLights(Hour.PM_10_30, Hour.AM_12, 0.01f, 0.01f, -20f, -20f);
     }
 }
