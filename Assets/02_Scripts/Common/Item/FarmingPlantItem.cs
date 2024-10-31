@@ -7,7 +7,7 @@ public class FarmingPlantItem : Item
 
     public override void Use()
     {
-        Player player = GameManager.GM.player;
+        Player player = GM.DATA.player;
         if (player == null) return;
 
         if (IsConsumable)

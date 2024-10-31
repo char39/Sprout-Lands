@@ -4,8 +4,8 @@ public class PlayerCam : MonoBehaviour
 {
     void Start()
     {
-        GameManager.GM.cameraSetting.SetCameraTarget(transform);
-        GameManager.GM.cameraSetting.SetCameraPosLimit_X(-20, 20);
-        GameManager.GM.cameraSetting.SetCameraPosLimit_Y(-20, 20);
+        GM.SETTING.camSet.SetCameraTarget(transform);
+        GM.SETTING.camSet.SetCameraPosLimit_X(-20, 20);
+        GM.SETTING.camSet.SetCameraPosLimit_Y(-20, 20);
     }
 }

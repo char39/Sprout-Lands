@@ -45,7 +45,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         if (index + 1 > 8 && !IsDragable)
             return;
-        GameManager.GM.slotSelect.slotPos = (GM_QuickSlotSelect.SelectedSlotIndex)index + 1;
+        GM.DATA.slotSelect.slotPos = (GM_QuickSlotSelect.SelectedSlotIndex)index + 1;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -53,14 +53,14 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         IsDragable = true;
         originPos = tr.anchoredPosition;
         originParentTr = transform.parent;
-        tr.SetParent(GameManager.GM.inventoryUI.TempItem);
+        tr.SetParent(GM.UI.inven.TempItem);
         canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (IsDragable)
-            tr.anchoredPosition += eventData.delta / (GameManager.GM.dateInfo.DateInfo_Frame.localScale * 0.9f);
+            tr.anchoredPosition += eventData.delta / (GM.DATA.dateInfo.DateInfo_Frame.localScale * 0.9f);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -82,7 +82,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             eventData.pointerEnter.transform.GetComponent<RectTransform>().anchoredPosition = originPos;
 
             int tempIndex = eventData.pointerEnter.GetComponent<DragableItem>().index;
-            GameManager.GM.inventory.ChangeItemIndex(index, tempIndex);
+            GM.DATA.inven.ChangeItemIndex(index, tempIndex);
             eventData.pointerEnter.GetComponent<DragableItem>().index = index;
             index = tempIndex;
         }

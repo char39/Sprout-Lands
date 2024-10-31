@@ -29,8 +29,8 @@ public class FindTileObject : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.GM.player != null)
-            itemDetected = GameManager.GM.player.IsObjectDetected();
+        if (GM.DATA.player != null)
+            itemDetected = GM.DATA.player.IsObjectDetected();
 
         scaleVec = itemDetected ? new Vector3(scaleD, scaleD, 1) : new Vector3(scale, scale, 1);
         scaleChangeVec = itemDetected ? new Vector3(scaleChangeD, scaleChangeD, 1) : new Vector3(scaleChange, scaleChange, 1);

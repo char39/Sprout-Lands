@@ -8,7 +8,7 @@ public class LightCtrl : MonoBehaviour
 
     protected virtual void Start()
     {
-        timeRule = GameManager.GM.gameTimeRule;
+        timeRule = GM.PROCESS.gameTimeRule;
         ratio = GM_GameTimeRule.GameTimeRatio;
     }
 
