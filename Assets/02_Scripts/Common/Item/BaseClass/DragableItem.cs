@@ -45,7 +45,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         if (index + 1 > 8 && !IsDragable)
             return;
-        GM.DATA.slotSelect.slotPos = (GM_QuickSlotSelect.SelectedSlotIndex)index + 1;
+        GM.DATA.slotSelect.slotPos = (CurrentQuickSlot.SelectedSlotIndex)index + 1;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

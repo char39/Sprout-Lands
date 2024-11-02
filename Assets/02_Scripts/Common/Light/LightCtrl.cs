@@ -3,13 +3,13 @@ using UnityEngine.Rendering.Universal;
 
 public class LightCtrl : MonoBehaviour
 {
-    protected GM_GameTimeRule timeRule;
+    protected GameTimeRule timeRule;
     protected float ratio;
 
     protected virtual void Start()
     {
         timeRule = GM.PROCESS.gameTimeRule;
-        ratio = GM_GameTimeRule.GameTimeRatio;
+        ratio = GameTimeRule.GameTimeRatio;
     }
 
     /// <summary> 게임 시간이 min ~ max 사이인지 확인 </summary>

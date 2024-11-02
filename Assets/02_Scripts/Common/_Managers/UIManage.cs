@@ -3,14 +3,14 @@ using UnityEngine;
 public class UIManage : MonoBehaviour
 {
     public InventoryUI inven;
-    public GM_DateInfoUI dateInfoUI;
-    public GM_MousePosition mousePos;
+    public DateInfoUI dateInfoUI;
+    public CheckMousePosition mousePos;
 
     void Awake()
     {
         inven = gameObject.AddComponent<InventoryUI>();
-        dateInfoUI = gameObject.AddComponent<GM_DateInfoUI>();
-        mousePos = gameObject.AddComponent<GM_MousePosition>();
+        dateInfoUI = gameObject.AddComponent<DateInfoUI>();
+        mousePos = gameObject.AddComponent<CheckMousePosition>();
     }
 
     void LateUpdate()

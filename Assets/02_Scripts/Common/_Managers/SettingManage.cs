@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class SettingManage : MonoBehaviour
 {
-    public GM_CameraSetting camSet;
+    public CameraSetting camSet;
 
     void Awake()
     {
-        camSet = gameObject.AddComponent<GM_CameraSetting>();
+        camSet = gameObject.AddComponent<CameraSetting>();
     }
 
     void Start()

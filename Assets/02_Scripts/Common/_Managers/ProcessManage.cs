@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class ProcessManage : MonoBehaviour
 {
-    public GM_GameTimeRule gameTimeRule;
+    public GameTimeRule gameTimeRule;
     public Lights_Global light_Global;
 
     void Awake()
     {
-        gameTimeRule = gameObject.AddComponent<GM_GameTimeRule>();
+        gameTimeRule = gameObject.AddComponent<GameTimeRule>();
     }
 
     void Start()

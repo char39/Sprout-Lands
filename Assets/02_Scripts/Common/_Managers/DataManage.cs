@@ -4,14 +4,14 @@ public class DataManage : MonoBehaviour
 {
     public Player player;
     public Inventory inven;
-    public GM_DateInfo dateInfo;
-    public GM_QuickSlotSelect slotSelect;
+    public DateInfo dateInfo;
+    public CurrentQuickSlot slotSelect;
 
     void Awake()
     {
         inven = gameObject.AddComponent<Inventory>();
-        dateInfo = gameObject.AddComponent<GM_DateInfo>();
-        slotSelect = gameObject.AddComponent<GM_QuickSlotSelect>();
+        dateInfo = gameObject.AddComponent<DateInfo>();
+        slotSelect = gameObject.AddComponent<CurrentQuickSlot>();
     }
 
     void Start()
