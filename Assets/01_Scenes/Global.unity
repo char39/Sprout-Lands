@@ -1566,6 +1566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43fb2181bf1b243639fcfa9df927261f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameTimeRule: {fileID: 0}
+  light_Global: {fileID: 0}
 --- !u!1 &1135714252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,6 +1612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fad6e70f19524d289ec90e3311bb629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camSet: {fileID: 0}
 --- !u!1 &1191400222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,14 +1975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  light_Global: {fileID: 0}
-  inventory: {fileID: 0}
-  inventoryUI: {fileID: 0}
-  cameraSetting: {fileID: 0}
-  gameTimeRule: {fileID: 0}
+  inven: {fileID: 0}
   dateInfo: {fileID: 0}
-  dateInfoUI: {fileID: 0}
-  mousePos: {fileID: 0}
   slotSelect: {fileID: 0}
 --- !u!1 &1376283604
 GameObject:
@@ -2030,7 +2027,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 0.8509804}
-  m_Intensity: 1
+  m_Intensity: 0.2
   m_LightVolumeIntensity: 0
   m_LightVolumeIntensityEnabled: 1
   m_ApplyToSortingLayers: 00000000857400b81ddb4a25b971d7527deac729
@@ -2092,16 +2089,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27e97cf7d3c94b65aa158155175ecaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  light_Global: {fileID: 0}
-  inventory: {fileID: 0}
-  inventoryUI: {fileID: 0}
-  cameraSetting: {fileID: 0}
-  gameTimeRule: {fileID: 0}
-  dateInfo: {fileID: 0}
-  dateInfoUI: {fileID: 0}
-  mousePos: {fileID: 0}
-  slotSelect: {fileID: 0}
 --- !u!4 &1417329861
 Transform:
   m_ObjectHideFlags: 0
@@ -2569,16 +2556,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91791855865344c1861b3222fb9b641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  light_Global: {fileID: 0}
-  inventory: {fileID: 0}
-  inventoryUI: {fileID: 0}
-  cameraSetting: {fileID: 0}
-  gameTimeRule: {fileID: 0}
-  dateInfo: {fileID: 0}
+  inven: {fileID: 0}
   dateInfoUI: {fileID: 0}
   mousePos: {fileID: 0}
-  slotSelect: {fileID: 0}
 --- !u!1 &1947482103
 GameObject:
   m_ObjectHideFlags: 0
