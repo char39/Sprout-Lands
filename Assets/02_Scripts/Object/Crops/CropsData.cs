@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CropsData : MonoBehaviour, ICrops
 {
-    private SpriteRenderer sr;
-    private BoxCollider2D col;
+    [HideInInspector] public SpriteRenderer sr;
+    [HideInInspector] public BoxCollider2D col;
     public ICrops.CropType Type;
     public ICrops.Growth Growth;
     public bool IsWatered { get; private set; }

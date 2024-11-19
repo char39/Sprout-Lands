@@ -35,7 +35,7 @@ public static class ItemManager
             { 1005, new FarmingPlantItem(Icons.FarmingPlant[5], 1005, "Cauliflower Seed",     1, 255, false) },
             { 1006, new FarmingPlantItem(Icons.FarmingPlant[6], 1006, "Cauliflower",          1, 255, true) },
             { 1007, new FarmingPlantItem(Icons.FarmingPlant[7], 1007, "Tomato Seed",          1, 255, false) },
-            { 1008, new FarmingPlantItem(Icons.FarmingPlant[8], 1008, "Tamato",               1, 255, true) },
+            { 1008, new FarmingPlantItem(Icons.FarmingPlant[8], 1008, "Tomato",               1, 255, true) },
             { 1009, new FarmingPlantItem(Icons.FarmingPlant[9], 1009, "EggPlant Seed",        1, 255, false) },
             { 1010, new FarmingPlantItem(Icons.FarmingPlant[10], 1010, "EggPlant",            1, 255, true) },
             { 1011, new FarmingPlantItem(Icons.FarmingPlant[11], 1011, "Flower Seed",         1, 255, false) },

@@ -1,71 +1,116 @@
 using UnityEngine;
 
-public class Trees : MonoBehaviour
+public partial class Trees : MonoBehaviour
 {
-    public TreeData treeData;
-    public FruitData fruitData;
-
     void Start()
     {
-        transform.GetChild(0).TryGetComponent(out treeData);
-        transform.GetChild(1).TryGetComponent(out fruitData);
+        GetTreeComponent();
+        GetFruitComponent();
 
-
+        treeIsVaild = GetTreeDataIsVaild();
+        fruitIsVaild = GetFruitDataIsVaild();
     }
 
     void Update()
     {
-        if (testBounce)
+        UpdateTreeSprite();
+        UpdateFruitSprite();
+
+        TreeInteraction();
+    }
+
+    private void GetTreeComponent() => treeData = GetComponentInChildren<TreeClass>();
+    private void GetFruitComponent() => fruitData = GetComponentInChildren<FruitClass>();
+    private bool GetTreeDataIsVaild() => treeData != null && treeData.ani != null && treeData.sr != null;
+    private bool GetFruitDataIsVaild() => fruitData != null && fruitData.ani != null && fruitData.sr != null;
+
+    private void UpdateTreeSprite()
+    {
+        if (!treeIsVaild)
+        {
+            GetTreeComponent();
+            treeIsVaild = GetTreeDataIsVaild();
+            return;
+        }
+
+        if (tree == ITree.Type.Tree && (state == ITree.State.Normal || state == ITree.State.Harvest))
+            treeData.ani.enabled = true;
+        else
+        {
+            treeData.ani.enabled = false;
+
+            int index = TreeSprites.Index[(int)tree, (int)state];
+            if (index != -1)
+                treeData.sr.sprite = Icons.Trees[index];
+        }
+    }
+
+    private void UpdateFruitSprite()
+    {
+        if (!fruitIsVaild)
+        {
+            GetFruitComponent();
+            fruitIsVaild = GetFruitDataIsVaild();
+            return;
+        }
+
+        int index = tree == ITree.Type.Tree && state == ITree.State.Harvest ? (int)fruit : 0;
+        fruitData.ani.SetFloat(IFruit.FruitID, index);
+    }
+
+
+
+
+
+
+
+
+
+
+
+    private void TreeInteraction()
+    {
+        if (isBounceEnable)
             PlayBounce();
-        if (testTreeMove)
+        if (isTreeMoveEnable)
             PlayTreeMove();
-        if (testFruitDrop)
+        if (isFruitDropEnable)
             PlayFruitDrop();
     }
 
-    public bool testBounce = false;
-    public bool testTreeMove = false;
-    public bool testFruitDrop = false;
-
     private void PlayBounce()
     {
-        testBounce = false;
-        if (treeData != null && treeData.ani != null && fruitData != null && fruitData.ani != null)
+        isBounceEnable = false;
+        if (tree == ITree.Type.Tree)
         {
-            if (treeData.type == ITree.Type.Tree)
-            {
+            if (GetTreeDataIsVaild())
                 treeData.ani.SetTrigger(ITree.BounceTrigger);
+            if (GetFruitDataIsVaild())
                 fruitData.ani.SetTrigger(ITree.BounceTrigger);
-            }
         }
     }
 
     private void PlayTreeMove()
     {
-        testTreeMove = false;
-        if (treeData != null && treeData.ani != null && fruitData != null && fruitData.ani != null)
+        isTreeMoveEnable = false;
+        if (tree == ITree.Type.Tree)
         {
-            if (treeData.type == ITree.Type.Tree)
-            {
+            if (GetTreeDataIsVaild())
                 treeData.ani.SetTrigger(ITree.TreeMoveTrigger);
+            if (GetFruitDataIsVaild())
                 fruitData.ani.SetTrigger(ITree.TreeMoveTrigger);
-            }
         }
     }
 
     private void PlayFruitDrop()
     {
-        testFruitDrop = false;
-        if (treeData != null && treeData.ani != null && fruitData != null && fruitData.ani != null)
+        isFruitDropEnable = false;
+        if (tree == ITree.Type.Tree)
         {
-            if (treeData.type == ITree.Type.Tree)
-            {
+            if (GetTreeDataIsVaild())
                 treeData.ani.SetTrigger(ITree.FruitDropTrigger);
+            if (GetFruitDataIsVaild())
                 fruitData.ani.SetTrigger(ITree.FruitDropTrigger);
-            }
         }
     }
-
-
-
 }

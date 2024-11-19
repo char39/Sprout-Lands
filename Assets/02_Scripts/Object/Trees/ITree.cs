@@ -5,11 +5,14 @@ public interface ITree
         Bush,
         SmallTree,
         Tree,
-        BigTree
+        BigTree,
+        GiantTree
     }
 
     public enum State
     {
+        Sprout,
+        Small,
         Normal,
         Harvest,
         Stump,

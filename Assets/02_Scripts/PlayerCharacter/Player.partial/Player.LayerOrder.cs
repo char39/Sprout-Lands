@@ -14,10 +14,10 @@ public partial class Player
     private LayerMask structureOrderMask;           // SetOrderMask가 적용된 오브젝트들을 찾기 위한 마스크
     private LayerMask structureAlphaMask;           // SetAlpha가 적용된 오브젝트들을 찾기 위한 마스크
     
-    private SetAlpha[] SetAlphaObj;                 // SetAlpha가 적용된 오브젝트들을 저장함.
     private SetOrderMask[] SetOrderMaskObj;         // SetOrderMask가 적용된 오브젝트들을 저장함.
-    private List<SetAlpha> SetAlphaList;            // Raycast로 찾은 SetAlpha 오브젝트들을 저장함.
+    private SetAlpha[] SetAlphaObj;                 // SetAlpha가 적용된 오브젝트들을 저장함.
     private List<SetOrderMask> SetOrderMaskList;    // Raycast로 찾은 SetOrderMask 오브젝트들을 저장함.
+    private List<SetAlpha> SetAlphaList;            // Raycast로 찾은 SetAlpha 오브젝트들을 저장함.
 
     /// <summary> Raycast로 찾은 값들을 반환함. </summary>
     private RaycastHit2D[] GetOthersRayCast(LayerMask layerMasks) => Physics2D.RaycastAll(pivotTr.position, Vector2.zero, 0, layerMasks);
@@ -70,16 +70,16 @@ public partial class Player
         }
     }
 
-    /// <summary> SetAlpha가 적용된 오브젝트들을 찾아서 SetAlphaObj에 저장함. </summary>
-    public void UpdateAllAlphaObj()
-    {
-        SetAlphaObj = null;
-        SetAlphaObj = FindObjectsOfType<SetAlpha>();
-    }
     /// <summary> SetOrderMask가 적용된 오브젝트들을 찾아서 SetOrderMaskObj에 저장함. </summary>
-    public void UpdateAllOrderMaskObj()
+    public void GetAllOrderMaskObj()
     {
         SetOrderMaskObj = null;
         SetOrderMaskObj = FindObjectsOfType<SetOrderMask>();
+    }
+    /// <summary> SetAlpha가 적용된 오브젝트들을 찾아서 SetAlphaObj에 저장함. </summary>
+    public void GetAllAlphaObj()
+    {
+        SetAlphaObj = null;
+        SetAlphaObj = FindObjectsOfType<SetAlpha>();
     }
 }

@@ -875,6 +875,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Trees, stumps and bushes_58
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebebcaa0e0b714fb6b3e2897f798cebc
+      internalID: -904761218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -909,7 +930,6 @@ TextureImporter:
       Trees, stumps and bushes_27: 1919195745
       Trees, stumps and bushes_28: 2095611459
       Trees, stumps and bushes_29: -592551600
-      Trees, stumps and bushes_3: 1682039942
       Trees, stumps and bushes_30: -1610114593
       Trees, stumps and bushes_31: -1059848815
       Trees, stumps and bushes_32: 1110745930
@@ -931,7 +951,6 @@ TextureImporter:
       Trees, stumps and bushes_47: -396399270
       Trees, stumps and bushes_48: 1872687788
       Trees, stumps and bushes_49: 278304599
-      Trees, stumps and bushes_5: 39898359
       Trees, stumps and bushes_50: -1455685788
       Trees, stumps and bushes_51: -1318210227
       Trees, stumps and bushes_52: 520865672
@@ -940,7 +959,7 @@ TextureImporter:
       Trees, stumps and bushes_55: -2011695917
       Trees, stumps and bushes_56: 1949832816
       Trees, stumps and bushes_57: -1090454830
-      Trees, stumps and bushes_58: -904761218
+      Trees, stumps and bushes_58: 1682039942
       Trees, stumps and bushes_59: 267692574
       Trees, stumps and bushes_6: -161200773
       Trees, stumps and bushes_7: 1976002462

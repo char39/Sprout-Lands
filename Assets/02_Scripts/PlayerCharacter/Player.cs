@@ -18,8 +18,8 @@ public partial class Player : MonoBehaviour
         SetPlayerMoveVelocity();
         SetPlayerAnimation();
 
-        UpdateAllAlphaObj();        // 임시
-        UpdateAllOrderMaskObj();    // 임시
+        GetAllAlphaObj();        // 임시
+        GetAllOrderMaskObj();    // 임시
         SetObjectsOrderMask();
         SetObjectsAlphaMask();
 
