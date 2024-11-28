@@ -14,6 +14,10 @@ public partial class Trees : MonoBehaviour
     private bool treeIsVaild;       // 나무 유효성 검사
     private bool fruitIsVaild;      // 과일 유효성 검사
 
+    private BoxCollider2D mask;      // 캐릭터가 이동 못하는 마스크
+    private BoxCollider2D order;
+
+
 
     public bool isBounceEnable = false;     // 튕김 활성화
     public bool isTreeMoveEnable = false;   // 나무 이동 활성화

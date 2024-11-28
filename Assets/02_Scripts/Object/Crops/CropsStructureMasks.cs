@@ -5,7 +5,9 @@ public static class CropsStructureMasks
     public static Vector2?[,] offsets;
     public static Vector2?[,] sizes;
 
-    static CropsStructureMasks()
+    static CropsStructureMasks() => SetVars();
+
+    private static void SetVars()
     {
         offsets = new Vector2?[,]
         {

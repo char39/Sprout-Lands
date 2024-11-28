@@ -9,12 +9,14 @@ public partial class Trees : MonoBehaviour
 
         treeIsVaild = GetTreeDataIsVaild();
         fruitIsVaild = GetFruitDataIsVaild();
+
+        GetComponentInChildren<MaskClass>().gameObject.TryGetComponent(out mask);
+        GetComponentInChildren<SetOrderMask_Trees>().gameObject.TryGetComponent(out order);
     }
 
     void Update()
     {
-        UpdateTreeSprite();
-        UpdateFruitSprite();
+        RefreshAll();
 
         TreeInteraction();
     }
@@ -24,7 +26,14 @@ public partial class Trees : MonoBehaviour
     private bool GetTreeDataIsVaild() => treeData != null && treeData.ani != null && treeData.sr != null;
     private bool GetFruitDataIsVaild() => fruitData != null && fruitData.ani != null && fruitData.sr != null;
 
-    private void UpdateTreeSprite()
+    private void RefreshAll()
+    {
+        SetTreeSprite();
+        SetFruitSprite();
+        SetMasks();
+    }
+
+    private void SetTreeSprite()
     {
         if (!treeIsVaild)
         {
@@ -45,7 +54,7 @@ public partial class Trees : MonoBehaviour
         }
     }
 
-    private void UpdateFruitSprite()
+    private void SetFruitSprite()
     {
         if (!fruitIsVaild)
         {
@@ -58,7 +67,34 @@ public partial class Trees : MonoBehaviour
         fruitData.ani.SetFloat(IFruit.FruitID, index);
     }
 
+    private void SetMasks()
+    {
+        Vector2? maskOffset = TreesStructureMasks.maskOffsets[(int)tree, (int)state];
+        Vector2? maskSize = TreesStructureMasks.maskSizes[(int)tree, (int)state];
+        Vector2? orderOffset = TreesStructureMasks.orderOffsets[(int)tree, (int)state];
+        Vector2? orderSize = TreesStructureMasks.orderSizes[(int)tree, (int)state];
+        Vector2? alphaOffset = TreesStructureMasks.alphaOffsets[(int)tree, (int)state];
+        Vector2? alphaSize = TreesStructureMasks.alphaSizes[(int)tree, (int)state];
 
+        SetMask(mask, maskOffset, maskSize);
+        SetMask(order, orderOffset, orderSize);
+        SetMask(treeData.alpha, alphaOffset, alphaSize);
+        SetMask(fruitData.alpha, alphaOffset, alphaSize);
+
+        static void SetMask(BoxCollider2D mask, Vector2? offset, Vector2? size)
+        {
+            if (mask == null) return;
+
+            if (offset == null || size == null)
+                mask.enabled = false;
+            else
+            {
+                mask.enabled = true;
+                mask.offset = (Vector2)offset;
+                mask.size = (Vector2)size;
+            }
+        }
+    }
 
 
 
@@ -83,9 +119,9 @@ public partial class Trees : MonoBehaviour
         isBounceEnable = false;
         if (tree == ITree.Type.Tree)
         {
-            if (GetTreeDataIsVaild())
+            if (GetTreeDataIsVaild() && (state == ITree.State.Normal || state == ITree.State.Harvest))
                 treeData.ani.SetTrigger(ITree.BounceTrigger);
-            if (GetFruitDataIsVaild())
+            if (GetFruitDataIsVaild() && state == ITree.State.Harvest)
                 fruitData.ani.SetTrigger(ITree.BounceTrigger);
         }
     }
@@ -95,9 +131,9 @@ public partial class Trees : MonoBehaviour
         isTreeMoveEnable = false;
         if (tree == ITree.Type.Tree)
         {
-            if (GetTreeDataIsVaild())
+            if (GetTreeDataIsVaild() && (state == ITree.State.Normal || state == ITree.State.Harvest))
                 treeData.ani.SetTrigger(ITree.TreeMoveTrigger);
-            if (GetFruitDataIsVaild())
+            if (GetFruitDataIsVaild() && state == ITree.State.Harvest)
                 fruitData.ani.SetTrigger(ITree.TreeMoveTrigger);
         }
     }
@@ -107,10 +143,23 @@ public partial class Trees : MonoBehaviour
         isFruitDropEnable = false;
         if (tree == ITree.Type.Tree)
         {
-            if (GetTreeDataIsVaild())
+            if (GetTreeDataIsVaild() && (state == ITree.State.Normal || state == ITree.State.Harvest))
                 treeData.ani.SetTrigger(ITree.FruitDropTrigger);
-            if (GetFruitDataIsVaild())
+            if (GetFruitDataIsVaild() && state == ITree.State.Harvest)
                 fruitData.ani.SetTrigger(ITree.FruitDropTrigger);
         }
+    }
+
+
+
+    private void OnDrawGizmos()
+    {
+        // 캐릭터의 움직임이 불가한 구역을 표시
+        Gizmos.color = new Color(1, 1, 0, 0.5f);
+        Vector2? offset = TreesStructureMasks.maskOffsets[(int)tree, (int)state];
+        Vector2? size = TreesStructureMasks.maskSizes[(int)tree, (int)state];
+        if (offset == null || size == null)
+            return;
+        Gizmos.DrawWireCube(transform.position + (Vector3)offset, (Vector2)size);
     }
 }

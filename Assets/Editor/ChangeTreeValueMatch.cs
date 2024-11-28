@@ -23,40 +23,9 @@ public class ChangeTreeValueMatch : Editor
 
             if (tree.TryGetComponent(out SpriteRenderer sr))
             {
-                if (treeType == ITree.Type.Bush)
-                {
-                    if (treeState == ITree.State.Sprout)
-                        sr.sprite = Icons.Trees[21];
-                    else
-                        sr.sprite = Icons.Trees[22];
-                }
-                else if (treeType == ITree.Type.SmallTree)
-                {
-                    if (treeState == ITree.State.Stump)
-                        sr.sprite = Icons.Trees[0];
-                    else
-                        sr.sprite = Icons.Trees[7];
-                }
-                else if (treeType == ITree.Type.Tree)
-                {
-                    if (treeState == ITree.State.Sprout)
-                        sr.sprite = Icons.Trees[34];
-                    else if (treeState == ITree.State.Normal || treeState == ITree.State.Harvest)
-                        sr.sprite = Icons.Trees[8];
-                    else if (treeState == ITree.State.Stump)
-                        sr.sprite = Icons.Trees[1];
-                    else if (treeState == ITree.State.Wood)
-                        sr.sprite = Icons.Trees[4];
-                }
-                else if (treeType == ITree.Type.BigTree)
-                {
-                    if (treeState == ITree.State.Stump)
-                        sr.sprite = Icons.Trees[2];
-                    else if (treeState == ITree.State.Wood)
-                        sr.sprite = Icons.Trees[5];
-                    else
-                        sr.sprite = Icons.Trees[33];
-                }
+                int index = TreeSprites.Index[(int)treeType, (int)treeState];
+                if (index != -1)
+                    sr.sprite = Icons.Trees[index];
             }
         }
 
@@ -66,16 +35,10 @@ public class ChangeTreeValueMatch : Editor
 
             if (fruit.TryGetComponent(out SpriteRenderer sr))
             {
-                if (fruitType == IFruit.Type.None)
+                if (treeType == ITree.Type.Tree && treeState == ITree.State.Harvest)
+                    sr.sprite = Icons.Fruits[(int)fruitType];
+                else
                     sr.sprite = Icons.Fruits[0];
-                else if (fruitType == IFruit.Type.Apple)
-                    sr.sprite = Icons.Fruits[1];
-                else if (fruitType == IFruit.Type.Orange)
-                    sr.sprite = Icons.Fruits[2];
-                else if (fruitType == IFruit.Type.Pear)
-                    sr.sprite = Icons.Fruits[3];
-                else if (fruitType == IFruit.Type.Peach)
-                    sr.sprite = Icons.Fruits[4];
             }
         }
 
