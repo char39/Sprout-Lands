@@ -12,6 +12,8 @@ public partial class Trees : MonoBehaviour
 
         GetComponentInChildren<MaskClass>().gameObject.TryGetComponent(out mask);
         GetComponentInChildren<SetOrderMask_Trees>().gameObject.TryGetComponent(out order);
+        GetComponentInChildren<TreeClass>().transform.GetChild(0).TryGetComponent(out alphaTree);
+        GetComponentInChildren<FruitClass>().transform.GetChild(0).TryGetComponent(out alphaFruit);
     }
 
     void Update()
@@ -78,8 +80,8 @@ public partial class Trees : MonoBehaviour
 
         SetMask(mask, maskOffset, maskSize);
         SetMask(order, orderOffset, orderSize);
-        SetMask(treeData.alpha, alphaOffset, alphaSize);
-        SetMask(fruitData.alpha, alphaOffset, alphaSize);
+        SetMask(alphaTree, alphaOffset, alphaSize);
+        SetMask(alphaFruit, alphaOffset, alphaSize);
 
         static void SetMask(BoxCollider2D mask, Vector2? offset, Vector2? size)
         {

@@ -13,17 +13,17 @@ public class ChangeTreeValueMatch : Editor
         if (!t.SpriteAutoRefresh)
             return;
 
-        ITree.Type treeType = t.tree;
-        IFruit.Type fruitType = t.fruit;
-        ITree.State treeState = t.state;
+        ITree.Type tree = t.tree;
+        IFruit.Type fruit = t.fruit;
+        ITree.State state = t.state;
 
         if (t.GetComponentInChildren<TreeClass>() != null)
         {
-            TreeClass tree = t.GetComponentInChildren<TreeClass>();
+            TreeClass treeClass = t.GetComponentInChildren<TreeClass>();
 
-            if (tree.TryGetComponent(out SpriteRenderer sr))
+            if (treeClass.TryGetComponent(out SpriteRenderer sr))
             {
-                int index = TreeSprites.Index[(int)treeType, (int)treeState];
+                int index = TreeSprites.Index[(int)tree, (int)state];
                 if (index != -1)
                     sr.sprite = Icons.Trees[index];
             }
@@ -31,12 +31,12 @@ public class ChangeTreeValueMatch : Editor
 
         if (t.GetComponentInChildren<FruitClass>() != null)
         {
-            FruitClass fruit = t.GetComponentInChildren<FruitClass>();
+            FruitClass fruitClass = t.GetComponentInChildren<FruitClass>();
 
-            if (fruit.TryGetComponent(out SpriteRenderer sr))
+            if (fruitClass.TryGetComponent(out SpriteRenderer sr))
             {
-                if (treeType == ITree.Type.Tree && treeState == ITree.State.Harvest)
-                    sr.sprite = Icons.Fruits[(int)fruitType];
+                if (tree == ITree.Type.Tree && state == ITree.State.Harvest)
+                    sr.sprite = Icons.Fruits[(int)fruit];
                 else
                     sr.sprite = Icons.Fruits[0];
             }

@@ -16,6 +16,8 @@ public partial class Trees : MonoBehaviour
 
     private BoxCollider2D mask;      // 캐릭터가 이동 못하는 마스크
     private BoxCollider2D order;
+    private BoxCollider2D alphaTree;
+    private BoxCollider2D alphaFruit;
 
 
 
